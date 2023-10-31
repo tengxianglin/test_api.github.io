@@ -1,0 +1,8 @@
+avocado.operator.channel.custom
+===============================
+
+.. automodule:: avocado.operator.channel.custom
+   :members:
+   :undoc-members:
+   :show-inheritance:
+

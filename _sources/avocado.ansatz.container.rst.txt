@@ -1,0 +1,8 @@
+avocado.ansatz.container
+========================
+
+.. automodule:: avocado.ansatz.container
+   :members:
+   :undoc-members:
+   :show-inheritance:
+

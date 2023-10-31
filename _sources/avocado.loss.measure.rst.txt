@@ -1,0 +1,8 @@
+avocado.loss.measure
+====================
+
+.. automodule:: avocado.loss.measure
+   :members:
+   :undoc-members:
+   :show-inheritance:
+

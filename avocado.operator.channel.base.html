@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>avocado.operator.channel.base &mdash; QUAIR-PLATFORM 0.0.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css\rtd_sphinx_search.min.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+        <script src="_static/js\rtd_search_config.js"></script>
+        <script src="_static/js\rtd_sphinx_search.min.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="avocado.operator.channel.common" href="avocado.operator.channel.common.html" />
+    <link rel="prev" title="avocado.operator.channel" href="avocado.operator.channel.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            QUAIR-PLATFORM
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="avocado.ansatz.html">avocado.ansatz</a></li>
+<li class="toctree-l1"><a class="reference internal" href="avocado.circuit.html">avocado.circuit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="avocado.core.html">avocado.core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="avocado.database.html">avocado.database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="avocado.loss.html">avocado.loss</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="avocado.operator.html">avocado.operator</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="avocado.operator.channel.html">avocado.operator.channel</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">avocado.operator.channel.base</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#avocado.operator.channel.base.Channel"><code class="docutils literal notranslate"><span class="pre">Channel</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="avocado.operator.channel.common.html">avocado.operator.channel.common</a></li>
+<li class="toctree-l3"><a class="reference internal" href="avocado.operator.channel.custom.html">avocado.operator.channel.custom</a></li>
+<li class="toctree-l3"><a class="reference internal" href="avocado.operator.channel.functional.html">avocado.operator.channel.functional</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="avocado.operator.gate.html">avocado.operator.gate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avocado.operator.special.html">avocado.operator.special</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="avocado.qinfo.html">avocado.qinfo</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">QUAIR-PLATFORM</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">&lt;no title&gt;</a></li>
+          <li class="breadcrumb-item"><a href="avocado.operator.html">avocado.operator</a></li>
+          <li class="breadcrumb-item"><a href="avocado.operator.channel.html">avocado.operator.channel</a></li>
+      <li class="breadcrumb-item active">avocado.operator.channel.base</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/avocado.operator.channel.base.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-avocado.operator.channel.base">
+<span id="avocado-operator-channel-base"></span><h1>avocado.operator.channel.base<a class="headerlink" href="#module-avocado.operator.channel.base" title="Permalink to this heading"></a></h1>
+<p>The source file of the basic class for the quantum channels.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="avocado.operator.channel.base.Channel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">avocado.operator.channel.base.</span></span><span class="sig-name descname"><span class="pre">Channel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type_repr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">representation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qubits_idx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_qubits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">check_legality</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_acted_qubits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.operator.channel.base.Channel" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="avocado.core.base.html#avocado.core.base.Operator" title="avocado.core.base.Operator"><code class="xref py py-class docutils literal notranslate"><span class="pre">Operator</span></code></a></p>
+<p>Basic class for quantum channels.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>type_repr</strong> (<em>str</em>) – type of a representation. should be <code class="docutils literal notranslate"><span class="pre">'choi'</span></code>, <code class="docutils literal notranslate"><span class="pre">'kraus'</span></code>, <code class="docutils literal notranslate"><span class="pre">'stinespring'</span></code>.</p></li>
+<li><p><strong>representation</strong> (<em>Tensor</em><em> | </em><em>List</em><em>[</em><em>Tensor</em><em>]</em>) – the representation of this channel. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code> i.e. not specified.</p></li>
+<li><p><strong>qubits_idx</strong> (<em>Iterable</em><em>[</em><em>Iterable</em><em>[</em><em>int</em><em>]</em><em>] </em><em>| </em><em>Iterable</em><em>[</em><em>int</em><em>] </em><em>| </em><em>int</em>) – indices of the qubits on which this channel acts on. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.
+i.e. list(range(num_acted_qubits)).</p></li>
+<li><p><strong>num_qubits</strong> (<em>int</em>) – total number of qubits. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
+<li><p><strong>check_legality</strong> (<em>bool</em>) – whether check the completeness of the representation if provided. Defaults to <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
+<li><p><strong>num_acted_qubits</strong> (<em>int</em>) – the number of qubits that this channel acts on.  Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>ValueError</strong> – Unsupported channel representation for <code class="docutils literal notranslate"><span class="pre">type_repr</span></code>.</p></li>
+<li><p><strong>NotImplementedError</strong> – The noisy channel can only run in density matrix mode.</p></li>
+<li><p><strong>TypeError</strong> – Unexpected data type for Channel representation.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">representation</span></code> is given, then <code class="docutils literal notranslate"><span class="pre">num_acted_qubits</span></code> will be determined by <code class="docutils literal notranslate"><span class="pre">representation</span></code>, no matter
+<code class="docutils literal notranslate"><span class="pre">num_acted_qubits</span></code> is <code class="docutils literal notranslate"><span class="pre">None</span></code> or not.</p>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="avocado.operator.channel.base.Channel.to">
+<span class="sig-name descname"><span class="pre">to</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">backend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">blocking</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.operator.channel.base.Channel.to" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="avocado.operator.channel.base.Channel.choi_repr">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">choi_repr</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Tensor</span></em><a class="headerlink" href="#avocado.operator.channel.base.Channel.choi_repr" title="Permalink to this definition"></a></dt>
+<dd><p>Choi representation of a channel</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>a tensor with shape <span class="math notranslate nohighlight">\([d_\text{out}^2, d_\text{in}^2]\)</span>, where <span class="math notranslate nohighlight">\(d_\text{in/out}\)</span> is
+the input/output dimension of this channel</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – Need to specify the Choi representation in this Channel instance.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="avocado.operator.channel.base.Channel.kraus_repr">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">kraus_repr</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Tensor</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#avocado.operator.channel.base.Channel.kraus_repr" title="Permalink to this definition"></a></dt>
+<dd><p>Kraus representation of a channel</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>a list of tensors with shape <span class="math notranslate nohighlight">\([d_\text{out}, d_\text{in}]\)</span>, where <span class="math notranslate nohighlight">\(d_\text{in/out}\)</span> is
+the input/output dimension of this channel</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – Need to specify the Kraus representation in this Channel instance.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="avocado.operator.channel.base.Channel.stinespring_repr">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">stinespring_repr</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Tensor</span></em><a class="headerlink" href="#avocado.operator.channel.base.Channel.stinespring_repr" title="Permalink to this definition"></a></dt>
+<dd><p>Stinespring representation of a channel</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>a tensor with shape <span class="math notranslate nohighlight">\([r * d_\text{out}, d_\text{in}]\)</span>, where <span class="math notranslate nohighlight">\(r\)</span> is the rank of this channel and
+<span class="math notranslate nohighlight">\(d_\text{in/out}\)</span> is the input/output dimension of this channel</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – Need to specify the Stinespring representation in this Channel instance.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="avocado.operator.channel.base.Channel.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.operator.channel.base.Channel.forward" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="avocado.operator.channel.base.Channel.training">
+<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#avocado.operator.channel.base.Channel.training" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="avocado.operator.channel.html" class="btn btn-neutral float-left" title="avocado.operator.channel" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="avocado.operator.channel.common.html" class="btn btn-neutral float-right" title="avocado.operator.channel.common" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, QUAIR.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

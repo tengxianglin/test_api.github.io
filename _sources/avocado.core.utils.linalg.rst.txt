@@ -1,0 +1,8 @@
+avocado.core.utils.linalg
+=========================
+
+.. automodule:: avocado.core.utils.linalg
+   :members:
+   :undoc-members:
+   :show-inheritance:
+

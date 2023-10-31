@@ -1,0 +1,15 @@
+avocado.core.backend
+====================
+
+.. automodule:: avocado.core.backend
+   :members:
+   :show-inheritance:
+
+.. rubric:: Submodules
+
+.. toctree::
+   :maxdepth: 1
+
+   avocado.core.backend.density_matrix
+   avocado.core.backend.state_vector
+   avocado.core.backend.unitary_matrix

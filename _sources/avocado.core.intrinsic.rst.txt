@@ -1,0 +1,8 @@
+avocado.core.intrinsic
+======================
+
+.. automodule:: avocado.core.intrinsic
+   :members:
+   :undoc-members:
+   :show-inheritance:
+

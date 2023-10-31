@@ -1,0 +1,8 @@
+avocado.core.state
+==================
+
+.. automodule:: avocado.core.state
+   :members:
+   :undoc-members:
+   :show-inheritance:
+

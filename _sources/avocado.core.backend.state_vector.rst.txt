@@ -1,0 +1,8 @@
+avocado.core.backend.state_vector
+=================================
+
+.. automodule:: avocado.core.backend.state_vector
+   :members:
+   :undoc-members:
+   :show-inheritance:
+

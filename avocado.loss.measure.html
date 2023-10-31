@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>avocado.loss.measure &mdash; QUAIR-PLATFORM 0.0.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css\rtd_sphinx_search.min.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+        <script src="_static/js\rtd_search_config.js"></script>
+        <script src="_static/js\rtd_sphinx_search.min.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="avocado.operator" href="avocado.operator.html" />
+    <link rel="prev" title="avocado.loss.distance" href="avocado.loss.distance.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            QUAIR-PLATFORM
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="avocado.ansatz.html">avocado.ansatz</a></li>
+<li class="toctree-l1"><a class="reference internal" href="avocado.circuit.html">avocado.circuit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="avocado.core.html">avocado.core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="avocado.database.html">avocado.database</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="avocado.loss.html">avocado.loss</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="avocado.loss.distance.html">avocado.loss.distance</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">avocado.loss.measure</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.loss.measure.ExpecVal"><code class="docutils literal notranslate"><span class="pre">ExpecVal</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#avocado.loss.measure.ExpecVal.forward"><code class="docutils literal notranslate"><span class="pre">ExpecVal.forward()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#avocado.loss.measure.ExpecVal.training"><code class="docutils literal notranslate"><span class="pre">ExpecVal.training</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.loss.measure.Measure"><code class="docutils literal notranslate"><span class="pre">Measure</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#avocado.loss.measure.Measure.forward"><code class="docutils literal notranslate"><span class="pre">Measure.forward()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#avocado.loss.measure.Measure.training"><code class="docutils literal notranslate"><span class="pre">Measure.training</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="avocado.operator.html">avocado.operator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="avocado.qinfo.html">avocado.qinfo</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">QUAIR-PLATFORM</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">&lt;no title&gt;</a></li>
+          <li class="breadcrumb-item"><a href="avocado.loss.html">avocado.loss</a></li>
+      <li class="breadcrumb-item active">avocado.loss.measure</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/avocado.loss.measure.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-avocado.loss.measure">
+<span id="avocado-loss-measure"></span><h1>avocado.loss.measure<a class="headerlink" href="#module-avocado.loss.measure" title="Permalink to this heading"></a></h1>
+<p>The source file of the class for the measurement.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="avocado.loss.measure.ExpecVal">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">avocado.loss.measure.</span></span><span class="sig-name descname"><span class="pre">ExpecVal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hamiltonian</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shots</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.loss.measure.ExpecVal" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="avocado.core.base.html#avocado.core.base.Operator" title="avocado.core.base.Operator"><code class="xref py py-class docutils literal notranslate"><span class="pre">Operator</span></code></a></p>
+<p>The class of the loss function to compute the expectation value for the observable.</p>
+<p>This interface can make you using the expectation value for the observable as the loss function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>hamiltonian</strong> (<a class="reference internal" href="avocado.core.hamiltonian.html#avocado.core.hamiltonian.Hamiltonian" title="avocado.core.hamiltonian.Hamiltonian"><em>Hamiltonian</em></a>) – The input observable.</p></li>
+<li><p><strong>shots</strong> (<em>int</em><em> | </em><em>None</em>) – The number of measurement shots. Defaults to <code class="docutils literal notranslate"><span class="pre">0</span></code>. Now it just need to be input when the backend is QuLeaf.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="avocado.loss.measure.ExpecVal.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.loss.measure.ExpecVal.forward" title="Permalink to this definition"></a></dt>
+<dd><p>Compute the expectation value of the observable with respect to the input state.</p>
+<p>The value computed by this function can be used as a loss function to optimize.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>state</strong> (<a class="reference internal" href="avocado.core.state.html#avocado.core.state.State" title="avocado.core.state.State"><em>State</em></a>) – The input state which will be used to compute the expectation value.</p></li>
+<li><p><strong>decompose</strong> – Defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code>.  If decompose is <code class="docutils literal notranslate"><span class="pre">True</span></code>, it will return the expectation value of each term.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>NotImplementedError</strong> – The backend is wrong or not supported.</p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The expectation value. If the backend is QuLeaf, it is computed by sampling.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>Tensor</em> | <em>List</em>[<em>Tensor</em>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="avocado.loss.measure.ExpecVal.training">
+<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#avocado.loss.measure.ExpecVal.training" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="avocado.loss.measure.Measure">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">avocado.loss.measure.</span></span><span class="sig-name descname"><span class="pre">Measure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">measure_basis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'z'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.loss.measure.Measure" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="avocado.core.base.html#avocado.core.base.Operator" title="avocado.core.base.Operator"><code class="xref py py-class docutils literal notranslate"><span class="pre">Operator</span></code></a></p>
+<p>Compute the probability of the specified measurement result.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>measure_basis</strong> (<em>Iterable</em><em>[</em><em>Tensor</em><em>] </em><em>| </em><em>str</em><em> | </em><em>None</em>) – Specify the basis of the measurement. Defaults to <code class="docutils literal notranslate"><span class="pre">'z'</span></code>.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>NotImplementedError</strong> – Currently we just support the z basis.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="avocado.loss.measure.Measure.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qubits_idx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'full'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">desired_result</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.loss.measure.Measure.forward" title="Permalink to this definition"></a></dt>
+<dd><p>Compute the probability of measurement to the input state.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>state</strong> (<a class="reference internal" href="avocado.core.state.html#avocado.core.state.State" title="avocado.core.state.State"><em>State</em></a>) – The quantum state to be measured.</p></li>
+<li><p><strong>qubits_idx</strong> (<em>Iterable</em><em>[</em><em>int</em><em>] </em><em>| </em><em>int</em><em> | </em><em>str</em><em> | </em><em>None</em>) – The index of the qubits to be measured. Defaults to <code class="docutils literal notranslate"><span class="pre">'full'</span></code> which means measure all the qubits.</p></li>
+<li><p><strong>desired_result</strong> (<em>Iterable</em><em>[</em><em>str</em><em>] </em><em>| </em><em>str</em><em> | </em><em>None</em>) – Specify the results of the measurement to return. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code> which means return the probability of all the results.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>NotImplementedError</strong> – The backend is wrong or not supported.</p></li>
+<li><p><strong>NotImplementedError</strong> – The qubit index is wrong or not supported.</p></li>
+<li><p><strong>NotImplementedError</strong> – Currently we just support the z basis.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The probability of the measurement.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>Tensor</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="avocado.loss.measure.Measure.training">
+<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#avocado.loss.measure.Measure.training" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="avocado.loss.distance.html" class="btn btn-neutral float-left" title="avocado.loss.distance" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="avocado.operator.html" class="btn btn-neutral float-right" title="avocado.operator" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, QUAIR.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

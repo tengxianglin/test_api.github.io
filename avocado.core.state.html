@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>avocado.core.state &mdash; QUAIR-PLATFORM 0.0.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css\rtd_sphinx_search.min.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+        <script src="_static/js\rtd_search_config.js"></script>
+        <script src="_static/js\rtd_sphinx_search.min.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="avocado.core.utils" href="avocado.core.utils.html" />
+    <link rel="prev" title="avocado.core.intrinsic" href="avocado.core.intrinsic.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            QUAIR-PLATFORM
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="avocado.ansatz.html">avocado.ansatz</a></li>
+<li class="toctree-l1"><a class="reference internal" href="avocado.circuit.html">avocado.circuit</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="avocado.core.html">avocado.core</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="avocado.core.backend.html">avocado.core.backend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avocado.core.base.html">avocado.core.base</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avocado.core.hamiltonian.html">avocado.core.hamiltonian</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avocado.core.intrinsic.html">avocado.core.intrinsic</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">avocado.core.state</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.core.state.State"><code class="docutils literal notranslate"><span class="pre">State</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#avocado.core.state.State.ket"><code class="docutils literal notranslate"><span class="pre">State.ket</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#avocado.core.state.State.bra"><code class="docutils literal notranslate"><span class="pre">State.bra</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#avocado.core.state.State.normalize"><code class="docutils literal notranslate"><span class="pre">State.normalize()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#avocado.core.state.State.evolve"><code class="docutils literal notranslate"><span class="pre">State.evolve()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#avocado.core.state.State.kron"><code class="docutils literal notranslate"><span class="pre">State.kron()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#avocado.core.state.State.numpy"><code class="docutils literal notranslate"><span class="pre">State.numpy()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#avocado.core.state.State.to"><code class="docutils literal notranslate"><span class="pre">State.to()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#avocado.core.state.State.clone"><code class="docutils literal notranslate"><span class="pre">State.clone()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#avocado.core.state.State.oper_history"><code class="docutils literal notranslate"><span class="pre">State.oper_history</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#avocado.core.state.State.expec_val"><code class="docutils literal notranslate"><span class="pre">State.expec_val()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#avocado.core.state.State.measure"><code class="docutils literal notranslate"><span class="pre">State.measure()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#avocado.core.state.State.reset_sequence"><code class="docutils literal notranslate"><span class="pre">State.reset_sequence()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.core.state.to_state"><code class="docutils literal notranslate"><span class="pre">to_state()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.core.state.tensor_state"><code class="docutils literal notranslate"><span class="pre">tensor_state()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="avocado.core.utils.html">avocado.core.utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avocado.core.visual.html">avocado.core.visual</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="avocado.database.html">avocado.database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="avocado.loss.html">avocado.loss</a></li>
+<li class="toctree-l1"><a class="reference internal" href="avocado.operator.html">avocado.operator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="avocado.qinfo.html">avocado.qinfo</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">QUAIR-PLATFORM</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">&lt;no title&gt;</a></li>
+          <li class="breadcrumb-item"><a href="avocado.core.html">avocado.core</a></li>
+      <li class="breadcrumb-item active">avocado.core.state</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/avocado.core.state.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-avocado.core.state">
+<span id="avocado-core-state"></span><h1>avocado.core.state<a class="headerlink" href="#module-avocado.core.state" title="Permalink to this heading"></a></h1>
+<p>The basic class of the quantum state.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="avocado.core.state.State">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">avocado.core.state.</span></span><span class="sig-name descname"><span class="pre">State</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_qubits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">backend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">override</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.core.state.State" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>The quantum state class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>Tensor</em><em> | </em><em>ndarray</em>) – The mathematical analysis of quantum state.</p></li>
+<li><p><strong>num_qubits</strong> (<em>int</em><em> | </em><em>None</em>) – The number of qubits contained in the quantum state. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>, which means it will be inferred by the data.</p></li>
+<li><p><strong>backend</strong> (<a class="reference internal" href="avocado.core.backend.html#avocado.core.backend.Backend" title="avocado.core.backend.Backend"><em>Backend</em></a><em> | </em><em>None</em>) – Used to specify the backend used. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.. which mlinalgto use the default backend.</p></li>
+<li><p><strong>dtype</strong> (<em>str</em><em> | </em><em>None</em>) – Used to specify the data dtype of the data. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>, which means to use the default data type.</p></li>
+<li><p><strong>override</strong> (<em>bool</em><em> | </em><em>None</em>) – whether override the input test. ONLY for internal use. Defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – Cannot recognize the backend.</p>
+</dd>
+</dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="avocado.core.state.State.ket">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ket</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Tensor</span></em><a class="headerlink" href="#avocado.core.state.State.ket" title="Permalink to this definition"></a></dt>
+<dd><p>Return the ket form in state_vector backend</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ValueError</strong> – the backend must be in StateVector</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>ket form of the state</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="avocado.core.state.State.bra">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">bra</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Tensor</span></em><a class="headerlink" href="#avocado.core.state.State.bra" title="Permalink to this definition"></a></dt>
+<dd><p>Return the bra form in state_vector backend</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ValueError</strong> – the backend must be in StateVector</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>bra form of the state</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="avocado.core.state.State.normalize">
+<span class="sig-name descname"><span class="pre">normalize</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#avocado.core.state.State.normalize" title="Permalink to this definition"></a></dt>
+<dd><p>Normalize this state</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>NotImplementedError</strong> – does not support normalization for the backend</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="avocado.core.state.State.evolve">
+<span class="sig-name descname"><span class="pre">evolve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">H</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.core.state.State.evolve" title="Permalink to this definition"></a></dt>
+<dd><p>Evolve the state under the Hamiltonian <cite>H</cite> i.e. apply unitary operator <span class="math notranslate nohighlight">\(e^{-itH}\)</span></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>H</strong> (<em>ndarray</em><em> | </em><em>Tensor</em><em> | </em><a class="reference internal" href="avocado.core.hamiltonian.html#avocado.core.hamiltonian.Hamiltonian" title="avocado.core.hamiltonian.Hamiltonian"><em>Hamiltonian</em></a>) – the Hamiltonian of the system</p></li>
+<li><p><strong>t</strong> (<em>float</em>) – the evolution time</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>NotImplementedError</strong> – does not support evolution for the backend</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="avocado.core.state.State.kron">
+<span class="sig-name descname"><span class="pre">kron</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.core.state.State.kron" title="Permalink to this definition"></a></dt>
+<dd><p>Kronecker product between states</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>other</strong> (<a class="reference internal" href="#avocado.core.state.State" title="avocado.core.state.State"><em>State</em></a>) – a quantum state</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the tensor product of these two states</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#avocado.core.state.State" title="avocado.core.state.State"><em>State</em></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="avocado.core.state.State.numpy">
+<span class="sig-name descname"><span class="pre">numpy</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#avocado.core.state.State.numpy" title="Permalink to this definition"></a></dt>
+<dd><p>Get the data in numpy.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The numpy array of the data for the quantum state.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>ndarray</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="avocado.core.state.State.to">
+<span class="sig-name descname"><span class="pre">to</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">backend</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">blocking</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.core.state.State.to" title="Permalink to this definition"></a></dt>
+<dd><p>Change the property of the state.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>backend</strong> (<em>str</em>) – Specify the new backend of the state.</p></li>
+<li><p><strong>dtype</strong> (<em>str</em><em> | </em><em>None</em>) – Specify the new data type of the state.</p></li>
+<li><p><strong>device</strong> (<em>str</em><em> | </em><em>None</em>) – Specify the new device of the state.</p></li>
+<li><p><strong>blocking</strong> (<em>str</em><em> | </em><em>None</em>) – Specify the new blocking of the state.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Raises</dt><dd><p>NotImplementedError: only support transformation between StateVector and DensityMatrix
+NotImplementedError: Transformation for device or blocking is not supported.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="avocado.core.state.State.clone">
+<span class="sig-name descname"><span class="pre">clone</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#avocado.core.state.State.clone" title="Permalink to this definition"></a></dt>
+<dd><p>Return a copy of the quantum state.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A new state which is identical to this state.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#avocado.core.state.State" title="avocado.core.state.State"><em>State</em></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="avocado.core.state.State.oper_history">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">oper_history</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Tensor</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#avocado.core.state.State.oper_history" title="Permalink to this definition"></a></dt>
+<dd><p>The operator history stored for the QPU backend</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>NotImplementedError</strong> – This property should be called for the backend <code class="docutils literal notranslate"><span class="pre">qpu</span></code> only.</p></li>
+<li><p><strong>ValueError</strong> – This state does not have operator history: run the circuit first.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="avocado.core.state.State.expec_val">
+<span class="sig-name descname"><span class="pre">expec_val</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hamiltonian</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shots</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.core.state.State.expec_val" title="Permalink to this definition"></a></dt>
+<dd><p>The expectation value of the observable with respect to the quantum state.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>hamiltonian</strong> (<a class="reference internal" href="avocado.core.hamiltonian.html#avocado.core.hamiltonian.Hamiltonian" title="avocado.core.hamiltonian.Hamiltonian"><em>Hamiltonian</em></a>) – Input observable.</p></li>
+<li><p><strong>shots</strong> (<em>int</em><em> | </em><em>None</em>) – Number of measurement shots.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>NotImplementedError</strong> – If the backend is wrong or not implemented.</p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The expectation value of the input observable for the quantum state.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="avocado.core.state.State.measure">
+<span class="sig-name descname"><span class="pre">measure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shots</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qubits_idx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">record</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.core.state.State.measure" title="Permalink to this definition"></a></dt>
+<dd><p>Measure the quantum state</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>shots</strong> (<em>int</em><em> | </em><em>None</em>) – the number of measurements on the quantum state output by the quantum circuit.
+Default is <code class="docutils literal notranslate"><span class="pre">0</span></code>, which means the exact probability distribution of measurement results are returned.</p></li>
+<li><p><strong>qubits_idx</strong> (<em>Iterable</em><em>[</em><em>int</em><em>] </em><em>| </em><em>int</em><em> | </em><em>None</em>) – The index of the qubit to be measured. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>, which means all qubits are measured.</p></li>
+<li><p><strong>plot</strong> (<em>bool</em><em> | </em><em>None</em>) – Whether to draw the measurement result plot. Defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code> which means no plot.</p></li>
+<li><p><strong>record</strong> (<em>bool</em><em> | </em><em>None</em>) – Whether to return the original measurement record. Defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code> which means no record.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>ValueError</strong> – The number of shots should be greater than 0.</p></li>
+<li><p><strong>NotImplementedError</strong> – When the backend is qpu, record is not supprted .</p></li>
+<li><p><strong>NotImplementedError</strong> – If the backend is wrong or not implemented.</p></li>
+<li><p><strong>NotImplementedError</strong> – The qubit index is wrong or not supported.</p></li>
+<li><p><strong>ValueError</strong> – Returning records requires the number of shots to be greater than 0.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Measurement results</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="avocado.core.state.State.reset_sequence">
+<span class="sig-name descname"><span class="pre">reset_sequence</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target_sequence</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.core.state.State.reset_sequence" title="Permalink to this definition"></a></dt>
+<dd><p>reset the qubit order to a given sequence</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>target_sequence</strong> (<em>List</em><em>[</em><em>int</em><em>] </em><em>| </em><em>None</em>) – target sequence. Defaults to None.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>state with given qubit order</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#avocado.core.state.State" title="avocado.core.state.State">State</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="avocado.core.state.to_state">
+<span class="sig-prename descclassname"><span class="pre">avocado.core.state.</span></span><span class="sig-name descname"><span class="pre">to_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_qubits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">backend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.core.state.to_state" title="Permalink to this definition"></a></dt>
+<dd><p>The function to generate a specified state instance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>Tensor</em><em> | </em><em>ndarray</em>) – The analytical form of quantum state.</p></li>
+<li><p><strong>num_qubits</strong> (<em>int</em><em> | </em><em>None</em>) – The number of qubits contained in the quantum state. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>, which means it will be inferred by the data.</p></li>
+<li><p><strong>backend</strong> (<a class="reference internal" href="avocado.core.backend.html#avocado.core.backend.Backend" title="avocado.core.backend.Backend"><em>Backend</em></a><em> | </em><em>None</em>) – Used to specify the backend used. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>, which means to use the default backend.</p></li>
+<li><p><strong>dtype</strong> (<em>str</em><em> | </em><em>None</em>) – Used to specify the data dtype of the data. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>, which means to use the default data type.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The generated quantum state.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#avocado.core.state.State" title="avocado.core.state.State"><em>State</em></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="avocado.core.state.tensor_state">
+<span class="sig-prename descclassname"><span class="pre">avocado.core.state.</span></span><span class="sig-name descname"><span class="pre">tensor_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state_a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">state_b</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.core.state.tensor_state" title="Permalink to this definition"></a></dt>
+<dd><p>calculate tensor product (kronecker product) between at least two state. This function automatically returns State instance</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>state_a</strong> (<a class="reference internal" href="#avocado.core.state.State" title="avocado.core.state.State"><em>State</em></a>) – State</p></li>
+<li><p><strong>state_b</strong> (<a class="reference internal" href="#avocado.core.state.State" title="avocado.core.state.State"><em>State</em></a>) – State</p></li>
+<li><p><strong>*args</strong> (<a class="reference internal" href="#avocado.core.state.State" title="avocado.core.state.State"><em>State</em></a>) – other states</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>tensor product state of input states</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#avocado.core.state.State" title="avocado.core.state.State"><em>State</em></a></p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Need to be careful with the backend of states;
+Use <code class="docutils literal notranslate"><span class="pre">avocado.linalg.NKron</span></code> if the input datatype is <code class="docutils literal notranslate"><span class="pre">torch.Tensor</span></code> or <code class="docutils literal notranslate"><span class="pre">numpy.ndarray</span></code>.</p>
+</div>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="avocado.core.intrinsic.html" class="btn btn-neutral float-left" title="avocado.core.intrinsic" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="avocado.core.utils.html" class="btn btn-neutral float-right" title="avocado.core.utils" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, QUAIR.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

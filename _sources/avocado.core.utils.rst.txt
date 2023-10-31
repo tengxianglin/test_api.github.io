@@ -1,0 +1,15 @@
+avocado.core.utils
+==================
+
+.. automodule:: avocado.core.utils
+   :members:
+   :show-inheritance:
+
+.. rubric:: Submodules
+
+.. toctree::
+   :maxdepth: 1
+
+   avocado.core.utils.check
+   avocado.core.utils.linalg
+   avocado.core.utils.qinfo

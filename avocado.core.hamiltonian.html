@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>avocado.core.hamiltonian &mdash; QUAIR-PLATFORM 0.0.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css\rtd_sphinx_search.min.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+        <script src="_static/js\rtd_search_config.js"></script>
+        <script src="_static/js\rtd_sphinx_search.min.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="avocado.core.intrinsic" href="avocado.core.intrinsic.html" />
+    <link rel="prev" title="avocado.core.base" href="avocado.core.base.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            QUAIR-PLATFORM
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="avocado.ansatz.html">avocado.ansatz</a></li>
+<li class="toctree-l1"><a class="reference internal" href="avocado.circuit.html">avocado.circuit</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="avocado.core.html">avocado.core</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="avocado.core.backend.html">avocado.core.backend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avocado.core.base.html">avocado.core.base</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">avocado.core.hamiltonian</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.core.hamiltonian.Hamiltonian"><code class="docutils literal notranslate"><span class="pre">Hamiltonian</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#avocado.core.hamiltonian.Hamiltonian.n_terms"><code class="docutils literal notranslate"><span class="pre">Hamiltonian.n_terms</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#avocado.core.hamiltonian.Hamiltonian.pauli_str"><code class="docutils literal notranslate"><span class="pre">Hamiltonian.pauli_str</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#avocado.core.hamiltonian.Hamiltonian.terms"><code class="docutils literal notranslate"><span class="pre">Hamiltonian.terms</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#avocado.core.hamiltonian.Hamiltonian.coefficients"><code class="docutils literal notranslate"><span class="pre">Hamiltonian.coefficients</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#avocado.core.hamiltonian.Hamiltonian.pauli_words"><code class="docutils literal notranslate"><span class="pre">Hamiltonian.pauli_words</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#avocado.core.hamiltonian.Hamiltonian.pauli_words_r"><code class="docutils literal notranslate"><span class="pre">Hamiltonian.pauli_words_r</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#avocado.core.hamiltonian.Hamiltonian.pauli_words_matrix"><code class="docutils literal notranslate"><span class="pre">Hamiltonian.pauli_words_matrix</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#avocado.core.hamiltonian.Hamiltonian.sites"><code class="docutils literal notranslate"><span class="pre">Hamiltonian.sites</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#avocado.core.hamiltonian.Hamiltonian.n_qubits"><code class="docutils literal notranslate"><span class="pre">Hamiltonian.n_qubits</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#avocado.core.hamiltonian.Hamiltonian.decompose_with_sites"><code class="docutils literal notranslate"><span class="pre">Hamiltonian.decompose_with_sites()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#avocado.core.hamiltonian.Hamiltonian.decompose_pauli_words"><code class="docutils literal notranslate"><span class="pre">Hamiltonian.decompose_pauli_words()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#avocado.core.hamiltonian.Hamiltonian.construct_h_matrix"><code class="docutils literal notranslate"><span class="pre">Hamiltonian.construct_h_matrix()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.core.hamiltonian.SpinOps"><code class="docutils literal notranslate"><span class="pre">SpinOps</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#avocado.core.hamiltonian.SpinOps.sigz_p"><code class="docutils literal notranslate"><span class="pre">SpinOps.sigz_p</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#avocado.core.hamiltonian.SpinOps.sigy_p"><code class="docutils literal notranslate"><span class="pre">SpinOps.sigy_p</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#avocado.core.hamiltonian.SpinOps.sigx_p"><code class="docutils literal notranslate"><span class="pre">SpinOps.sigx_p</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="avocado.core.intrinsic.html">avocado.core.intrinsic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avocado.core.state.html">avocado.core.state</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avocado.core.utils.html">avocado.core.utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avocado.core.visual.html">avocado.core.visual</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="avocado.database.html">avocado.database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="avocado.loss.html">avocado.loss</a></li>
+<li class="toctree-l1"><a class="reference internal" href="avocado.operator.html">avocado.operator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="avocado.qinfo.html">avocado.qinfo</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">QUAIR-PLATFORM</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">&lt;no title&gt;</a></li>
+          <li class="breadcrumb-item"><a href="avocado.core.html">avocado.core</a></li>
+      <li class="breadcrumb-item active">avocado.core.hamiltonian</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/avocado.core.hamiltonian.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-avocado.core.hamiltonian">
+<span id="avocado-core-hamiltonian"></span><h1>avocado.core.hamiltonian<a class="headerlink" href="#module-avocado.core.hamiltonian" title="Permalink to this heading"></a></h1>
+<p>The module of the hamiltonian class.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="avocado.core.hamiltonian.Hamiltonian">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">avocado.core.hamiltonian.</span></span><span class="sig-name descname"><span class="pre">Hamiltonian</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pauli_str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">compress</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.core.hamiltonian.Hamiltonian" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Hamiltonian <code class="docutils literal notranslate"><span class="pre">class</span></code> in Avocado.</p>
+<p>User can instantiate the <code class="docutils literal notranslate"><span class="pre">class</span></code> with a Pauli string.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pauli_str</strong> (<em>list</em>) – A list of Hamiltonian information, e.g. <code class="docutils literal notranslate"><span class="pre">[(1,</span> <span class="pre">'Z0,</span> <span class="pre">Z1'),</span> <span class="pre">(2,</span> <span class="pre">'I')]</span></code></p></li>
+<li><p><strong>compress</strong> (<em>bool</em><em> | </em><em>None</em>) – Determines whether the input list will be automatically merged (e.g. <code class="docutils literal notranslate"><span class="pre">(1,</span> <span class="pre">'Z0,</span> <span class="pre">Z1')</span></code> and <code class="docutils literal notranslate"><span class="pre">(2,</span> <span class="pre">'Z1,</span> <span class="pre">Z0')</span></code>, these two items will be automatically merged).</p></li>
+<li><p><strong>True.</strong> (<em>Defaults to</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Create a Hamiltonian class</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">compress=False</span></code>, the legitimacy of the input will not be checked.</p>
+</div>
+<dl class="py property">
+<dt class="sig sig-object py" id="avocado.core.hamiltonian.Hamiltonian.n_terms">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">n_terms</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#avocado.core.hamiltonian.Hamiltonian.n_terms" title="Permalink to this definition"></a></dt>
+<dd><p>Number of terms of the hamiltonian.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="avocado.core.hamiltonian.Hamiltonian.pauli_str">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pauli_str</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span></em><a class="headerlink" href="#avocado.core.hamiltonian.Hamiltonian.pauli_str" title="Permalink to this definition"></a></dt>
+<dd><p>The Pauli string corresponding to the hamiltonian.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="avocado.core.hamiltonian.Hamiltonian.terms">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">terms</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span></em><a class="headerlink" href="#avocado.core.hamiltonian.Hamiltonian.terms" title="Permalink to this definition"></a></dt>
+<dd><p>All items in hamiltonian, i.e. <code class="docutils literal notranslate"><span class="pre">[['Z0,</span> <span class="pre">Z1'],</span> <span class="pre">['I']]</span></code>.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="avocado.core.hamiltonian.Hamiltonian.coefficients">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">coefficients</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span></em><a class="headerlink" href="#avocado.core.hamiltonian.Hamiltonian.coefficients" title="Permalink to this definition"></a></dt>
+<dd><p>The coefficient of each term in the Hamiltonian, i.e. <code class="docutils literal notranslate"><span class="pre">[1.0,</span> <span class="pre">2.0]</span></code>.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="avocado.core.hamiltonian.Hamiltonian.pauli_words">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pauli_words</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span></em><a class="headerlink" href="#avocado.core.hamiltonian.Hamiltonian.pauli_words" title="Permalink to this definition"></a></dt>
+<dd><p>The Pauli word of each term, i.e. <code class="docutils literal notranslate"><span class="pre">['ZIZ',</span> <span class="pre">'IIX']</span></code>.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="avocado.core.hamiltonian.Hamiltonian.pauli_words_r">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pauli_words_r</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span></em><a class="headerlink" href="#avocado.core.hamiltonian.Hamiltonian.pauli_words_r" title="Permalink to this definition"></a></dt>
+<dd><p>A list of Pauli word (exclude I), i.e. <code class="docutils literal notranslate"><span class="pre">['ZXZZ',</span> <span class="pre">'Z',</span> <span class="pre">'X']</span></code>.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="avocado.core.hamiltonian.Hamiltonian.pauli_words_matrix">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pauli_words_matrix</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span></em><a class="headerlink" href="#avocado.core.hamiltonian.Hamiltonian.pauli_words_matrix" title="Permalink to this definition"></a></dt>
+<dd><p>The list of matrices with respect to simplied Pauli words.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="avocado.core.hamiltonian.Hamiltonian.sites">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">sites</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span></em><a class="headerlink" href="#avocado.core.hamiltonian.Hamiltonian.sites" title="Permalink to this definition"></a></dt>
+<dd><p>A list of qubits index corresponding to the hamiltonian.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="avocado.core.hamiltonian.Hamiltonian.n_qubits">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">n_qubits</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#avocado.core.hamiltonian.Hamiltonian.n_qubits" title="Permalink to this definition"></a></dt>
+<dd><p>Number of qubits.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="avocado.core.hamiltonian.Hamiltonian.decompose_with_sites">
+<span class="sig-name descname"><span class="pre">decompose_with_sites</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#avocado.core.hamiltonian.Hamiltonian.decompose_with_sites" title="Permalink to this definition"></a></dt>
+<dd><p>Decompose pauli_str into coefficients, a simplified form of Pauli strings, and the indices of qubits on which the Pauli operators act on.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><ul class="simple">
+<li><p>coefficients: the coefficient for each term.</p></li>
+<li><p>pauli_words_r: the simplified form of the Pauli string for each item, e.g. the Pauli word of ‘Z0, Z1, X3’ is ‘ZZX’.</p></li>
+<li><p>sites: a list of qubits index, e.g. the site of ‘Z0, Z1, X3’ is [0, 1, 3].</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>A tuple containing the following elements</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="avocado.core.hamiltonian.Hamiltonian.decompose_pauli_words">
+<span class="sig-name descname"><span class="pre">decompose_pauli_words</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#avocado.core.hamiltonian.Hamiltonian.decompose_pauli_words" title="Permalink to this definition"></a></dt>
+<dd><p>Decompose pauli_str into coefficients and Pauli strings.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><ul class="simple">
+<li><p>coefficients: the coefficient for each term.</p></li>
+<li><p>the Pauli string for each item, e.g. the Pauli word of ‘Z0, Z1, X3’ is ‘ZZIX’.</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>A tuple containing the following elements</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="avocado.core.hamiltonian.Hamiltonian.construct_h_matrix">
+<span class="sig-name descname"><span class="pre">construct_h_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubit_num</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.core.hamiltonian.Hamiltonian.construct_h_matrix" title="Permalink to this definition"></a></dt>
+<dd><p>Construct a matrix form of the Hamiltonian in Z-basis.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>qubit_num</strong> (<em>int</em><em> | </em><em>None</em>) – The number of qubits. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The matrix form of the Hamiltonian in Z-basis.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>ndarray</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="avocado.core.hamiltonian.SpinOps">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">avocado.core.hamiltonian.</span></span><span class="sig-name descname"><span class="pre">SpinOps</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_sparse</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.core.hamiltonian.SpinOps" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>The spin operators in matrix forms, could be used to construct Hamiltonian matrix or spin observables.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>size</strong> (<em>int</em>) – Size of the system (number of qubits).</p></li>
+<li><p><strong>use_sparse</strong> (<em>bool</em><em> | </em><em>None</em>) – Decide whether to use the sparse matrix to calculate. Default is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="avocado.core.hamiltonian.SpinOps.sigz_p">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">sigz_p</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span></em><a class="headerlink" href="#avocado.core.hamiltonian.SpinOps.sigz_p" title="Permalink to this definition"></a></dt>
+<dd><p>A list of <span class="math notranslate nohighlight">\(S^z_i\)</span> operators, different elements correspond to different indices <span class="math notranslate nohighlight">\(i\)</span>.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="avocado.core.hamiltonian.SpinOps.sigy_p">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">sigy_p</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span></em><a class="headerlink" href="#avocado.core.hamiltonian.SpinOps.sigy_p" title="Permalink to this definition"></a></dt>
+<dd><p>A list of <span class="math notranslate nohighlight">\(S^y_i\)</span> operators, different elements correspond to different indices <span class="math notranslate nohighlight">\(i\)</span>.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="avocado.core.hamiltonian.SpinOps.sigx_p">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">sigx_p</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span></em><a class="headerlink" href="#avocado.core.hamiltonian.SpinOps.sigx_p" title="Permalink to this definition"></a></dt>
+<dd><p>A list of <span class="math notranslate nohighlight">\(S^x_i\)</span> operators, different elements correspond to different indices <span class="math notranslate nohighlight">\(i\)</span>.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="avocado.core.base.html" class="btn btn-neutral float-left" title="avocado.core.base" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="avocado.core.intrinsic.html" class="btn btn-neutral float-right" title="avocado.core.intrinsic" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, QUAIR.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

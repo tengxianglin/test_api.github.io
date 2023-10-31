@@ -1,0 +1,16 @@
+avocado.operator.channel
+========================
+
+.. automodule:: avocado.operator.channel
+   :members:
+   :show-inheritance:
+
+.. rubric:: Submodules
+
+.. toctree::
+   :maxdepth: 1
+
+   avocado.operator.channel.base
+   avocado.operator.channel.common
+   avocado.operator.channel.custom
+   avocado.operator.channel.functional

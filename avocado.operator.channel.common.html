@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>avocado.operator.channel.common &mdash; QUAIR-PLATFORM 0.0.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css\rtd_sphinx_search.min.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+        <script src="_static/js\rtd_search_config.js"></script>
+        <script src="_static/js\rtd_sphinx_search.min.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="avocado.operator.channel.custom" href="avocado.operator.channel.custom.html" />
+    <link rel="prev" title="avocado.operator.channel.base" href="avocado.operator.channel.base.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            QUAIR-PLATFORM
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="avocado.ansatz.html">avocado.ansatz</a></li>
+<li class="toctree-l1"><a class="reference internal" href="avocado.circuit.html">avocado.circuit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="avocado.core.html">avocado.core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="avocado.database.html">avocado.database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="avocado.loss.html">avocado.loss</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="avocado.operator.html">avocado.operator</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="avocado.operator.channel.html">avocado.operator.channel</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="avocado.operator.channel.base.html">avocado.operator.channel.base</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">avocado.operator.channel.common</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#avocado.operator.channel.common.BitFlip"><code class="docutils literal notranslate"><span class="pre">BitFlip</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#avocado.operator.channel.common.PhaseFlip"><code class="docutils literal notranslate"><span class="pre">PhaseFlip</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#avocado.operator.channel.common.BitPhaseFlip"><code class="docutils literal notranslate"><span class="pre">BitPhaseFlip</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#avocado.operator.channel.common.AmplitudeDamping"><code class="docutils literal notranslate"><span class="pre">AmplitudeDamping</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#avocado.operator.channel.common.GeneralizedAmplitudeDamping"><code class="docutils literal notranslate"><span class="pre">GeneralizedAmplitudeDamping</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#avocado.operator.channel.common.PhaseDamping"><code class="docutils literal notranslate"><span class="pre">PhaseDamping</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#avocado.operator.channel.common.Depolarizing"><code class="docutils literal notranslate"><span class="pre">Depolarizing</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#avocado.operator.channel.common.GeneralizedDepolarizing"><code class="docutils literal notranslate"><span class="pre">GeneralizedDepolarizing</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#avocado.operator.channel.common.PauliChannel"><code class="docutils literal notranslate"><span class="pre">PauliChannel</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#avocado.operator.channel.common.ResetChannel"><code class="docutils literal notranslate"><span class="pre">ResetChannel</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#avocado.operator.channel.common.ThermalRelaxation"><code class="docutils literal notranslate"><span class="pre">ThermalRelaxation</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#avocado.operator.channel.common.ReplacementChannel"><code class="docutils literal notranslate"><span class="pre">ReplacementChannel</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="avocado.operator.channel.custom.html">avocado.operator.channel.custom</a></li>
+<li class="toctree-l3"><a class="reference internal" href="avocado.operator.channel.functional.html">avocado.operator.channel.functional</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="avocado.operator.gate.html">avocado.operator.gate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avocado.operator.special.html">avocado.operator.special</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="avocado.qinfo.html">avocado.qinfo</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">QUAIR-PLATFORM</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">&lt;no title&gt;</a></li>
+          <li class="breadcrumb-item"><a href="avocado.operator.html">avocado.operator</a></li>
+          <li class="breadcrumb-item"><a href="avocado.operator.channel.html">avocado.operator.channel</a></li>
+      <li class="breadcrumb-item active">avocado.operator.channel.common</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/avocado.operator.channel.common.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-avocado.operator.channel.common">
+<span id="avocado-operator-channel-common"></span><h1>avocado.operator.channel.common<a class="headerlink" href="#module-avocado.operator.channel.common" title="Permalink to this heading"></a></h1>
+<p>The source file of the classes for common quantum channels.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="avocado.operator.channel.common.BitFlip">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">avocado.operator.channel.common.</span></span><span class="sig-name descname"><span class="pre">BitFlip</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prob</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qubits_idx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'full'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_qubits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.operator.channel.common.BitFlip" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="avocado.operator.channel.base.html#avocado.operator.channel.base.Channel" title="avocado.operator.channel.base.Channel"><code class="xref py py-class docutils literal notranslate"><span class="pre">Channel</span></code></a></p>
+<p>A collection of bit flip channels.</p>
+<p>Such a channel’s Kraus operators are</p>
+<div class="math notranslate nohighlight">
+\[E_0 = \sqrt{1-p} I,
+E_1 = \sqrt{p} X.\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>prob</strong> (<em>Tensor</em><em> | </em><em>float</em>) – Probability of a bit flip. Its value should be in the range <span class="math notranslate nohighlight">\([0, 1]\)</span>.</p></li>
+<li><p><strong>qubits_idx</strong> (<em>Iterable</em><em>[</em><em>int</em><em>] </em><em>| </em><em>int</em><em> | </em><em>str</em>) – Indices of the qubits on which the channels act. Defaults to <code class="docutils literal notranslate"><span class="pre">'full'</span></code>.</p></li>
+<li><p><strong>num_qubits</strong> (<em>int</em>) – Total number of qubits. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="avocado.operator.channel.common.BitFlip.training">
+<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#avocado.operator.channel.common.BitFlip.training" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="avocado.operator.channel.common.PhaseFlip">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">avocado.operator.channel.common.</span></span><span class="sig-name descname"><span class="pre">PhaseFlip</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prob</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qubits_idx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'full'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_qubits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.operator.channel.common.PhaseFlip" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="avocado.operator.channel.base.html#avocado.operator.channel.base.Channel" title="avocado.operator.channel.base.Channel"><code class="xref py py-class docutils literal notranslate"><span class="pre">Channel</span></code></a></p>
+<p>A collection of phase flip channels.</p>
+<p>Such a channel’s Kraus operators are</p>
+<div class="math notranslate nohighlight">
+\[E_0 = \sqrt{1 - p} I,
+E_1 = \sqrt{p} Z.\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>prob</strong> (<em>Tensor</em><em> | </em><em>float</em>) – Probability of a phase flip. Its value should be in the range <span class="math notranslate nohighlight">\([0, 1]\)</span>.</p></li>
+<li><p><strong>qubits_idx</strong> (<em>Iterable</em><em>[</em><em>int</em><em>] </em><em>| </em><em>int</em><em> | </em><em>str</em>) – Indices of the qubits on which the channels act. Defaults to <code class="docutils literal notranslate"><span class="pre">'full'</span></code>.</p></li>
+<li><p><strong>num_qubits</strong> (<em>int</em>) – Total number of qubits. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="avocado.operator.channel.common.PhaseFlip.training">
+<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#avocado.operator.channel.common.PhaseFlip.training" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="avocado.operator.channel.common.BitPhaseFlip">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">avocado.operator.channel.common.</span></span><span class="sig-name descname"><span class="pre">BitPhaseFlip</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prob</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qubits_idx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'full'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_qubits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.operator.channel.common.BitPhaseFlip" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="avocado.operator.channel.base.html#avocado.operator.channel.base.Channel" title="avocado.operator.channel.base.Channel"><code class="xref py py-class docutils literal notranslate"><span class="pre">Channel</span></code></a></p>
+<p>A collection of bit phase flip channels.</p>
+<p>Such a channel’s Kraus operators are</p>
+<div class="math notranslate nohighlight">
+\[E_0 = \sqrt{1 - p} I,
+E_1 = \sqrt{p} Y.\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>prob</strong> (<em>Tensor</em><em> | </em><em>float</em>) – Probability of a bit phase flip. Its value should be in the range <span class="math notranslate nohighlight">\([0, 1]\)</span>.</p></li>
+<li><p><strong>qubits_idx</strong> (<em>Iterable</em><em>[</em><em>int</em><em>] </em><em>| </em><em>int</em><em> | </em><em>str</em>) – Indices of the qubits on which the channels act. Defaults to <code class="docutils literal notranslate"><span class="pre">'full'</span></code>.</p></li>
+<li><p><strong>num_qubits</strong> (<em>int</em>) – Total number of qubits. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="avocado.operator.channel.common.BitPhaseFlip.training">
+<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#avocado.operator.channel.common.BitPhaseFlip.training" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="avocado.operator.channel.common.AmplitudeDamping">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">avocado.operator.channel.common.</span></span><span class="sig-name descname"><span class="pre">AmplitudeDamping</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gamma</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qubits_idx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'full'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_qubits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.operator.channel.common.AmplitudeDamping" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="avocado.operator.channel.base.html#avocado.operator.channel.base.Channel" title="avocado.operator.channel.base.Channel"><code class="xref py py-class docutils literal notranslate"><span class="pre">Channel</span></code></a></p>
+<p>A collection of amplitude damping channels.</p>
+<p>Such a channel’s Kraus operators are</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}E_0 =
+\begin{bmatrix}
+    1 &amp; 0 \\
+    0 &amp; \sqrt{1-\gamma}
+\end{bmatrix},
+E_1 =
+\begin{bmatrix}
+    0 &amp; \sqrt{\gamma} \\
+    0 &amp; 0
+\end{bmatrix}.\end{split}\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>gamma</strong> (<em>Tensor</em><em> | </em><em>float</em>) – Damping probability. Its value should be in the range <span class="math notranslate nohighlight">\([0, 1]\)</span>.</p></li>
+<li><p><strong>qubits_idx</strong> (<em>Iterable</em><em>[</em><em>int</em><em>] </em><em>| </em><em>int</em><em> | </em><em>str</em>) – Indices of the qubits on which the channels act. Defaults to <code class="docutils literal notranslate"><span class="pre">'full'</span></code>.</p></li>
+<li><p><strong>num_qubits</strong> (<em>int</em>) – Total number of qubits. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="avocado.operator.channel.common.AmplitudeDamping.training">
+<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#avocado.operator.channel.common.AmplitudeDamping.training" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="avocado.operator.channel.common.GeneralizedAmplitudeDamping">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">avocado.operator.channel.common.</span></span><span class="sig-name descname"><span class="pre">GeneralizedAmplitudeDamping</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gamma</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prob</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qubits_idx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'full'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_qubits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.operator.channel.common.GeneralizedAmplitudeDamping" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="avocado.operator.channel.base.html#avocado.operator.channel.base.Channel" title="avocado.operator.channel.base.Channel"><code class="xref py py-class docutils literal notranslate"><span class="pre">Channel</span></code></a></p>
+<p>A collection of generalized amplitude damping channels.</p>
+<p>Such a channel’s Kraus operators are</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}E_0 = \sqrt{p}
+\begin{bmatrix}
+    1 &amp; 0 \\
+    0 &amp; \sqrt{1-\gamma}
+\end{bmatrix},
+E_1 = \sqrt{p} \begin{bmatrix} 0 &amp; \sqrt{\gamma} \\ 0 &amp; 0 \end{bmatrix},\\
+E_2 = \sqrt{1-p} \begin{bmatrix} \sqrt{1-\gamma} &amp; 0 \\ 0 &amp; 1 \end{bmatrix},
+E_3 = \sqrt{1-p} \begin{bmatrix} 0 &amp; 0 \\ \sqrt{\gamma} &amp; 0 \end{bmatrix}.\end{split}\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>gamma</strong> (<em>Tensor</em><em> | </em><em>float</em>) – Damping probability. Its value should be in the range <span class="math notranslate nohighlight">\([0, 1]\)</span>.</p></li>
+<li><p><strong>prob</strong> (<em>Tensor</em><em> | </em><em>float</em>) – Excitation probability. Its value should be in the range <span class="math notranslate nohighlight">\([0, 1]\)</span>.</p></li>
+<li><p><strong>qubits_idx</strong> (<em>Iterable</em><em>[</em><em>int</em><em>] </em><em>| </em><em>int</em><em> | </em><em>str</em>) – Indices of the qubits on which the channels act. Defaults to <code class="docutils literal notranslate"><span class="pre">'full'</span></code>.</p></li>
+<li><p><strong>num_qubits</strong> (<em>int</em>) – Total number of qubits. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="avocado.operator.channel.common.GeneralizedAmplitudeDamping.training">
+<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#avocado.operator.channel.common.GeneralizedAmplitudeDamping.training" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="avocado.operator.channel.common.PhaseDamping">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">avocado.operator.channel.common.</span></span><span class="sig-name descname"><span class="pre">PhaseDamping</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gamma</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qubits_idx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'full'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_qubits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.operator.channel.common.PhaseDamping" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="avocado.operator.channel.base.html#avocado.operator.channel.base.Channel" title="avocado.operator.channel.base.Channel"><code class="xref py py-class docutils literal notranslate"><span class="pre">Channel</span></code></a></p>
+<p>A collection of phase damping channels.</p>
+<p>Such a channel’s Kraus operators are</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}E_0 =
+\begin{bmatrix}
+    1 &amp; 0 \\
+    0 &amp; \sqrt{1-\gamma}
+\end{bmatrix},
+E_1 =
+\begin{bmatrix}
+    0 &amp; 0 \\
+    0 &amp; \sqrt{\gamma}
+\end{bmatrix}.\end{split}\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>gamma</strong> (<em>Tensor</em><em> | </em><em>float</em>) – Parameter of the phase damping channels. Its value should be in the range <span class="math notranslate nohighlight">\([0, 1]\)</span>.</p></li>
+<li><p><strong>qubits_idx</strong> (<em>Iterable</em><em>[</em><em>int</em><em>] </em><em>| </em><em>int</em><em> | </em><em>str</em>) – Indices of the qubits on which the channels act. Defaults to <code class="docutils literal notranslate"><span class="pre">'full'</span></code>.</p></li>
+<li><p><strong>num_qubits</strong> (<em>int</em>) – Total number of qubits. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="avocado.operator.channel.common.PhaseDamping.training">
+<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#avocado.operator.channel.common.PhaseDamping.training" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="avocado.operator.channel.common.Depolarizing">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">avocado.operator.channel.common.</span></span><span class="sig-name descname"><span class="pre">Depolarizing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prob</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qubits_idx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'full'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_qubits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.operator.channel.common.Depolarizing" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="avocado.operator.channel.base.html#avocado.operator.channel.base.Channel" title="avocado.operator.channel.base.Channel"><code class="xref py py-class docutils literal notranslate"><span class="pre">Channel</span></code></a></p>
+<p>A collection of depolarizing channels.</p>
+<p>Such a channel’s Kraus operators are</p>
+<div class="math notranslate nohighlight">
+\[E_0 = \sqrt{1-3p/4} I,
+E_1 = \sqrt{p/4} X,
+E_2 = \sqrt{p/4} Y,
+E_3 = \sqrt{p/4} Z.\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>prob</strong> (<em>Tensor</em><em> | </em><em>float</em>) – Parameter of the depolarizing channels. Its value should be in the range <span class="math notranslate nohighlight">\([0, 1]\)</span>.</p></li>
+<li><p><strong>qubits_idx</strong> (<em>Iterable</em><em>[</em><em>int</em><em>] </em><em>| </em><em>int</em><em> | </em><em>str</em>) – Indices of the qubits on which the channels act. Defaults to <code class="docutils literal notranslate"><span class="pre">'full'</span></code>.</p></li>
+<li><p><strong>num_qubits</strong> (<em>int</em>) – Total number of qubits. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The implementation logic for this feature has been updated.
+The current version refers to formula (8.102) in Quantum Computation and Quantum Information 10th
+edition by M.A.Nielsen and I.L.Chuang.
+Reference: Nielsen, M., &amp; Chuang, I. (2010). Quantum Computation and Quantum Information: 10th
+Anniversary Edition. Cambridge: Cambridge University Press. doi:10.1017/CBO9780511976667</p>
+</div>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="avocado.operator.channel.common.Depolarizing.training">
+<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#avocado.operator.channel.common.Depolarizing.training" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="avocado.operator.channel.common.GeneralizedDepolarizing">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">avocado.operator.channel.common.</span></span><span class="sig-name descname"><span class="pre">GeneralizedDepolarizing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prob</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qubits_idx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_qubits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.operator.channel.common.GeneralizedDepolarizing" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="avocado.operator.channel.base.html#avocado.operator.channel.base.Channel" title="avocado.operator.channel.base.Channel"><code class="xref py py-class docutils literal notranslate"><span class="pre">Channel</span></code></a></p>
+<p>A generalized depolarizing channel.</p>
+<p>Such a channel’s Kraus operators are</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}E_0 = \sqrt{1-(D - 1)p/D} I, \text{ where } D = 4^n, \\
+E_k = \sqrt{p/D} \sigma_k, \text{ for } 0 &lt; k &lt; D.\end{split}\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>prob</strong> (<em>Tensor</em><em> | </em><em>float</em>) – probability <span class="math notranslate nohighlight">\(p\)</span>. Its value should be in the range <span class="math notranslate nohighlight">\([0, 1]\)</span>.</p></li>
+<li><p><strong>qubits_idx</strong> (<em>Iterable</em><em>[</em><em>int</em><em>] </em><em>| </em><em>int</em><em> | </em><em>str</em>) – Indices of the qubits on which the channels act, the length of which is <span class="math notranslate nohighlight">\(n\)</span>.
+Defaults to be <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
+<li><p><strong>num_qubits</strong> (<em>int</em>) – Total number of qubits. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="avocado.operator.channel.common.GeneralizedDepolarizing.training">
+<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#avocado.operator.channel.common.GeneralizedDepolarizing.training" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="avocado.operator.channel.common.PauliChannel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">avocado.operator.channel.common.</span></span><span class="sig-name descname"><span class="pre">PauliChannel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prob</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qubits_idx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'full'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_qubits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.operator.channel.common.PauliChannel" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="avocado.operator.channel.base.html#avocado.operator.channel.base.Channel" title="avocado.operator.channel.base.Channel"><code class="xref py py-class docutils literal notranslate"><span class="pre">Channel</span></code></a></p>
+<p>A collection of Pauli channels.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>prob</strong> (<em>Tensor</em><em> | </em><em>Iterable</em><em>[</em><em>float</em><em>]</em>) – Probabilities corresponding to the Pauli X, Y, and Z operators. Each value should be in the
+range <span class="math notranslate nohighlight">\([0, 1]\)</span>.</p></li>
+<li><p><strong>qubits_idx</strong> (<em>Iterable</em><em>[</em><em>int</em><em>] </em><em>| </em><em>int</em><em> | </em><em>str</em>) – Indices of the qubits on which the channels act. Defaults to <code class="docutils literal notranslate"><span class="pre">'full'</span></code>.</p></li>
+<li><p><strong>num_qubits</strong> (<em>int</em>) – Total number of qubits. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The sum of three input probabilities should be less than or equal to 1.</p>
+</div>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="avocado.operator.channel.common.PauliChannel.training">
+<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#avocado.operator.channel.common.PauliChannel.training" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="avocado.operator.channel.common.ResetChannel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">avocado.operator.channel.common.</span></span><span class="sig-name descname"><span class="pre">ResetChannel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prob</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qubits_idx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'full'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_qubits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.operator.channel.common.ResetChannel" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="avocado.operator.channel.base.html#avocado.operator.channel.base.Channel" title="avocado.operator.channel.base.Channel"><code class="xref py py-class docutils literal notranslate"><span class="pre">Channel</span></code></a></p>
+<p>A collection of reset channels.</p>
+<p>Such a channel reset the state to <span class="math notranslate nohighlight">\(|0\rangle\)</span> with a probability of p and to <span class="math notranslate nohighlight">\(|1\rangle\)</span> with
+a probability of q. Its Kraus operators are</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}E_0 =
+\begin{bmatrix}
+    \sqrt{p} &amp; 0 \\
+    0 &amp; 0
+\end{bmatrix},
+E_1 =
+\begin{bmatrix}
+    0 &amp; \sqrt{p} \\
+    0 &amp; 0
+\end{bmatrix},\\
+E_2 =
+\begin{bmatrix}
+    0 &amp; 0 \\
+    \sqrt{q} &amp; 0
+\end{bmatrix},
+E_3 =
+\begin{bmatrix}
+    0 &amp; 0 \\
+    0 &amp; \sqrt{q}
+\end{bmatrix},\\
+E_4 = \sqrt{1-p-q} I.\end{split}\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>prob</strong> (<em>Tensor</em><em> | </em><em>Iterable</em><em>[</em><em>float</em><em>]</em>) – Probabilities of resetting to <span class="math notranslate nohighlight">\(|0\rangle\)</span> and to <span class="math notranslate nohighlight">\(|1\rangle\)</span>. Each value should be
+in the range <span class="math notranslate nohighlight">\([0, 1]\)</span>.</p></li>
+<li><p><strong>qubits_idx</strong> (<em>Iterable</em><em>[</em><em>int</em><em>] </em><em>| </em><em>int</em><em> | </em><em>str</em>) – Indices of the qubits on which the channels act. Defaults to <code class="docutils literal notranslate"><span class="pre">'full'</span></code>.</p></li>
+<li><p><strong>num_qubits</strong> (<em>int</em>) – Total number of qubits. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The sum of two input probabilities should be less than or equal to 1.</p>
+</div>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="avocado.operator.channel.common.ResetChannel.training">
+<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#avocado.operator.channel.common.ResetChannel.training" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="avocado.operator.channel.common.ThermalRelaxation">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">avocado.operator.channel.common.</span></span><span class="sig-name descname"><span class="pre">ThermalRelaxation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">const_t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exec_time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qubits_idx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'full'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_qubits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.operator.channel.common.ThermalRelaxation" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="avocado.operator.channel.base.html#avocado.operator.channel.base.Channel" title="avocado.operator.channel.base.Channel"><code class="xref py py-class docutils literal notranslate"><span class="pre">Channel</span></code></a></p>
+<p>A collection of thermal relaxation channels.</p>
+<p>Such a channel simulates the mixture of the <span class="math notranslate nohighlight">\(T_1\)</span> and the <span class="math notranslate nohighlight">\(T_2\)</span> processes on superconducting devices.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>const_t</strong> (<em>Tensor</em><em> | </em><em>Iterable</em><em>[</em><em>float</em><em>]</em>) – <span class="math notranslate nohighlight">\(T_1\)</span> and <span class="math notranslate nohighlight">\(T_2\)</span> relaxation time in microseconds.</p></li>
+<li><p><strong>exec_time</strong> (<em>Tensor</em><em> | </em><em>float</em>) – Quantum gate execution time in the process of relaxation in nanoseconds.</p></li>
+<li><p><strong>qubits_idx</strong> (<em>Iterable</em><em>[</em><em>int</em><em>] </em><em>| </em><em>int</em><em> | </em><em>str</em>) – Indices of the qubits on which the channels act. Defaults to <code class="docutils literal notranslate"><span class="pre">'full'</span></code>.</p></li>
+<li><p><strong>num_qubits</strong> (<em>int</em>) – Total number of qubits. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Relaxation time must satisfy <span class="math notranslate nohighlight">\(T_2 \le T_1\)</span>. For reference please see <a class="reference external" href="https://arxiv.org/abs/2101.02109">https://arxiv.org/abs/2101.02109</a>.</p>
+</div>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="avocado.operator.channel.common.ThermalRelaxation.training">
+<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#avocado.operator.channel.common.ThermalRelaxation.training" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="avocado.operator.channel.common.ReplacementChannel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">avocado.operator.channel.common.</span></span><span class="sig-name descname"><span class="pre">ReplacementChannel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sigma</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qubits_idx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_qubits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.operator.channel.common.ReplacementChannel" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="avocado.operator.channel.base.html#avocado.operator.channel.base.Channel" title="avocado.operator.channel.base.Channel"><code class="xref py py-class docutils literal notranslate"><span class="pre">Channel</span></code></a></p>
+<p>A collection of quantum replacement channels.</p>
+<p>For a quantum state <span class="math notranslate nohighlight">\(\sigma\)</span>, the corresponding replacement channel <span class="math notranslate nohighlight">\(R\)</span> is defined as</p>
+<div class="math notranslate nohighlight">
+\[R(\rho) = \text{tr}(\rho)\sigma\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sigma</strong> (<a class="reference internal" href="avocado.core.state.html#avocado.core.state.State" title="avocado.core.state.State"><em>State</em></a>) – The state to be replaced.</p></li>
+<li><p><strong>qubits_idx</strong> (<em>Iterable</em><em>[</em><em>int</em><em>] </em><em>| </em><em>int</em><em> | </em><em>str</em>) – Indices of the qubits on which the channels act, the length of which is <span class="math notranslate nohighlight">\(n\)</span>.
+Defaults to be <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
+<li><p><strong>num_qubits</strong> (<em>int</em>) – Total number of qubits. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="avocado.operator.channel.common.ReplacementChannel.training">
+<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#avocado.operator.channel.common.ReplacementChannel.training" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="avocado.operator.channel.base.html" class="btn btn-neutral float-left" title="avocado.operator.channel.base" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="avocado.operator.channel.custom.html" class="btn btn-neutral float-right" title="avocado.operator.channel.custom" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, QUAIR.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,17 @@
+avocado.database
+================
+
+.. automodule:: avocado.database
+   :members:
+   :show-inheritance:
+
+.. rubric:: Submodules
+
+.. toctree::
+   :maxdepth: 1
+
+   avocado.database.hamiltonian
+   avocado.database.matrix
+   avocado.database.random
+   avocado.database.representation
+   avocado.database.state

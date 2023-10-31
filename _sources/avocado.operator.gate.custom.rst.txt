@@ -1,0 +1,8 @@
+avocado.operator.gate.custom
+============================
+
+.. automodule:: avocado.operator.gate.custom
+   :members:
+   :undoc-members:
+   :show-inheritance:
+

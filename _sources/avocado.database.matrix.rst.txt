@@ -1,0 +1,8 @@
+avocado.database.matrix
+=======================
+
+.. automodule:: avocado.database.matrix
+   :members:
+   :undoc-members:
+   :show-inheritance:
+

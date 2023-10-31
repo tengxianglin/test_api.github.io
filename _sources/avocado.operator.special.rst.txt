@@ -1,0 +1,8 @@
+avocado.operator.special
+========================
+
+.. automodule:: avocado.operator.special
+   :members:
+   :undoc-members:
+   :show-inheritance:
+

@@ -1,0 +1,8 @@
+avocado.operator.channel.base
+=============================
+
+.. automodule:: avocado.operator.channel.base
+   :members:
+   :undoc-members:
+   :show-inheritance:
+

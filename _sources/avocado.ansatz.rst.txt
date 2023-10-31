@@ -1,0 +1,14 @@
+avocado.ansatz
+==============
+
+.. automodule:: avocado.ansatz
+   :members:
+   :show-inheritance:
+
+.. rubric:: Submodules
+
+.. toctree::
+   :maxdepth: 1
+
+   avocado.ansatz.container
+   avocado.ansatz.layer

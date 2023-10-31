@@ -1,0 +1,8 @@
+avocado.core.utils.qinfo
+========================
+
+.. automodule:: avocado.core.utils.qinfo
+   :members:
+   :undoc-members:
+   :show-inheritance:
+

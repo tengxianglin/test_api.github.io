@@ -1,0 +1,14 @@
+avocado.operator.gate.functional
+================================
+
+.. automodule:: avocado.operator.gate.functional
+   :members:
+   :show-inheritance:
+
+.. rubric:: Submodules
+
+.. toctree::
+   :maxdepth: 1
+
+   avocado.operator.gate.functional.base
+   avocado.operator.gate.functional.visual

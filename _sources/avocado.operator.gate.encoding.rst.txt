@@ -1,0 +1,8 @@
+avocado.operator.gate.encoding
+==============================
+
+.. automodule:: avocado.operator.gate.encoding
+   :members:
+   :undoc-members:
+   :show-inheritance:
+

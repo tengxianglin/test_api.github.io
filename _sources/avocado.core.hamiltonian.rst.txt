@@ -1,0 +1,8 @@
+avocado.core.hamiltonian
+========================
+
+.. automodule:: avocado.core.hamiltonian
+   :members:
+   :undoc-members:
+   :show-inheritance:
+

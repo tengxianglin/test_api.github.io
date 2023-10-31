@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>avocado.ansatz.layer &mdash; QUAIR-PLATFORM 0.0.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css\rtd_sphinx_search.min.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+        <script src="_static/js\rtd_search_config.js"></script>
+        <script src="_static/js\rtd_sphinx_search.min.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="avocado.circuit" href="avocado.circuit.html" />
+    <link rel="prev" title="avocado.ansatz.container" href="avocado.ansatz.container.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            QUAIR-PLATFORM
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="avocado.ansatz.html">avocado.ansatz</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="avocado.ansatz.container.html">avocado.ansatz.container</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">avocado.ansatz.layer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.ansatz.layer.Layer"><code class="docutils literal notranslate"><span class="pre">Layer</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#avocado.ansatz.layer.Layer.gate_history"><code class="docutils literal notranslate"><span class="pre">Layer.gate_history</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#avocado.ansatz.layer.Layer.training"><code class="docutils literal notranslate"><span class="pre">Layer.training</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.ansatz.layer.SuperpositionLayer"><code class="docutils literal notranslate"><span class="pre">SuperpositionLayer</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#avocado.ansatz.layer.SuperpositionLayer.training"><code class="docutils literal notranslate"><span class="pre">SuperpositionLayer.training</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.ansatz.layer.LinearEntangledLayer"><code class="docutils literal notranslate"><span class="pre">LinearEntangledLayer</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#avocado.ansatz.layer.LinearEntangledLayer.training"><code class="docutils literal notranslate"><span class="pre">LinearEntangledLayer.training</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.ansatz.layer.RealEntangledLayer"><code class="docutils literal notranslate"><span class="pre">RealEntangledLayer</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#avocado.ansatz.layer.RealEntangledLayer.training"><code class="docutils literal notranslate"><span class="pre">RealEntangledLayer.training</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.ansatz.layer.ComplexEntangledLayer"><code class="docutils literal notranslate"><span class="pre">ComplexEntangledLayer</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#avocado.ansatz.layer.ComplexEntangledLayer.training"><code class="docutils literal notranslate"><span class="pre">ComplexEntangledLayer.training</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.ansatz.layer.RealBlockLayer"><code class="docutils literal notranslate"><span class="pre">RealBlockLayer</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#avocado.ansatz.layer.RealBlockLayer.training"><code class="docutils literal notranslate"><span class="pre">RealBlockLayer.training</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.ansatz.layer.QAOALayer"><code class="docutils literal notranslate"><span class="pre">QAOALayer</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#avocado.ansatz.layer.QAOALayer.training"><code class="docutils literal notranslate"><span class="pre">QAOALayer.training</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.ansatz.layer.QAOALayerWeighted"><code class="docutils literal notranslate"><span class="pre">QAOALayerWeighted</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#avocado.ansatz.layer.QAOALayerWeighted.training"><code class="docutils literal notranslate"><span class="pre">QAOALayerWeighted.training</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="avocado.circuit.html">avocado.circuit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="avocado.core.html">avocado.core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="avocado.database.html">avocado.database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="avocado.loss.html">avocado.loss</a></li>
+<li class="toctree-l1"><a class="reference internal" href="avocado.operator.html">avocado.operator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="avocado.qinfo.html">avocado.qinfo</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">QUAIR-PLATFORM</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">&lt;no title&gt;</a></li>
+          <li class="breadcrumb-item"><a href="avocado.ansatz.html">avocado.ansatz</a></li>
+      <li class="breadcrumb-item active">avocado.ansatz.layer</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/avocado.ansatz.layer.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-avocado.ansatz.layer">
+<span id="avocado-ansatz-layer"></span><h1>avocado.ansatz.layer<a class="headerlink" href="#module-avocado.ansatz.layer" title="Permalink to this heading"></a></h1>
+<p>The source file of the class for quantum circuit templates.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="avocado.ansatz.layer.Layer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">avocado.ansatz.layer.</span></span><span class="sig-name descname"><span class="pre">Layer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubits_idx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_qubits</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.ansatz.layer.Layer" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="avocado.ansatz.container.html#avocado.ansatz.container.Sequential" title="avocado.ansatz.container.Sequential"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequential</span></code></a></p>
+<p>Base class for Layers.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qubits_idx</strong> (<em>Iterable</em><em>[</em><em>int</em><em>] </em><em>| </em><em>str</em>) – Indices of the qubits on which this layer is applied.</p></li>
+<li><p><strong>num_qubits</strong> (<em>int</em>) – Total number of qubits.</p></li>
+<li><p><strong>depth</strong> (<em>int</em>) – Number of layers.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A Circuit instance needs to extend this Layer instance to be used in a circuit.</p>
+</div>
+<dl class="py property">
+<dt class="sig sig-object py" id="avocado.ansatz.layer.Layer.gate_history">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">gate_history</span></span><a class="headerlink" href="#avocado.ansatz.layer.Layer.gate_history" title="Permalink to this definition"></a></dt>
+<dd><p>list of gates information of this layer</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>history of quantum gates</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="avocado.ansatz.layer.Layer.training">
+<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#avocado.ansatz.layer.Layer.training" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="avocado.ansatz.layer.SuperpositionLayer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">avocado.ansatz.layer.</span></span><span class="sig-name descname"><span class="pre">SuperpositionLayer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubits_idx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_qubits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.ansatz.layer.SuperpositionLayer" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#avocado.ansatz.layer.Layer" title="avocado.ansatz.layer.Layer"><code class="xref py py-class docutils literal notranslate"><span class="pre">Layer</span></code></a></p>
+<p>Layers of Hadamard gates.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qubits_idx</strong> (<em>Iterable</em><em>[</em><em>int</em><em>] </em><em>| </em><em>str</em>) – Indices of the qubits on which the layer is applied.</p></li>
+<li><p><strong>qubits.</strong> (<em>Defaults to None i.e. applied on all</em>) – </p></li>
+<li><p><strong>num_qubits</strong> (<em>int</em>) – Total number of qubits. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
+<li><p><strong>depth</strong> (<em>int</em>) – Number of layers. Defaults to <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="avocado.ansatz.layer.SuperpositionLayer.training">
+<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#avocado.ansatz.layer.SuperpositionLayer.training" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="avocado.ansatz.layer.LinearEntangledLayer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">avocado.ansatz.layer.</span></span><span class="sig-name descname"><span class="pre">LinearEntangledLayer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubits_idx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_qubits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.ansatz.layer.LinearEntangledLayer" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#avocado.ansatz.layer.Layer" title="avocado.ansatz.layer.Layer"><code class="xref py py-class docutils literal notranslate"><span class="pre">Layer</span></code></a></p>
+<p>Linear entangled layers consisting of Ry gates, Rz gates, and CNOT gates.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qubits_idx</strong> (<em>Iterable</em><em>[</em><em>int</em><em>] </em><em>| </em><em>str</em>) – Indices of the qubits on which the layer is applied.</p></li>
+<li><p><strong>qubits.</strong> (<em>Defaults to None i.e. applied on all</em>) – </p></li>
+<li><p><strong>num_qubits</strong> (<em>int</em>) – Total number of qubits. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
+<li><p><strong>depth</strong> (<em>int</em>) – Number of layers. Defaults to <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="avocado.ansatz.layer.LinearEntangledLayer.training">
+<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#avocado.ansatz.layer.LinearEntangledLayer.training" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="avocado.ansatz.layer.RealEntangledLayer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">avocado.ansatz.layer.</span></span><span class="sig-name descname"><span class="pre">RealEntangledLayer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubits_idx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_qubits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.ansatz.layer.RealEntangledLayer" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#avocado.ansatz.layer.Layer" title="avocado.ansatz.layer.Layer"><code class="xref py py-class docutils literal notranslate"><span class="pre">Layer</span></code></a></p>
+<p>Strongly entangled layers consisting of Ry gates and CNOT gates.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The mathematical representation of this layer of quantum gates is a real unitary matrix.
+This ansatz is from the following paper: <a class="reference external" href="https://arxiv.org/pdf/1905.10876.pdf">https://arxiv.org/pdf/1905.10876.pdf</a>.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qubits_idx</strong> (<em>Iterable</em><em>[</em><em>int</em><em>] </em><em>| </em><em>str</em>) – Indices of the qubits on which the layer is applied.</p></li>
+<li><p><strong>qubits.</strong> (<em>Defaults to None i.e. applied on all</em>) – </p></li>
+<li><p><strong>num_qubits</strong> (<em>int</em>) – Total number of qubits. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
+<li><p><strong>depth</strong> (<em>int</em>) – Number of layers. Defaults to <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="avocado.ansatz.layer.RealEntangledLayer.training">
+<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#avocado.ansatz.layer.RealEntangledLayer.training" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="avocado.ansatz.layer.ComplexEntangledLayer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">avocado.ansatz.layer.</span></span><span class="sig-name descname"><span class="pre">ComplexEntangledLayer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubits_idx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_qubits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.ansatz.layer.ComplexEntangledLayer" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#avocado.ansatz.layer.Layer" title="avocado.ansatz.layer.Layer"><code class="xref py py-class docutils literal notranslate"><span class="pre">Layer</span></code></a></p>
+<p>Strongly entangled layers consisting of single-qubit rotation gates and CNOT gates.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The mathematical representation of this layer of quantum gates is a complex unitary matrix.
+This ansatz is from the following paper: <a class="reference external" href="https://arxiv.org/abs/1804.00633">https://arxiv.org/abs/1804.00633</a>.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qubits_idx</strong> (<em>Iterable</em><em>[</em><em>int</em><em>] </em><em>| </em><em>str</em>) – Indices of the qubits on which the layer is applied.</p></li>
+<li><p><strong>qubits.</strong> (<em>Defaults to None i.e. applied on all</em>) – </p></li>
+<li><p><strong>num_qubits</strong> (<em>int</em>) – Total number of qubits. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
+<li><p><strong>depth</strong> (<em>int</em>) – Number of layers. Defaults to <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="avocado.ansatz.layer.ComplexEntangledLayer.training">
+<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#avocado.ansatz.layer.ComplexEntangledLayer.training" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="avocado.ansatz.layer.RealBlockLayer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">avocado.ansatz.layer.</span></span><span class="sig-name descname"><span class="pre">RealBlockLayer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubits_idx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_qubits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.ansatz.layer.RealBlockLayer" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#avocado.ansatz.layer.Layer" title="avocado.ansatz.layer.Layer"><code class="xref py py-class docutils literal notranslate"><span class="pre">Layer</span></code></a></p>
+<p>Weakly entangled layers consisting of Ry gates and CNOT gates.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The mathematical representation of this layer of quantum gates is a real unitary matrix.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qubits_idx</strong> (<em>Iterable</em><em>[</em><em>int</em><em>] </em><em>| </em><em>str</em>) – Indices of the qubits on which the layer is applied.</p></li>
+<li><p><strong>qubits.</strong> (<em>Defaults to None i.e. applied on all</em>) – </p></li>
+<li><p><strong>num_qubits</strong> (<em>int</em>) – Total number of qubits. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
+<li><p><strong>depth</strong> (<em>int</em>) – Number of layers. Defaults to <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="avocado.ansatz.layer.RealBlockLayer.training">
+<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#avocado.ansatz.layer.RealBlockLayer.training" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="avocado.ansatz.layer.QAOALayer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">avocado.ansatz.layer.</span></span><span class="sig-name descname"><span class="pre">QAOALayer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">edges</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.ansatz.layer.QAOALayer" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#avocado.ansatz.layer.Layer" title="avocado.ansatz.layer.Layer"><code class="xref py py-class docutils literal notranslate"><span class="pre">Layer</span></code></a></p>
+<p>QAOA driving layers</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>this layer only works for MAXCUT problem</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>edges</strong> (<em>Iterable</em>) – edges of the graph</p></li>
+<li><p><strong>nodes</strong> (<em>Iterable</em>) – nodes of the graph</p></li>
+<li><p><strong>depth</strong> (<em>int</em>) – depth of layer</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="avocado.ansatz.layer.QAOALayer.training">
+<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#avocado.ansatz.layer.QAOALayer.training" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="avocado.ansatz.layer.QAOALayerWeighted">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">avocado.ansatz.layer.</span></span><span class="sig-name descname"><span class="pre">QAOALayerWeighted</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">edges</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.ansatz.layer.QAOALayerWeighted" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#avocado.ansatz.layer.Layer" title="avocado.ansatz.layer.Layer"><code class="xref py py-class docutils literal notranslate"><span class="pre">Layer</span></code></a></p>
+<p>QAOA driving layers with weights</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>edges</strong> (<em>Dict</em><em>[</em><em>Tuple</em><em>[</em><em>int</em><em>, </em><em>int</em><em>]</em><em>, </em><em>float</em><em>]</em>) – edges of the graph with weights</p></li>
+<li><p><strong>nodes</strong> (<em>Dict</em><em>[</em><em>int</em><em>, </em><em>float</em><em>]</em>) – nodes of the graph with weights</p></li>
+<li><p><strong>depth</strong> (<em>int</em>) – depth of layer</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="avocado.ansatz.layer.QAOALayerWeighted.training">
+<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#avocado.ansatz.layer.QAOALayerWeighted.training" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="avocado.ansatz.container.html" class="btn btn-neutral float-left" title="avocado.ansatz.container" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="avocado.circuit.html" class="btn btn-neutral float-right" title="avocado.circuit" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, QUAIR.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>avocado.qinfo &mdash; QUAIR-PLATFORM 0.0.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css\rtd_sphinx_search.min.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+        <script src="_static/js\rtd_search_config.js"></script>
+        <script src="_static/js\rtd_sphinx_search.min.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="avocado.operator.special" href="avocado.operator.special.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            QUAIR-PLATFORM
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="avocado.ansatz.html">avocado.ansatz</a></li>
+<li class="toctree-l1"><a class="reference internal" href="avocado.circuit.html">avocado.circuit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="avocado.core.html">avocado.core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="avocado.database.html">avocado.database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="avocado.loss.html">avocado.loss</a></li>
+<li class="toctree-l1"><a class="reference internal" href="avocado.operator.html">avocado.operator</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">avocado.qinfo</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#avocado.qinfo.trace_distance"><code class="docutils literal notranslate"><span class="pre">trace_distance()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#avocado.qinfo.state_fidelity"><code class="docutils literal notranslate"><span class="pre">state_fidelity()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#avocado.qinfo.gate_fidelity"><code class="docutils literal notranslate"><span class="pre">gate_fidelity()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#avocado.qinfo.purity"><code class="docutils literal notranslate"><span class="pre">purity()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#avocado.qinfo.von_neumann_entropy"><code class="docutils literal notranslate"><span class="pre">von_neumann_entropy()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#avocado.qinfo.relative_entropy"><code class="docutils literal notranslate"><span class="pre">relative_entropy()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#avocado.qinfo.pauli_str_convertor"><code class="docutils literal notranslate"><span class="pre">pauli_str_convertor()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#avocado.qinfo.partial_transpose_2"><code class="docutils literal notranslate"><span class="pre">partial_transpose_2()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#avocado.qinfo.partial_transpose"><code class="docutils literal notranslate"><span class="pre">partial_transpose()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#avocado.qinfo.permute_systems"><code class="docutils literal notranslate"><span class="pre">permute_systems()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#avocado.qinfo.negativity"><code class="docutils literal notranslate"><span class="pre">negativity()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#avocado.qinfo.logarithmic_negativity"><code class="docutils literal notranslate"><span class="pre">logarithmic_negativity()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#avocado.qinfo.is_ppt"><code class="docutils literal notranslate"><span class="pre">is_ppt()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#avocado.qinfo.is_choi"><code class="docutils literal notranslate"><span class="pre">is_choi()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#avocado.qinfo.schmidt_decompose"><code class="docutils literal notranslate"><span class="pre">schmidt_decompose()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#avocado.qinfo.image_to_density_matrix"><code class="docutils literal notranslate"><span class="pre">image_to_density_matrix()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#avocado.qinfo.NKron"><code class="docutils literal notranslate"><span class="pre">NKron()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#avocado.qinfo.diamond_norm"><code class="docutils literal notranslate"><span class="pre">diamond_norm()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#avocado.qinfo.channel_repr_convert"><code class="docutils literal notranslate"><span class="pre">channel_repr_convert()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#avocado.qinfo.abs_norm"><code class="docutils literal notranslate"><span class="pre">abs_norm()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#avocado.qinfo.dagger"><code class="docutils literal notranslate"><span class="pre">dagger()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#avocado.qinfo.is_hermitian"><code class="docutils literal notranslate"><span class="pre">is_hermitian()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#avocado.qinfo.is_positive"><code class="docutils literal notranslate"><span class="pre">is_positive()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#avocado.qinfo.is_state_vector"><code class="docutils literal notranslate"><span class="pre">is_state_vector()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#avocado.qinfo.is_density_matrix"><code class="docutils literal notranslate"><span class="pre">is_density_matrix()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#avocado.qinfo.is_projector"><code class="docutils literal notranslate"><span class="pre">is_projector()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#avocado.qinfo.is_unitary"><code class="docutils literal notranslate"><span class="pre">is_unitary()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#avocado.qinfo.block_enc_herm"><code class="docutils literal notranslate"><span class="pre">block_enc_herm()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#avocado.qinfo.direct_sum"><code class="docutils literal notranslate"><span class="pre">direct_sum()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#avocado.qinfo.herm_transform"><code class="docutils literal notranslate"><span class="pre">herm_transform()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#avocado.qinfo.pauli_decomposition"><code class="docutils literal notranslate"><span class="pre">pauli_decomposition()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#avocado.qinfo.subsystem_decomposition"><code class="docutils literal notranslate"><span class="pre">subsystem_decomposition()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#avocado.qinfo.partial_trace"><code class="docutils literal notranslate"><span class="pre">partial_trace()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#avocado.qinfo.partial_trace_discontiguous"><code class="docutils literal notranslate"><span class="pre">partial_trace_discontiguous()</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">QUAIR-PLATFORM</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">&lt;no title&gt;</a></li>
+      <li class="breadcrumb-item active">avocado.qinfo</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/avocado.qinfo.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-avocado.qinfo">
+<span id="avocado-qinfo"></span><h1>avocado.qinfo<a class="headerlink" href="#module-avocado.qinfo" title="Permalink to this heading"></a></h1>
+<p>The library of functions in quantum information.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="avocado.qinfo.trace_distance">
+<span class="sig-prename descclassname"><span class="pre">avocado.qinfo.</span></span><span class="sig-name descname"><span class="pre">trace_distance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rho</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.qinfo.trace_distance" title="Permalink to this definition"></a></dt>
+<dd><p>Calculate the trace distance of two quantum states.</p>
+<div class="math notranslate nohighlight">
+\[D(\rho, \sigma) = 1 / 2 * \text{tr}|\rho-\sigma|\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>rho</strong> (<em>ndarray</em><em> | </em><em>Tensor</em><em> | </em><a class="reference internal" href="avocado.core.state.html#avocado.core.state.State" title="avocado.core.state.State"><em>State</em></a>) – a quantum state.</p></li>
+<li><p><strong>sigma</strong> (<em>ndarray</em><em> | </em><em>Tensor</em><em> | </em><a class="reference internal" href="avocado.core.state.html#avocado.core.state.State" title="avocado.core.state.State"><em>State</em></a>) – a quantum state.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The trace distance between the input quantum states.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>ndarray</em> | <em>Tensor</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="avocado.qinfo.state_fidelity">
+<span class="sig-prename descclassname"><span class="pre">avocado.qinfo.</span></span><span class="sig-name descname"><span class="pre">state_fidelity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rho</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.qinfo.state_fidelity" title="Permalink to this definition"></a></dt>
+<dd><p>Calculate the fidelity of two quantum states.</p>
+<div class="math notranslate nohighlight">
+\[F(\rho, \sigma) = \text{tr}(\sqrt{\sqrt{\rho}\sigma\sqrt{\rho}})\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>rho</strong> (<em>ndarray</em><em> | </em><em>Tensor</em><em> | </em><a class="reference internal" href="avocado.core.state.html#avocado.core.state.State" title="avocado.core.state.State"><em>State</em></a>) – a quantum state.</p></li>
+<li><p><strong>sigma</strong> (<em>ndarray</em><em> | </em><em>Tensor</em><em> | </em><a class="reference internal" href="avocado.core.state.html#avocado.core.state.State" title="avocado.core.state.State"><em>State</em></a>) – a quantum state.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The fidelity between the input quantum states.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>ndarray</em> | <em>Tensor</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="avocado.qinfo.gate_fidelity">
+<span class="sig-prename descclassname"><span class="pre">avocado.qinfo.</span></span><span class="sig-name descname"><span class="pre">gate_fidelity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">U</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">V</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.qinfo.gate_fidelity" title="Permalink to this definition"></a></dt>
+<dd><p>calculate the fidelity between gates</p>
+<div class="math notranslate nohighlight">
+\[F(U, V) = |\text{tr}(UV^\dagger)|/2^n\]</div>
+<p><span class="math notranslate nohighlight">\(U\)</span> is a <span class="math notranslate nohighlight">\(2^n\times 2^n\)</span> unitary gate</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>U</strong> (<em>ndarray</em><em> | </em><em>Tensor</em>) – quantum gate <span class="math notranslate nohighlight">\(U\)</span>  in matrix form</p></li>
+<li><p><strong>V</strong> (<em>ndarray</em><em> | </em><em>Tensor</em>) – quantum gate <span class="math notranslate nohighlight">\(V\)</span>  in matrix form</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>fidelity between gates</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>ndarray</em> | <em>Tensor</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="avocado.qinfo.purity">
+<span class="sig-prename descclassname"><span class="pre">avocado.qinfo.</span></span><span class="sig-name descname"><span class="pre">purity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rho</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.qinfo.purity" title="Permalink to this definition"></a></dt>
+<dd><p>Calculate the purity of a quantum state.</p>
+<div class="math notranslate nohighlight">
+\[P = \text{tr}(\rho^2)\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>rho</strong> (<em>ndarray</em><em> | </em><em>Tensor</em><em> | </em><a class="reference internal" href="avocado.core.state.html#avocado.core.state.State" title="avocado.core.state.State"><em>State</em></a>) – Density matrix form of the quantum state.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The purity of the input quantum state.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>ndarray</em> | <em>Tensor</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="avocado.qinfo.von_neumann_entropy">
+<span class="sig-prename descclassname"><span class="pre">avocado.qinfo.</span></span><span class="sig-name descname"><span class="pre">von_neumann_entropy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rho</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">base</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.qinfo.von_neumann_entropy" title="Permalink to this definition"></a></dt>
+<dd><p>Calculate the von Neumann entropy of a quantum state.</p>
+<div class="math notranslate nohighlight">
+\[S = -\text{tr}(\rho \log(\rho))\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>rho</strong> (<em>ndarray</em><em> | </em><em>Tensor</em><em> | </em><a class="reference internal" href="avocado.core.state.html#avocado.core.state.State" title="avocado.core.state.State"><em>State</em></a>) – Density matrix form of the quantum state.</p></li>
+<li><p><strong>base</strong> (<em>int</em><em> | </em><em>None</em>) – The base of logarithm. Defaults to 2.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The von Neumann entropy of the input quantum state.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>ndarray</em> | <em>Tensor</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="avocado.qinfo.relative_entropy">
+<span class="sig-prename descclassname"><span class="pre">avocado.qinfo.</span></span><span class="sig-name descname"><span class="pre">relative_entropy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rho</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sig</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">base</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.qinfo.relative_entropy" title="Permalink to this definition"></a></dt>
+<dd><p>Calculate the relative entropy of two quantum states.</p>
+<div class="math notranslate nohighlight">
+\[S(\rho \| \sigma)=\text{tr} \rho(\log \rho-\log \sigma)\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>rho</strong> (<em>ndarray</em><em> | </em><em>Tensor</em><em> | </em><a class="reference internal" href="avocado.core.state.html#avocado.core.state.State" title="avocado.core.state.State"><em>State</em></a>) – Density matrix form of the quantum state.</p></li>
+<li><p><strong>sig</strong> (<em>ndarray</em><em> | </em><em>Tensor</em><em> | </em><a class="reference internal" href="avocado.core.state.html#avocado.core.state.State" title="avocado.core.state.State"><em>State</em></a>) – Density matrix form of the quantum state.</p></li>
+<li><p><strong>base</strong> (<em>int</em><em> | </em><em>None</em>) – The base of logarithm. Defaults to 2.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Relative entropy between input quantum states.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>ndarray</em> | <em>Tensor</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="avocado.qinfo.pauli_str_convertor">
+<span class="sig-prename descclassname"><span class="pre">avocado.qinfo.</span></span><span class="sig-name descname"><span class="pre">pauli_str_convertor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">observable</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.qinfo.pauli_str_convertor" title="Permalink to this definition"></a></dt>
+<dd><p>Concatenate the input observable with coefficient 1.</p>
+<p>For example, if the input <code class="docutils literal notranslate"><span class="pre">observable</span></code> is <code class="docutils literal notranslate"><span class="pre">[['z0,x1'],</span> <span class="pre">['z1']]</span></code>,
+then this function returns the observable <code class="docutils literal notranslate"><span class="pre">[[1,</span> <span class="pre">'z0,x1'],</span> <span class="pre">[1,</span> <span class="pre">'z1']]</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>observable</strong> (<em>List</em>) – The observable to be concatenated with coefficient 1.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The observable with coefficient 1</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>List</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="avocado.qinfo.partial_transpose_2">
+<span class="sig-prename descclassname"><span class="pre">avocado.qinfo.</span></span><span class="sig-name descname"><span class="pre">partial_transpose_2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">density_op</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sub_system</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.qinfo.partial_transpose_2" title="Permalink to this definition"></a></dt>
+<dd><p>Calculate the partial transpose <span class="math notranslate nohighlight">\(\rho^{T_A}\)</span> of the input quantum state.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>density_op</strong> (<em>ndarray</em><em> | </em><em>Tensor</em><em> | </em><a class="reference internal" href="avocado.core.state.html#avocado.core.state.State" title="avocado.core.state.State"><em>State</em></a>) – Density matrix form of the quantum state.</p></li>
+<li><p><strong>sub_system</strong> (<em>int</em><em> | </em><em>None</em>) – 1 or 2. 1 means to perform partial transpose on system A;
+2 means to perform partial transpose on system B. Default is 2.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The partial transpose of the input quantum state.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>ndarray</em> | <em>Tensor</em></p>
+</dd>
+</dl>
+<p>Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">from</span> <span class="nn">avocado.qinfo</span> <span class="kn">import</span> <span class="n">partial_transpose_2</span>
+
+<span class="n">rho_test</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">17</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
+<span class="n">partial_transpose_2</span><span class="p">(</span><span class="n">rho_test</span><span class="p">,</span> <span class="n">sub_system</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[[</span> <span class="mi">1</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span>  <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span>
+ <span class="p">[</span> <span class="mi">5</span><span class="p">,</span>  <span class="mi">6</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">14</span><span class="p">],</span>
+ <span class="p">[</span> <span class="mi">3</span><span class="p">,</span>  <span class="mi">4</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">],</span>
+ <span class="p">[</span> <span class="mi">7</span><span class="p">,</span>  <span class="mi">8</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">16</span><span class="p">]]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="avocado.qinfo.partial_transpose">
+<span class="sig-prename descclassname"><span class="pre">avocado.qinfo.</span></span><span class="sig-name descname"><span class="pre">partial_transpose</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">density_op</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.qinfo.partial_transpose" title="Permalink to this definition"></a></dt>
+<dd><p>Calculate the partial transpose <span class="math notranslate nohighlight">\(\rho^{T_A}\)</span> of the input quantum state.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>density_op</strong> (<em>ndarray</em><em> | </em><em>Tensor</em><em> | </em><a class="reference internal" href="avocado.core.state.html#avocado.core.state.State" title="avocado.core.state.State"><em>State</em></a>) – Density matrix form of the quantum state.</p></li>
+<li><p><strong>n</strong> (<em>int</em>) – Number of qubits of subsystem A, with qubit indices as [0, 1, …, n-1]</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The partial transpose of the input quantum state.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>ndarray</em> | <em>Tensor</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="avocado.qinfo.permute_systems">
+<span class="sig-prename descclassname"><span class="pre">avocado.qinfo.</span></span><span class="sig-name descname"><span class="pre">permute_systems</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">perm_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim_list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.qinfo.permute_systems" title="Permalink to this definition"></a></dt>
+<dd><p>Permute quantum system based on a permute list</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mat</strong> (<em>ndarray</em><em> | </em><em>Tensor</em><em> | </em><a class="reference internal" href="avocado.core.state.html#avocado.core.state.State" title="avocado.core.state.State"><em>State</em></a>) – A given matrix representation which is usually a quantum state.</p></li>
+<li><p><strong>perm</strong> – The permute list. e.g. input <code class="docutils literal notranslate"><span class="pre">[0,2,1,3]</span></code> will permute the 2nd and 3rd subsystems.</p></li>
+<li><p><strong>dim</strong> – A list of dimension sizes of each subsystem.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The permuted matrix</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>ndarray</em> | <em>Tensor</em> | <a class="reference internal" href="avocado.core.state.html#avocado.core.state.State" title="avocado.core.state.State"><em>State</em></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="avocado.qinfo.negativity">
+<span class="sig-prename descclassname"><span class="pre">avocado.qinfo.</span></span><span class="sig-name descname"><span class="pre">negativity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">density_op</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.qinfo.negativity" title="Permalink to this definition"></a></dt>
+<dd><p>Compute the Negativity <span class="math notranslate nohighlight">\(N = ||\frac{\rho^{T_A}-1}{2}||\)</span> of the input quantum state.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>density_op</strong> (<em>ndarray</em><em> | </em><em>Tensor</em><em> | </em><a class="reference internal" href="avocado.core.state.html#avocado.core.state.State" title="avocado.core.state.State"><em>State</em></a>) – Density matrix form of the quantum state.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The Negativity of the input quantum state.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>ndarray</em> | <em>Tensor</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="avocado.qinfo.logarithmic_negativity">
+<span class="sig-prename descclassname"><span class="pre">avocado.qinfo.</span></span><span class="sig-name descname"><span class="pre">logarithmic_negativity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">density_op</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.qinfo.logarithmic_negativity" title="Permalink to this definition"></a></dt>
+<dd><p>Calculate the Logarithmic Negativity <span class="math notranslate nohighlight">\(E_N = ||\rho^{T_A}||\)</span> of the input quantum state.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>density_op</strong> (<em>ndarray</em><em> | </em><em>Tensor</em><em> | </em><a class="reference internal" href="avocado.core.state.html#avocado.core.state.State" title="avocado.core.state.State"><em>State</em></a>) – Density matrix form of the quantum state.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The Logarithmic Negativity of the input quantum state.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>ndarray</em> | <em>Tensor</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="avocado.qinfo.is_ppt">
+<span class="sig-prename descclassname"><span class="pre">avocado.qinfo.</span></span><span class="sig-name descname"><span class="pre">is_ppt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">density_op</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.qinfo.is_ppt" title="Permalink to this definition"></a></dt>
+<dd><p>Check if the input quantum state is PPT.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>density_op</strong> (<em>ndarray</em><em> | </em><em>Tensor</em><em> | </em><a class="reference internal" href="avocado.core.state.html#avocado.core.state.State" title="avocado.core.state.State"><em>State</em></a>) – Density matrix form of the quantum state.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Whether the input quantum state is PPT.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="avocado.qinfo.is_choi">
+<span class="sig-prename descclassname"><span class="pre">avocado.qinfo.</span></span><span class="sig-name descname"><span class="pre">is_choi</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">op</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.qinfo.is_choi" title="Permalink to this definition"></a></dt>
+<dd><p>Check if the input op is a Choi operator of a quantum operation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>op</strong> (<em>ndarray</em><em> | </em><em>Tensor</em>) – matrix form of the linear operation.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Whether the input op is a valid quantum operation Choi operator.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The operation op is (default) applied to the second system.</p>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="avocado.qinfo.schmidt_decompose">
+<span class="sig-prename descclassname"><span class="pre">avocado.qinfo.</span></span><span class="sig-name descname"><span class="pre">schmidt_decompose</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">psi</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sys_A</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.qinfo.schmidt_decompose" title="Permalink to this definition"></a></dt>
+<dd><p>Calculate the Schmidt decomposition of a quantum state <span class="math notranslate nohighlight">\(\lvert\psi\rangle=\sum_ic_i\lvert i_A\rangle\otimes\lvert i_B \rangle\)</span>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>psi</strong> (<em>ndarray</em><em> | </em><em>Tensor</em><em> | </em><a class="reference internal" href="avocado.core.state.html#avocado.core.state.State" title="avocado.core.state.State"><em>State</em></a>) – State vector form of the quantum state, with shape (2**n)</p></li>
+<li><p><strong>sys_A</strong> (<em>List</em><em>[</em><em>int</em><em>] </em><em>| </em><em>None</em>) – Qubit indices to be included in subsystem A (other qubits are included in subsystem B), default are the first half qubits of <span class="math notranslate nohighlight">\(\lvert \psi\rangle\)</span></p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><p>contains elements</p>
+<ul class="simple">
+<li><p>A one dimensional array composed of Schmidt coefficients, with shape <code class="docutils literal notranslate"><span class="pre">(k)</span></code></p></li>
+<li><p>A high dimensional array composed of bases for subsystem A <span class="math notranslate nohighlight">\(\lvert i_A\rangle\)</span>, with shape <code class="docutils literal notranslate"><span class="pre">(k,</span> <span class="pre">2**m,</span> <span class="pre">1)</span></code></p></li>
+<li><p>A high dimensional array composed of bases for subsystem B <span class="math notranslate nohighlight">\(\lvert i_B\rangle\)</span> , with shape <code class="docutils literal notranslate"><span class="pre">(k,</span> <span class="pre">2**m,</span> <span class="pre">1)</span></code></p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>Tuple</em>[<em>Tensor</em>, <em>Tensor</em>, <em>Tensor</em>] | <em>Tuple</em>[<em>ndarray</em>, <em>ndarray</em>, <em>ndarray</em>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="avocado.qinfo.image_to_density_matrix">
+<span class="sig-prename descclassname"><span class="pre">avocado.qinfo.</span></span><span class="sig-name descname"><span class="pre">image_to_density_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image_filepath</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.qinfo.image_to_density_matrix" title="Permalink to this definition"></a></dt>
+<dd><p>Encode image to density matrix</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>image_filepath</strong> (<em>str</em>) – Path to the image file.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The density matrix obtained by encoding</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="avocado.core.state.html#avocado.core.state.State" title="avocado.core.state.State"><em>State</em></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="avocado.qinfo.NKron">
+<span class="sig-prename descclassname"><span class="pre">avocado.qinfo.</span></span><span class="sig-name descname"><span class="pre">NKron</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">matrix_A</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">matrix_B</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.qinfo.NKron" title="Permalink to this definition"></a></dt>
+<dd><p>calculate Kronecker product of at least two matrices</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>matrix_A</strong> (<em>Tensor</em><em> | </em><em>ndarray</em>) – matrix, as torch.Tensor or numpy.ndarray</p></li>
+<li><p><strong>matrix_B</strong> (<em>Tensor</em><em> | </em><em>ndarray</em>) – matrix, as torch.Tensor or numpy.ndarray</p></li>
+<li><p><strong>*args</strong> (<em>Tensor</em><em> | </em><em>ndarray</em>) – other matrices, as torch.Tensor or numpy.ndarray</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Kronecker product of matrices, determined by input type of matrix_A</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>Tensor</em> | <em>ndarray</em></p>
+</dd>
+</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">avocado.state</span> <span class="kn">import</span> <span class="n">density_op_random</span>
+<span class="kn">from</span> <span class="nn">avocado.linalg</span> <span class="kn">import</span> <span class="n">NKron</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">density_op_random</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">B</span> <span class="o">=</span> <span class="n">density_op_random</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">C</span> <span class="o">=</span> <span class="n">density_op_random</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">NKron</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">result</span></code> from above code block should be A otimes B otimes C</p>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="avocado.qinfo.diamond_norm">
+<span class="sig-prename descclassname"><span class="pre">avocado.qinfo.</span></span><span class="sig-name descname"><span class="pre">diamond_norm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">channel_repr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim_io</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.qinfo.diamond_norm" title="Permalink to this definition"></a></dt>
+<dd><p>Calculate the diamond norm of input.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>channel_repr</strong> (<a class="reference internal" href="avocado.operator.channel.base.html#avocado.operator.channel.base.Channel" title="avocado.operator.channel.base.Channel"><em>Channel</em></a><em> | </em><em>Tensor</em>) – A <code class="docutils literal notranslate"><span class="pre">Channel</span></code> or a <code class="docutils literal notranslate"><span class="pre">torch.Tensor</span></code> instance.</p></li>
+<li><p><strong>dim_io</strong> (<em>int</em><em> | </em><em>Tuple</em><em>[</em><em>int</em><em>, </em><em>int</em><em>] </em><em>| </em><em>None</em>) – The input and output dimensions.</p></li>
+<li><p><strong>**kwargs</strong> – Parameters to set cvx.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>RuntimeError</strong> – <cite>channel_repr</cite> must be <cite>Channel</cite> or <cite>torch.Tensor</cite>.</p></li>
+<li><p><strong>TypeError</strong> – “dim_io” should be “int” or “tuple”.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><cite>channel_repr</cite> is not in Choi representaiton, and is converted into <cite>ChoiRepr</cite>.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Its diamond norm.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>float</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Reference:</dt><dd><p>Khatri, Sumeet, and Mark M. Wilde. “Principles of quantum communication theory: A modern approach.”
+arXiv preprint arXiv:2011.04672 (2020).
+Watrous, J. . “Semidefinite Programs for Completely Bounded Norms.”
+Theory of Computing 5.1(2009):217-238.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="avocado.qinfo.channel_repr_convert">
+<span class="sig-prename descclassname"><span class="pre">avocado.qinfo.</span></span><span class="sig-name descname"><span class="pre">channel_repr_convert</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">representation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-06</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.qinfo.channel_repr_convert" title="Permalink to this definition"></a></dt>
+<dd><p>convert the given representation of a channel to the target implementation</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>representation</strong> (<em>Tensor</em><em> | </em><em>ndarray</em><em> | </em><em>List</em><em>[</em><em>Tensor</em><em>] </em><em>| </em><em>List</em><em>[</em><em>ndarray</em><em>]</em>) – input representation</p></li>
+<li><p><strong>source</strong> (<em>str</em>) – input form, should be <code class="docutils literal notranslate"><span class="pre">'choi'</span></code>, <code class="docutils literal notranslate"><span class="pre">'kraus'</span></code> or <code class="docutils literal notranslate"><span class="pre">'stinespring'</span></code></p></li>
+<li><p><strong>target</strong> (<em>str</em>) – target form, should be <code class="docutils literal notranslate"><span class="pre">'choi'</span></code>, <code class="docutils literal notranslate"><span class="pre">'kraus'</span></code> or <code class="docutils literal notranslate"><span class="pre">'stinespring'</span></code></p></li>
+<li><p><strong>tol</strong> (<em>float</em>) – error tolerance for the conversion from Choi, <span class="math notranslate nohighlight">\(10^{-6}\)</span> by default</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – Unsupported channel representation: require Choi, Kraus or Stinespring.</p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>quantum channel by the target implementation</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>Tensor</em> | <em>ndarray</em> | <em>List</em>[<em>Tensor</em>] | <em>List</em>[<em>ndarray</em>]</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>choi -&gt; kraus currently has the error of order 1e-6 caused by eigh</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>NotImplementedError</strong> – does not support the conversion of input data type</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="avocado.qinfo.abs_norm">
+<span class="sig-prename descclassname"><span class="pre">avocado.qinfo.</span></span><span class="sig-name descname"><span class="pre">abs_norm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.qinfo.abs_norm" title="Permalink to this definition"></a></dt>
+<dd><p>tool for calculation of matrix norm</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>mat</strong> (<em>ndarray</em><em> | </em><em>Tensor</em><em> | </em><a class="reference internal" href="avocado.core.state.html#avocado.core.state.State" title="avocado.core.state.State"><em>State</em></a>) – matrix</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>norm of input matrix</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="avocado.qinfo.dagger">
+<span class="sig-prename descclassname"><span class="pre">avocado.qinfo.</span></span><span class="sig-name descname"><span class="pre">dagger</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.qinfo.dagger" title="Permalink to this definition"></a></dt>
+<dd><p>tool for calculation of matrix dagger</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>mat</strong> (<em>ndarray</em><em> | </em><em>Tensor</em>) – matrix</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The dagger of matrix</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>ndarray</em> | <em>Tensor</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="avocado.qinfo.is_hermitian">
+<span class="sig-prename descclassname"><span class="pre">avocado.qinfo.</span></span><span class="sig-name descname"><span class="pre">is_hermitian</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-06</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.qinfo.is_hermitian" title="Permalink to this definition"></a></dt>
+<dd><p>verify whether <code class="docutils literal notranslate"><span class="pre">mat</span></code> is Hermitian</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mat</strong> (<em>ndarray</em><em> | </em><em>Tensor</em>) – hermitian candidate <span class="math notranslate nohighlight">\(P\)</span></p></li>
+<li><p><strong>eps</strong> (<em>float</em><em> | </em><em>None</em>) – tolerance of error</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>determine whether <span class="math notranslate nohighlight">\(P - P^\dagger = 0\)</span></p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="avocado.qinfo.is_positive">
+<span class="sig-prename descclassname"><span class="pre">avocado.qinfo.</span></span><span class="sig-name descname"><span class="pre">is_positive</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-06</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.qinfo.is_positive" title="Permalink to this definition"></a></dt>
+<dd><p>verify whether <code class="docutils literal notranslate"><span class="pre">mat</span></code> is a positive semi-definite matrix.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mat</strong> (<em>ndarray</em><em> | </em><em>Tensor</em>) – positive operator candidate <span class="math notranslate nohighlight">\(P\)</span></p></li>
+<li><p><strong>eps</strong> (<em>float</em><em> | </em><em>None</em>) – tolerance of error</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>determine whether <span class="math notranslate nohighlight">\(P\)</span> is Hermitian and eigenvalues are non-negative</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="avocado.qinfo.is_state_vector">
+<span class="sig-prename descclassname"><span class="pre">avocado.qinfo.</span></span><span class="sig-name descname"><span class="pre">is_state_vector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.qinfo.is_state_vector" title="Permalink to this definition"></a></dt>
+<dd><p>verify whether <code class="docutils literal notranslate"><span class="pre">vec</span></code> is a legal quantum state vector</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>vec</strong> (<em>ndarray</em><em> | </em><em>Tensor</em>) – state vector candidate <span class="math notranslate nohighlight">\(x\)</span></p></li>
+<li><p><strong>eps</strong> (<em>float</em><em> | </em><em>None</em>) – tolerance of error, default to be <cite>None</cite> i.e. no testing for data correctness</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>determine whether <span class="math notranslate nohighlight">\(x^\dagger x = 1\)</span>, and return the number of qubits or an error message</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>Tuple</em>[bool, int]</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>error message is:
+* <code class="docutils literal notranslate"><span class="pre">-1</span></code> if the above equation does not hold
+* <code class="docutils literal notranslate"><span class="pre">-2</span></code> if the dimension of <code class="docutils literal notranslate"><span class="pre">vec</span></code> is not a power of 2
+* <code class="docutils literal notranslate"><span class="pre">-3</span></code> if <code class="docutils literal notranslate"><span class="pre">vec</span></code> is not a vector</p>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="avocado.qinfo.is_density_matrix">
+<span class="sig-prename descclassname"><span class="pre">avocado.qinfo.</span></span><span class="sig-name descname"><span class="pre">is_density_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rho</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.qinfo.is_density_matrix" title="Permalink to this definition"></a></dt>
+<dd><p>verify whether <code class="docutils literal notranslate"><span class="pre">rho</span></code> is a legal quantum density matrix</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>rho</strong> (<em>ndarray</em><em> | </em><em>Tensor</em>) – density matrix candidate</p></li>
+<li><p><strong>eps</strong> (<em>float</em><em> | </em><em>None</em>) – tolerance of error, default to be <cite>None</cite> i.e. no testing for data correctness</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>determine whether <code class="docutils literal notranslate"><span class="pre">rho</span></code> is a PSD matrix with trace 1 and return the number of qubits or an error message.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>Tuple</em>[bool, int]</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>error message is:
+* <code class="docutils literal notranslate"><span class="pre">-1</span></code> if <code class="docutils literal notranslate"><span class="pre">rho</span></code> is not PSD
+* <code class="docutils literal notranslate"><span class="pre">-2</span></code> if the trace of <code class="docutils literal notranslate"><span class="pre">rho</span></code> is not 1
+* <code class="docutils literal notranslate"><span class="pre">-3</span></code> if the dimension of <code class="docutils literal notranslate"><span class="pre">rho</span></code> is not a power of 2
+* <code class="docutils literal notranslate"><span class="pre">-4</span></code> if <code class="docutils literal notranslate"><span class="pre">rho</span></code> is not a square matrix</p>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="avocado.qinfo.is_projector">
+<span class="sig-prename descclassname"><span class="pre">avocado.qinfo.</span></span><span class="sig-name descname"><span class="pre">is_projector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-06</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.qinfo.is_projector" title="Permalink to this definition"></a></dt>
+<dd><p>verify whether <code class="docutils literal notranslate"><span class="pre">mat</span></code> is a projector</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mat</strong> (<em>ndarray</em><em> | </em><em>Tensor</em>) – projector candidate <span class="math notranslate nohighlight">\(P\)</span></p></li>
+<li><p><strong>eps</strong> (<em>float</em><em> | </em><em>None</em>) – tolerance of error</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>determine whether <span class="math notranslate nohighlight">\(PP - P = 0\)</span></p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="avocado.qinfo.is_unitary">
+<span class="sig-prename descclassname"><span class="pre">avocado.qinfo.</span></span><span class="sig-name descname"><span class="pre">is_unitary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0001</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.qinfo.is_unitary" title="Permalink to this definition"></a></dt>
+<dd><p>verify whether <code class="docutils literal notranslate"><span class="pre">mat</span></code> is a unitary</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mat</strong> (<em>ndarray</em><em> | </em><em>Tensor</em>) – unitary candidate <span class="math notranslate nohighlight">\(P\)</span></p></li>
+<li><p><strong>eps</strong> (<em>float</em><em> | </em><em>None</em>) – tolerance of error</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>determine whether <span class="math notranslate nohighlight">\(PP^\dagger - I = 0\)</span></p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="avocado.qinfo.block_enc_herm">
+<span class="sig-prename descclassname"><span class="pre">avocado.qinfo.</span></span><span class="sig-name descname"><span class="pre">block_enc_herm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_block_qubits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.qinfo.block_enc_herm" title="Permalink to this definition"></a></dt>
+<dd><p>generate a (qubitized) block encoding of hermitian <code class="docutils literal notranslate"><span class="pre">mat</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mat</strong> (<em>ndarray</em><em> | </em><em>Tensor</em>) – matrix to be block encoded</p></li>
+<li><p><strong>num_block_qubits</strong> (<em>int</em>) – ancilla qubits used in block encoding</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>a unitary that is a block encoding of <code class="docutils literal notranslate"><span class="pre">mat</span></code></p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>ndarray</em> | <em>Tensor</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="avocado.qinfo.direct_sum">
+<span class="sig-prename descclassname"><span class="pre">avocado.qinfo.</span></span><span class="sig-name descname"><span class="pre">direct_sum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">B</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.qinfo.direct_sum" title="Permalink to this definition"></a></dt>
+<dd><p>calculate the direct sum of A and B</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>A</strong> (<em>ndarray</em><em> | </em><em>Tensor</em>) – <span class="math notranslate nohighlight">\(m \times n\)</span> matrix</p></li>
+<li><p><strong>B</strong> (<em>ndarray</em><em> | </em><em>Tensor</em>) – <span class="math notranslate nohighlight">\(p \times q\)</span> matrix</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>a direct sum of A and B, with shape <span class="math notranslate nohighlight">\((m + p) \times (n + q)\)</span></p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>ndarray</em> | <em>Tensor</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="avocado.qinfo.herm_transform">
+<span class="sig-prename descclassname"><span class="pre">avocado.qinfo.</span></span><span class="sig-name descname"><span class="pre">herm_transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fcn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore_zero</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.qinfo.herm_transform" title="Permalink to this definition"></a></dt>
+<dd><p>function transformation for Hermitian matrix</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fcn</strong> (<em>Callable</em><em>[</em><em>[</em><em>float</em><em>]</em><em>, </em><em>float</em><em>]</em>) – function <span class="math notranslate nohighlight">\(f\)</span> that can be expanded by Taylor series</p></li>
+<li><p><strong>mat</strong> (<em>Tensor</em><em> | </em><em>ndarray</em><em> | </em><a class="reference internal" href="avocado.core.state.html#avocado.core.state.State" title="avocado.core.state.State"><em>State</em></a>) – hermitian matrix <span class="math notranslate nohighlight">\(H\)</span></p></li>
+<li><p><strong>ignore_zero</strong> (<em>bool</em><em> | </em><em>None</em>) – whether ignore eigenspaces with zero eigenvalue, defaults to be <code class="docutils literal notranslate"><span class="pre">False</span></code></p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Returns</dt><dd><p><span class="math notranslate nohighlight">\(f(H)\)</span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="avocado.qinfo.pauli_decomposition">
+<span class="sig-prename descclassname"><span class="pre">avocado.qinfo.</span></span><span class="sig-name descname"><span class="pre">pauli_decomposition</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.qinfo.pauli_decomposition" title="Permalink to this definition"></a></dt>
+<dd><p>Decompose the matrix by the Pauli basis.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>mat</strong> (<em>ndarray</em><em> | </em><em>Tensor</em>) – the matrix to be decomposed</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The list of coefficients corresponding to Pauli basis.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>ndarray</em> | <em>Tensor</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="avocado.qinfo.subsystem_decomposition">
+<span class="sig-prename descclassname"><span class="pre">avocado.qinfo.</span></span><span class="sig-name descname"><span class="pre">subsystem_decomposition</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">first_basis</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">second_basis</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inner_prod</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.qinfo.subsystem_decomposition" title="Permalink to this definition"></a></dt>
+<dd><p>Decompose the input matrix by two given bases in two subsystems.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mat</strong> (<em>ndarray</em><em> | </em><em>Tensor</em>) – the matrix <span class="math notranslate nohighlight">\(w\)</span> to be decomposed</p></li>
+<li><p><strong>first_basis</strong> (<em>List</em><em>[</em><em>ndarray</em><em>] </em><em>| </em><em>List</em><em>[</em><em>Tensor</em><em>]</em>) – a basis <span class="math notranslate nohighlight">\(\{e_i\}_i\)</span> from the first space</p></li>
+<li><p><strong>second_basis</strong> (<em>List</em><em>[</em><em>ndarray</em><em>] </em><em>| </em><em>List</em><em>[</em><em>Tensor</em><em>]</em>) – a basis <span class="math notranslate nohighlight">\(\{f_j\}_j\)</span> from the second space</p></li>
+<li><p><strong>inner_prod</strong> (<em>Callable</em><em>[</em><em>[</em><em>ndarray</em><em>, </em><em>ndarray</em><em>]</em><em>, </em><em>ndarray</em><em>] </em><em>| </em><em>Callable</em><em>[</em><em>[</em><em>Tensor</em><em>, </em><em>Tensor</em><em>]</em><em>, </em><em>Tensor</em><em>]</em>) – the inner product of these subspaces</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>a coefficient matrix <span class="math notranslate nohighlight">\([\beta_{ij}]\)</span> such that <span class="math notranslate nohighlight">\(w = \sum_{i, j} \beta_{ij} e_i \otimes f_j\)</span>.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>ndarray</em> | <em>Tensor</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="avocado.qinfo.partial_trace">
+<span class="sig-prename descclassname"><span class="pre">avocado.qinfo.</span></span><span class="sig-name descname"><span class="pre">partial_trace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">A_or_B</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.qinfo.partial_trace" title="Permalink to this definition"></a></dt>
+<dd><p>Calculate the partial trace of the quantum state.
+:param state: Input quantum state.
+:param dim1: The dimension of system A.
+:param dim2: The dimension of system B.
+:param A_or_B: 1 or 2. 1 means to calculate partial trace on system A; 2 means to calculate partial trace on system B.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Partial trace of the input quantum state.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>ndarray</em> | <em>Tensor</em> | <a class="reference internal" href="avocado.core.state.html#avocado.core.state.State" title="avocado.core.state.State"><em>State</em></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="avocado.qinfo.partial_trace_discontiguous">
+<span class="sig-prename descclassname"><span class="pre">avocado.qinfo.</span></span><span class="sig-name descname"><span class="pre">partial_trace_discontiguous</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">preserve_qubits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.qinfo.partial_trace_discontiguous" title="Permalink to this definition"></a></dt>
+<dd><p>Calculate the partial trace of the quantum state with arbitrarily selected subsystem
+:param state: Input quantum state.
+:param preserve_qubits: Remaining qubits, default is None, indicate all qubits remain.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Partial trace of the quantum state with arbitrarily selected subsystem.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>ndarray</em> | <em>Tensor</em> | <a class="reference internal" href="avocado.core.state.html#avocado.core.state.State" title="avocado.core.state.State"><em>State</em></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="avocado.operator.special.html" class="btn btn-neutral float-left" title="avocado.operator.special" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, QUAIR.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

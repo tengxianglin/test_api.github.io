@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>avocado.database.matrix &mdash; QUAIR-PLATFORM 0.0.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css\rtd_sphinx_search.min.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+        <script src="_static/js\rtd_search_config.js"></script>
+        <script src="_static/js\rtd_sphinx_search.min.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="avocado.database.random" href="avocado.database.random.html" />
+    <link rel="prev" title="avocado.database.hamiltonian" href="avocado.database.hamiltonian.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            QUAIR-PLATFORM
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="avocado.ansatz.html">avocado.ansatz</a></li>
+<li class="toctree-l1"><a class="reference internal" href="avocado.circuit.html">avocado.circuit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="avocado.core.html">avocado.core</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="avocado.database.html">avocado.database</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="avocado.database.hamiltonian.html">avocado.database.hamiltonian</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">avocado.database.matrix</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.database.matrix.pauli_basis"><code class="docutils literal notranslate"><span class="pre">pauli_basis()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.database.matrix.grover_matrix"><code class="docutils literal notranslate"><span class="pre">grover_matrix()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.database.matrix.qft_matrix"><code class="docutils literal notranslate"><span class="pre">qft_matrix()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.database.matrix.h_gate"><code class="docutils literal notranslate"><span class="pre">h_gate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.database.matrix.s_gate"><code class="docutils literal notranslate"><span class="pre">s_gate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.database.matrix.sdg_gate"><code class="docutils literal notranslate"><span class="pre">sdg_gate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.database.matrix.t_gate"><code class="docutils literal notranslate"><span class="pre">t_gate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.database.matrix.tdg_gate"><code class="docutils literal notranslate"><span class="pre">tdg_gate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.database.matrix.x_gate"><code class="docutils literal notranslate"><span class="pre">x_gate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.database.matrix.y_gate"><code class="docutils literal notranslate"><span class="pre">y_gate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.database.matrix.z_gate"><code class="docutils literal notranslate"><span class="pre">z_gate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.database.matrix.p_gate"><code class="docutils literal notranslate"><span class="pre">p_gate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.database.matrix.rx_gate"><code class="docutils literal notranslate"><span class="pre">rx_gate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.database.matrix.ry_gate"><code class="docutils literal notranslate"><span class="pre">ry_gate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.database.matrix.rz_gate"><code class="docutils literal notranslate"><span class="pre">rz_gate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.database.matrix.u3_gate"><code class="docutils literal notranslate"><span class="pre">u3_gate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.database.matrix.cnot_gate"><code class="docutils literal notranslate"><span class="pre">cnot_gate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.database.matrix.cy_gate"><code class="docutils literal notranslate"><span class="pre">cy_gate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.database.matrix.cz_gate"><code class="docutils literal notranslate"><span class="pre">cz_gate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.database.matrix.swap_gate"><code class="docutils literal notranslate"><span class="pre">swap_gate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.database.matrix.cp_gate"><code class="docutils literal notranslate"><span class="pre">cp_gate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.database.matrix.crx_gate"><code class="docutils literal notranslate"><span class="pre">crx_gate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.database.matrix.cry_gate"><code class="docutils literal notranslate"><span class="pre">cry_gate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.database.matrix.crz_gate"><code class="docutils literal notranslate"><span class="pre">crz_gate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.database.matrix.cu_gate"><code class="docutils literal notranslate"><span class="pre">cu_gate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.database.matrix.rxx_gate"><code class="docutils literal notranslate"><span class="pre">rxx_gate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.database.matrix.ryy_gate"><code class="docutils literal notranslate"><span class="pre">ryy_gate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.database.matrix.rzz_gate"><code class="docutils literal notranslate"><span class="pre">rzz_gate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.database.matrix.ms_gate"><code class="docutils literal notranslate"><span class="pre">ms_gate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.database.matrix.cswap_gate"><code class="docutils literal notranslate"><span class="pre">cswap_gate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.database.matrix.toffoli_gate"><code class="docutils literal notranslate"><span class="pre">toffoli_gate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.database.matrix.universal2_gate"><code class="docutils literal notranslate"><span class="pre">universal2_gate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.database.matrix.universal3_gate"><code class="docutils literal notranslate"><span class="pre">universal3_gate()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="avocado.database.random.html">avocado.database.random</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avocado.database.representation.html">avocado.database.representation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avocado.database.state.html">avocado.database.state</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="avocado.loss.html">avocado.loss</a></li>
+<li class="toctree-l1"><a class="reference internal" href="avocado.operator.html">avocado.operator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="avocado.qinfo.html">avocado.qinfo</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">QUAIR-PLATFORM</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">&lt;no title&gt;</a></li>
+          <li class="breadcrumb-item"><a href="avocado.database.html">avocado.database</a></li>
+      <li class="breadcrumb-item active">avocado.database.matrix</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/avocado.database.matrix.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-avocado.database.matrix">
+<span id="avocado-database-matrix"></span><h1>avocado.database.matrix<a class="headerlink" href="#module-avocado.database.matrix" title="Permalink to this heading"></a></h1>
+<p>Gate matrices.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="avocado.database.matrix.pauli_basis">
+<span class="sig-prename descclassname"><span class="pre">avocado.database.matrix.</span></span><span class="sig-name descname"><span class="pre">pauli_basis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_qubits</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.database.matrix.pauli_basis" title="Permalink to this definition"></a></dt>
+<dd><p>Generate a Pauli basis.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>num_qubits</strong> (<em>int</em>) – the number of qubits <span class="math notranslate nohighlight">\(n\)</span>.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The Pauli basis of <span class="math notranslate nohighlight">\(\mathbb{C}^{2^n \times 2^n}\)</span>.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>List</em>[<em>Tensor</em>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="avocado.database.matrix.grover_matrix">
+<span class="sig-prename descclassname"><span class="pre">avocado.database.matrix.</span></span><span class="sig-name descname"><span class="pre">grover_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">oracle</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.database.matrix.grover_matrix" title="Permalink to this definition"></a></dt>
+<dd><p>Construct the Grover operator based on <code class="docutils literal notranslate"><span class="pre">oracle</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>oracle</strong> (<em>Tensor</em>) – the input oracle <span class="math notranslate nohighlight">\(A\)</span> to be rotated.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Grover operator in form</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>Tensor</em></p>
+</dd>
+</dl>
+<div class="math notranslate nohighlight">
+\[G = A (2 |0^n \rangle\langle 0^n| - I^n) A^\dagger \cdot (I - 2|1 \rangle\langle 1|) \otimes I^{n-1}\]</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="avocado.database.matrix.qft_matrix">
+<span class="sig-prename descclassname"><span class="pre">avocado.database.matrix.</span></span><span class="sig-name descname"><span class="pre">qft_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_qubits</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">torch.complex64</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.database.matrix.qft_matrix" title="Permalink to this definition"></a></dt>
+<dd><p>Construct the quantum fourier transpose (QFT) gate.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>num_qubits</strong> (<em>int</em>) – number of qubits <span class="math notranslate nohighlight">\(n\)</span> st. <span class="math notranslate nohighlight">\(N = 2^n\)</span>.</p></li>
+<li><p><strong>dtype</strong> (<em>dtype</em>) – the data type you used, default type is torch.complex64</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>a gate in below matrix form, here <span class="math notranslate nohighlight">\(\omega_N = \text{exp}(\frac{2 \pi i}{N})\)</span></p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>Tensor</em></p>
+</dd>
+</dl>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+    QFT = \frac{1}{\sqrt{N}}
+    \begin{bmatrix}
+        1 &amp; 1 &amp; .. &amp; 1 \\
+        1 &amp; \omega_N &amp; .. &amp; \omega_N^{N-1} \\
+        .. &amp; .. &amp; .. &amp; .. \\
+        1 &amp; \omega_N^{N-1} &amp; .. &amp; \omega_N^{(N-1)^2}
+    \end{bmatrix}
+\end{align}\end{split}\]</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="avocado.database.matrix.h_gate">
+<span class="sig-prename descclassname"><span class="pre">avocado.database.matrix.</span></span><span class="sig-name descname"><span class="pre">h_gate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.database.matrix.h_gate" title="Permalink to this definition"></a></dt>
+<dd><p>Generate the matrix</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}H = \frac{1}{\sqrt{2}}
+    \begin{bmatrix}
+        1&amp;1\\
+        1&amp;-1
+    \end{bmatrix}\end{split}\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>dtype</strong> (<em>str</em><em> | </em><em>None</em>) – the dtype of this matrix. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the matrix of H gate.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>Tensor</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="avocado.database.matrix.s_gate">
+<span class="sig-prename descclassname"><span class="pre">avocado.database.matrix.</span></span><span class="sig-name descname"><span class="pre">s_gate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.database.matrix.s_gate" title="Permalink to this definition"></a></dt>
+<dd><p>Generate the matrix</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}S =
+    \begin{bmatrix}
+        1&amp;0\\
+        0&amp;i
+    \end{bmatrix}\end{split}\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>dtype</strong> (<em>str</em><em> | </em><em>None</em>) – the dtype of this matrix. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the matrix of S gate.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>Tensor</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="avocado.database.matrix.sdg_gate">
+<span class="sig-prename descclassname"><span class="pre">avocado.database.matrix.</span></span><span class="sig-name descname"><span class="pre">sdg_gate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.database.matrix.sdg_gate" title="Permalink to this definition"></a></dt>
+<dd><p>Generate the matrix</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}S^\dagger =
+    \begin{bmatrix}
+        1&amp;0\\
+        0&amp;-i
+    \end{bmatrix}\end{split}\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>dtype</strong> (<em>str</em><em> | </em><em>None</em>) – the dtype of this matrix. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the matrix of Sdg gate.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>Tensor</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="avocado.database.matrix.t_gate">
+<span class="sig-prename descclassname"><span class="pre">avocado.database.matrix.</span></span><span class="sig-name descname"><span class="pre">t_gate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.database.matrix.t_gate" title="Permalink to this definition"></a></dt>
+<dd><p>Generate the matrix</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}T = \begin{bmatrix}
+        1&amp;0\\
+        0&amp;e^\frac{i\pi}{4}
+    \end{bmatrix}\end{split}\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>dtype</strong> (<em>str</em><em> | </em><em>None</em>) – the dtype of this matrix. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the matrix of T gate.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>Tensor</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="avocado.database.matrix.tdg_gate">
+<span class="sig-prename descclassname"><span class="pre">avocado.database.matrix.</span></span><span class="sig-name descname"><span class="pre">tdg_gate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.database.matrix.tdg_gate" title="Permalink to this definition"></a></dt>
+<dd><p>Generate the matrix</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}T^\dagger =
+    \begin{bmatrix}
+        1&amp;0\\
+        0&amp;e^{-\frac{i\pi}{4}}
+    \end{bmatrix}\end{split}\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>dtype</strong> (<em>str</em><em> | </em><em>None</em>) – the dtype of this matrix. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the matrix of Sdg gate.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>Tensor</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="avocado.database.matrix.x_gate">
+<span class="sig-prename descclassname"><span class="pre">avocado.database.matrix.</span></span><span class="sig-name descname"><span class="pre">x_gate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.database.matrix.x_gate" title="Permalink to this definition"></a></dt>
+<dd><p>Generate the matrix</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}X = \begin{bmatrix}
+        0 &amp; 1 \\
+        1 &amp; 0
+    \end{bmatrix}\end{split}\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>dtype</strong> (<em>str</em><em> | </em><em>None</em>) – the dtype of this matrix. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the matrix of X gate.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>Tensor</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="avocado.database.matrix.y_gate">
+<span class="sig-prename descclassname"><span class="pre">avocado.database.matrix.</span></span><span class="sig-name descname"><span class="pre">y_gate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.database.matrix.y_gate" title="Permalink to this definition"></a></dt>
+<dd><p>Generate the matrix</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}Y = \begin{bmatrix}
+        0 &amp; -i \\
+        i &amp; 0
+    \end{bmatrix}\end{split}\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>dtype</strong> (<em>str</em><em> | </em><em>None</em>) – the dtype of this matrix. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the matrix of Y gate.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>Tensor</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="avocado.database.matrix.z_gate">
+<span class="sig-prename descclassname"><span class="pre">avocado.database.matrix.</span></span><span class="sig-name descname"><span class="pre">z_gate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.database.matrix.z_gate" title="Permalink to this definition"></a></dt>
+<dd><p>Generate the matrix</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}Z = \begin{bmatrix}
+        1 &amp; 0 \\
+        0 &amp; -1
+    \end{bmatrix}\end{split}\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>dtype</strong> (<em>str</em><em> | </em><em>None</em>) – the dtype of this matrix. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the matrix of Z gate.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>Tensor</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="avocado.database.matrix.p_gate">
+<span class="sig-prename descclassname"><span class="pre">avocado.database.matrix.</span></span><span class="sig-name descname"><span class="pre">p_gate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">theta</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.database.matrix.p_gate" title="Permalink to this definition"></a></dt>
+<dd><p>Generate the matrix</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}P(\theta) = \begin{bmatrix}
+        1 &amp; 0 \\
+        0 &amp; e^{i\theta}
+    \end{bmatrix}\end{split}\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>theta</strong> (<em>Tensor</em>) – the parameter of this matrix.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the matrix of P gate.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>Tensor</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="avocado.database.matrix.rx_gate">
+<span class="sig-prename descclassname"><span class="pre">avocado.database.matrix.</span></span><span class="sig-name descname"><span class="pre">rx_gate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">theta</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.database.matrix.rx_gate" title="Permalink to this definition"></a></dt>
+<dd><p>Generate the matrix</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}R_X(\theta) = \begin{bmatrix}
+        \cos\frac{\theta}{2} &amp; -i\sin\frac{\theta}{2} \\
+        -i\sin\frac{\theta}{2} &amp; \cos\frac{\theta}{2}
+    \end{bmatrix}\end{split}\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>theta</strong> (<em>Tensor</em>) – the parameter of this matrix.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the matrix of R_X gate.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>Tensor</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="avocado.database.matrix.ry_gate">
+<span class="sig-prename descclassname"><span class="pre">avocado.database.matrix.</span></span><span class="sig-name descname"><span class="pre">ry_gate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">theta</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.database.matrix.ry_gate" title="Permalink to this definition"></a></dt>
+<dd><p>Generate the matrix</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}R_Y(\theta) = \begin{bmatrix}
+        \cos\frac{\theta}{2} &amp; -\sin\frac{\theta}{2} \\
+        \sin\frac{\theta}{2} &amp; \cos\frac{\theta}{2}
+    \end{bmatrix}\end{split}\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>theta</strong> (<em>Tensor</em>) – the parameter of this matrix.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the matrix of R_Y gate.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>Tensor</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="avocado.database.matrix.rz_gate">
+<span class="sig-prename descclassname"><span class="pre">avocado.database.matrix.</span></span><span class="sig-name descname"><span class="pre">rz_gate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">theta</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.database.matrix.rz_gate" title="Permalink to this definition"></a></dt>
+<dd><p>Generate the matrix</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}R_Z(\theta) = \begin{bmatrix}
+        e^{-i\frac{\theta}{2}} &amp; 0 \\
+        0 &amp; e^{i\frac{\theta}{2}}
+\end{bmatrix}\end{split}\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>theta</strong> (<em>Tensor</em>) – the parameter of this matrix.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the matrix of R_Z gate.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>Tensor</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="avocado.database.matrix.u3_gate">
+<span class="sig-prename descclassname"><span class="pre">avocado.database.matrix.</span></span><span class="sig-name descname"><span class="pre">u3_gate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">theta</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.database.matrix.u3_gate" title="Permalink to this definition"></a></dt>
+<dd><p>Generate the matrix</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+    U_3(\theta, \phi, \lambda) =
+        \begin{bmatrix}
+            \cos\frac\theta2&amp;-e^{i\lambda}\sin\frac\theta2\\
+            e^{i\phi}\sin\frac\theta2&amp;e^{i(\phi+\lambda)}\cos\frac\theta2
+        \end{bmatrix}
+\end{align}\end{split}\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>theta</strong> (<em>Tensor</em>) – the parameter of this matrix.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the matrix of U_3 gate.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>Tensor</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="avocado.database.matrix.cnot_gate">
+<span class="sig-prename descclassname"><span class="pre">avocado.database.matrix.</span></span><span class="sig-name descname"><span class="pre">cnot_gate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.database.matrix.cnot_gate" title="Permalink to this definition"></a></dt>
+<dd><p>Generate the matrix</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+    \mathit{CNOT} &amp;=|0\rangle \langle 0|\otimes I + |1 \rangle \langle 1|\otimes X\\
+        &amp;=
+        \begin{bmatrix}
+            1 &amp; 0 &amp; 0 &amp; 0 \\
+            0 &amp; 1 &amp; 0 &amp; 0 \\
+            0 &amp; 0 &amp; 0 &amp; 1 \\
+            0 &amp; 0 &amp; 1 &amp; 0
+        \end{bmatrix}
+\end{align}\end{split}\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>dtype</strong> (<em>str</em><em> | </em><em>None</em>) – the dtype of this matrix. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the matrix of CNOT gate.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>Tensor</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="avocado.database.matrix.cy_gate">
+<span class="sig-prename descclassname"><span class="pre">avocado.database.matrix.</span></span><span class="sig-name descname"><span class="pre">cy_gate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.database.matrix.cy_gate" title="Permalink to this definition"></a></dt>
+<dd><p>Generate the matrix</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+    \mathit{CY} &amp;=|0\rangle \langle 0|\otimes I + |1 \rangle \langle 1|\otimes Y\\
+        &amp;=
+        \begin{bmatrix}
+            1 &amp; 0 &amp; 0 &amp; 0 \\
+            0 &amp; 1 &amp; 0 &amp; 0 \\
+            0 &amp; 0 &amp; 0 &amp; -i \\
+            0 &amp; 0 &amp; i &amp; 0
+        \end{bmatrix}
+\end{align}\end{split}\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>dtype</strong> (<em>str</em><em> | </em><em>None</em>) – the dtype of this matrix. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the matrix of CY gate.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>Tensor</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="avocado.database.matrix.cz_gate">
+<span class="sig-prename descclassname"><span class="pre">avocado.database.matrix.</span></span><span class="sig-name descname"><span class="pre">cz_gate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.database.matrix.cz_gate" title="Permalink to this definition"></a></dt>
+<dd><p>Generate the matrix</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+    \mathit{CZ} &amp;=|0\rangle \langle 0|\otimes I + |1 \rangle \langle 1|\otimes Z\\
+        &amp;=
+        \begin{bmatrix}
+            1 &amp; 0 &amp; 0 &amp; 0 \\
+            0 &amp; 1 &amp; 0 &amp; 0 \\
+            0 &amp; 0 &amp; 1 &amp; 0 \\
+            0 &amp; 0 &amp; 0 &amp; -1
+        \end{bmatrix}
+\end{align}\end{split}\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>dtype</strong> (<em>str</em><em> | </em><em>None</em>) – the dtype of this matrix. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the matrix of CZ gate.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>Tensor</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="avocado.database.matrix.swap_gate">
+<span class="sig-prename descclassname"><span class="pre">avocado.database.matrix.</span></span><span class="sig-name descname"><span class="pre">swap_gate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.database.matrix.swap_gate" title="Permalink to this definition"></a></dt>
+<dd><p>Generate the matrix</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+    \mathit{SWAP} =
+        \begin{bmatrix}
+            1 &amp; 0 &amp; 0 &amp; 0 \\
+            0 &amp; 0 &amp; 1 &amp; 0 \\
+            0 &amp; 1 &amp; 0 &amp; 0 \\
+            0 &amp; 0 &amp; 0 &amp; 1
+        \end{bmatrix}
+\end{align}\end{split}\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>dtype</strong> (<em>str</em><em> | </em><em>None</em>) – the dtype of this matrix. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the matrix of SWAP gate.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>Tensor</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="avocado.database.matrix.cp_gate">
+<span class="sig-prename descclassname"><span class="pre">avocado.database.matrix.</span></span><span class="sig-name descname"><span class="pre">cp_gate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">theta</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.database.matrix.cp_gate" title="Permalink to this definition"></a></dt>
+<dd><p>Generate the matrix</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+    \mathit{CP}(\theta) =
+        \begin{bmatrix}
+            1 &amp; 0 &amp; 0 &amp; 0 \\
+            0 &amp; 1 &amp; 0 &amp; 0 \\
+            0 &amp; 0 &amp; 1 &amp; 0 \\
+            0 &amp; 0 &amp; 0 &amp; e^{i\theta}
+        \end{bmatrix}
+\end{align}\end{split}\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>theta</strong> (<em>Tensor</em>) – the parameter of this matrix.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the matrix of CP gate.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>Tensor</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="avocado.database.matrix.crx_gate">
+<span class="sig-prename descclassname"><span class="pre">avocado.database.matrix.</span></span><span class="sig-name descname"><span class="pre">crx_gate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">theta</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.database.matrix.crx_gate" title="Permalink to this definition"></a></dt>
+<dd><p>Generate the matrix</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+    \mathit{CR_X} &amp;=|0\rangle \langle 0|\otimes I + |1 \rangle \langle 1|\otimes R_X\\
+        &amp;=
+        \begin{bmatrix}
+            1 &amp; 0 &amp; 0 &amp; 0 \\
+            0 &amp; 1 &amp; 0 &amp; 0 \\
+            0 &amp; 0 &amp; \cos\frac{\theta}{2} &amp; -i\sin\frac{\theta}{2} \\
+            0 &amp; 0 &amp; -i\sin\frac{\theta}{2} &amp; \cos\frac{\theta}{2}
+        \end{bmatrix}
+\end{align}\end{split}\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>theta</strong> (<em>Tensor</em>) – the parameter of this matrix.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the matrix of CR_X gate.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>Tensor</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="avocado.database.matrix.cry_gate">
+<span class="sig-prename descclassname"><span class="pre">avocado.database.matrix.</span></span><span class="sig-name descname"><span class="pre">cry_gate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">theta</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.database.matrix.cry_gate" title="Permalink to this definition"></a></dt>
+<dd><p>Generate the matrix</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+    \mathit{CR_Y} &amp;=|0\rangle \langle 0|\otimes I + |1 \rangle \langle 1|\otimes R_Y\\
+        &amp;=
+        \begin{bmatrix}
+            1 &amp; 0 &amp; 0 &amp; 0 \\
+            0 &amp; 1 &amp; 0 &amp; 0 \\
+            0 &amp; 0 &amp; \cos\frac{\theta}{2} &amp; -\sin\frac{\theta}{2} \\
+            0 &amp; 0 &amp; \sin\frac{\theta}{2} &amp; \cos\frac{\theta}{2}
+        \end{bmatrix}
+\end{align}\end{split}\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>theta</strong> (<em>Tensor</em>) – the parameter of this matrix.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the matrix of CR_Y gate.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>Tensor</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="avocado.database.matrix.crz_gate">
+<span class="sig-prename descclassname"><span class="pre">avocado.database.matrix.</span></span><span class="sig-name descname"><span class="pre">crz_gate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">theta</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.database.matrix.crz_gate" title="Permalink to this definition"></a></dt>
+<dd><p>Generate the matrix</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+    \mathit{CR_Z} &amp;= |0\rangle \langle 0|\otimes I + |1 \rangle \langle 1|\otimes R_Z\\
+        &amp;=
+        \begin{bmatrix}
+            1 &amp; 0 &amp; 0 &amp; 0 \\
+            0 &amp; 1 &amp; 0 &amp; 0 \\
+            0 &amp; 0 &amp; e^{-i\frac{\theta}{2}} &amp; 0 \\
+            0 &amp; 0 &amp; 0 &amp; e^{i\frac{\theta}{2}}
+        \end{bmatrix}
+\end{align}\end{split}\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>theta</strong> (<em>Tensor</em>) – the parameter of this matrix.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the matrix of CR_Z gate.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>Tensor</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="avocado.database.matrix.cu_gate">
+<span class="sig-prename descclassname"><span class="pre">avocado.database.matrix.</span></span><span class="sig-name descname"><span class="pre">cu_gate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">theta</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.database.matrix.cu_gate" title="Permalink to this definition"></a></dt>
+<dd><p>Generate the matrix</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+    \mathit{CU}
+        &amp;=
+        \begin{bmatrix}
+            1 &amp; 0 &amp; 0 &amp; 0 \\
+            0 &amp; 1 &amp; 0 &amp; 0 \\
+            0 &amp; 0 &amp; \cos\frac\theta2 &amp;-e^{i\lambda}\sin\frac\theta2 \\
+            0 &amp; 0 &amp; e^{i\phi}\sin\frac\theta2&amp;e^{i(\phi+\lambda)}\cos\frac\theta2
+        \end{bmatrix}
+\end{align}\end{split}\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>theta</strong> (<em>Tensor</em>) – the parameter of this matrix.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the matrix of CU gate.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>Tensor</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="avocado.database.matrix.rxx_gate">
+<span class="sig-prename descclassname"><span class="pre">avocado.database.matrix.</span></span><span class="sig-name descname"><span class="pre">rxx_gate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">theta</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.database.matrix.rxx_gate" title="Permalink to this definition"></a></dt>
+<dd><p>Generate the matrix</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+    \mathit{R_{XX}}(\theta) =
+            \begin{bmatrix}
+                \cos\frac{\theta}{2} &amp; 0 &amp; 0 &amp; -i\sin\frac{\theta}{2} \\
+                0 &amp; \cos\frac{\theta}{2} &amp; -i\sin\frac{\theta}{2} &amp; 0 \\
+                0 &amp; -i\sin\frac{\theta}{2} &amp; \cos\frac{\theta}{2} &amp; 0 \\
+                -i\sin\frac{\theta}{2} &amp; 0 &amp; 0 &amp; \cos\frac{\theta}{2}
+            \end{bmatrix}
+\end{align}\end{split}\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>theta</strong> (<em>Tensor</em>) – the parameter of this matrix.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the matrix of RXX gate.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>Tensor</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="avocado.database.matrix.ryy_gate">
+<span class="sig-prename descclassname"><span class="pre">avocado.database.matrix.</span></span><span class="sig-name descname"><span class="pre">ryy_gate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">theta</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.database.matrix.ryy_gate" title="Permalink to this definition"></a></dt>
+<dd><p>Generate the matrix</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+    \mathit{R_{YY}}(\theta) =
+            \begin{bmatrix}
+                \cos\frac{\theta}{2} &amp; 0 &amp; 0 &amp; i\sin\frac{\theta}{2} \\
+                0 &amp; \cos\frac{\theta}{2} &amp; -i\sin\frac{\theta}{2} &amp; 0 \\
+                0 &amp; -i\sin\frac{\theta}{2} &amp; \cos\frac{\theta}{2} &amp; 0 \\
+                i\sin\frac{\theta}{2} &amp; 0 &amp; 0 &amp; cos\frac{\theta}{2}
+            \end{bmatrix}
+\end{align}\end{split}\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>theta</strong> (<em>Tensor</em>) – the parameter of this matrix.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the matrix of RYY gate.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>Tensor</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="avocado.database.matrix.rzz_gate">
+<span class="sig-prename descclassname"><span class="pre">avocado.database.matrix.</span></span><span class="sig-name descname"><span class="pre">rzz_gate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">theta</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.database.matrix.rzz_gate" title="Permalink to this definition"></a></dt>
+<dd><p>Generate the matrix</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+    \mathit{R_{ZZ}}(\theta) =
+            \begin{bmatrix}
+                e^{-i\frac{\theta}{2}} &amp; 0 &amp; 0 &amp; 0 \\
+                0 &amp; e^{i\frac{\theta}{2}} &amp; 0 &amp; 0 \\
+                0 &amp; 0 &amp; e^{i\frac{\theta}{2}} &amp; 0 \\
+                0 &amp; 0 &amp; 0 &amp; e^{-i\frac{\theta}{2}}
+            \end{bmatrix}
+\end{align}\end{split}\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>theta</strong> (<em>Tensor</em>) – the parameter of this matrix.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the matrix of RZZ gate.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>Tensor</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="avocado.database.matrix.ms_gate">
+<span class="sig-prename descclassname"><span class="pre">avocado.database.matrix.</span></span><span class="sig-name descname"><span class="pre">ms_gate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.database.matrix.ms_gate" title="Permalink to this definition"></a></dt>
+<dd><p>Generate the matrix</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+    \mathit{MS} = \mathit{R_{XX}}(-\frac{\pi}{2}) = \frac{1}{\sqrt{2}}
+            \begin{bmatrix}
+                1 &amp; 0 &amp; 0 &amp; i \\
+                0 &amp; 1 &amp; i &amp; 0 \\
+                0 &amp; i &amp; 1 &amp; 0 \\
+                i &amp; 0 &amp; 0 &amp; 1
+            \end{bmatrix}
+\end{align}\end{split}\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>dtype</strong> (<em>str</em><em> | </em><em>None</em>) – the dtype of this matrix. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the matrix of MS gate.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>Tensor</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="avocado.database.matrix.cswap_gate">
+<span class="sig-prename descclassname"><span class="pre">avocado.database.matrix.</span></span><span class="sig-name descname"><span class="pre">cswap_gate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.database.matrix.cswap_gate" title="Permalink to this definition"></a></dt>
+<dd><p>Generate the matrix</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+    \mathit{CSWAP} =
+        \begin{bmatrix}
+            1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+            0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+            0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+            0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+            0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 \\
+            0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 \\
+            0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 \\
+            0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1
+        \end{bmatrix}
+\end{align}\end{split}\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>dtype</strong> (<em>str</em><em> | </em><em>None</em>) – the dtype of this matrix. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the matrix of CSWAP gate.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>Tensor</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="avocado.database.matrix.toffoli_gate">
+<span class="sig-prename descclassname"><span class="pre">avocado.database.matrix.</span></span><span class="sig-name descname"><span class="pre">toffoli_gate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.database.matrix.toffoli_gate" title="Permalink to this definition"></a></dt>
+<dd><p>Generate the matrix</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+    \mathit{CSWAP} =
+        \begin{bmatrix}
+            1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+            0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+            0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+            0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+            0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 \\
+            0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 \\
+            0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 \\
+            0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0
+        \end{bmatrix}
+\end{align}\end{split}\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>dtype</strong> (<em>str</em><em> | </em><em>None</em>) – the dtype of this matrix. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the matrix of Toffoli gate.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>Tensor</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="avocado.database.matrix.universal2_gate">
+<span class="sig-prename descclassname"><span class="pre">avocado.database.matrix.</span></span><span class="sig-name descname"><span class="pre">universal2_gate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">theta</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.database.matrix.universal2_gate" title="Permalink to this definition"></a></dt>
+<dd><p>Generate the matrix</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>theta</strong> (<em>Tensor</em>) – the parameter of this matrix.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the matrix of universal two qubits gate.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>Tensor</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="avocado.database.matrix.universal3_gate">
+<span class="sig-prename descclassname"><span class="pre">avocado.database.matrix.</span></span><span class="sig-name descname"><span class="pre">universal3_gate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">theta</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.database.matrix.universal3_gate" title="Permalink to this definition"></a></dt>
+<dd><p>Generate the matrix</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>theta</strong> (<em>Tensor</em>) – the parameter of this matrix.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the matrix of universal three qubits gate.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>Tensor</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="avocado.database.hamiltonian.html" class="btn btn-neutral float-left" title="avocado.database.hamiltonian" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="avocado.database.random.html" class="btn btn-neutral float-right" title="avocado.database.random" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, QUAIR.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

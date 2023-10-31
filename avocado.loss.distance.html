@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>avocado.loss.distance &mdash; QUAIR-PLATFORM 0.0.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css\rtd_sphinx_search.min.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+        <script src="_static/js\rtd_search_config.js"></script>
+        <script src="_static/js\rtd_sphinx_search.min.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="avocado.loss.measure" href="avocado.loss.measure.html" />
+    <link rel="prev" title="avocado.loss" href="avocado.loss.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            QUAIR-PLATFORM
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="avocado.ansatz.html">avocado.ansatz</a></li>
+<li class="toctree-l1"><a class="reference internal" href="avocado.circuit.html">avocado.circuit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="avocado.core.html">avocado.core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="avocado.database.html">avocado.database</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="avocado.loss.html">avocado.loss</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">avocado.loss.distance</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.loss.distance.TraceDistance"><code class="docutils literal notranslate"><span class="pre">TraceDistance</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#avocado.loss.distance.TraceDistance.forward"><code class="docutils literal notranslate"><span class="pre">TraceDistance.forward()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#avocado.loss.distance.TraceDistance.training"><code class="docutils literal notranslate"><span class="pre">TraceDistance.training</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.loss.distance.StateFidelity"><code class="docutils literal notranslate"><span class="pre">StateFidelity</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#avocado.loss.distance.StateFidelity.forward"><code class="docutils literal notranslate"><span class="pre">StateFidelity.forward()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#avocado.loss.distance.StateFidelity.training"><code class="docutils literal notranslate"><span class="pre">StateFidelity.training</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="avocado.loss.measure.html">avocado.loss.measure</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="avocado.operator.html">avocado.operator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="avocado.qinfo.html">avocado.qinfo</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">QUAIR-PLATFORM</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">&lt;no title&gt;</a></li>
+          <li class="breadcrumb-item"><a href="avocado.loss.html">avocado.loss</a></li>
+      <li class="breadcrumb-item active">avocado.loss.distance</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/avocado.loss.distance.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-avocado.loss.distance">
+<span id="avocado-loss-distance"></span><h1>avocado.loss.distance<a class="headerlink" href="#module-avocado.loss.distance" title="Permalink to this heading"></a></h1>
+<p>The source file of the class for the distance.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="avocado.loss.distance.TraceDistance">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">avocado.loss.distance.</span></span><span class="sig-name descname"><span class="pre">TraceDistance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target_state</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.loss.distance.TraceDistance" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="avocado.core.base.html#avocado.core.base.Operator" title="avocado.core.base.Operator"><code class="xref py py-class docutils literal notranslate"><span class="pre">Operator</span></code></a></p>
+<p>The class of the loss function to compute the trace distance.</p>
+<p>This interface can make you using the trace distance as the loss function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>target_state</strong> (<a class="reference internal" href="avocado.core.state.html#avocado.core.state.State" title="avocado.core.state.State"><em>State</em></a>) – The target state to be used to compute the trace distance.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="avocado.loss.distance.TraceDistance.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.loss.distance.TraceDistance.forward" title="Permalink to this definition"></a></dt>
+<dd><p>Compute the trace distance between the input state and the target state.</p>
+<p>The value computed by this function can be used as a loss function to optimize.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>state</strong> (<a class="reference internal" href="avocado.core.state.html#avocado.core.state.State" title="avocado.core.state.State"><em>State</em></a>) – The input state which will be used to compute the trace distance with the target state.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>NotImplementedError</strong> – The backend is wrong or not supported.</p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The trace distance between the input state and the target state.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>Tensor</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="avocado.loss.distance.TraceDistance.training">
+<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#avocado.loss.distance.TraceDistance.training" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="avocado.loss.distance.StateFidelity">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">avocado.loss.distance.</span></span><span class="sig-name descname"><span class="pre">StateFidelity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target_state</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.loss.distance.StateFidelity" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="avocado.core.base.html#avocado.core.base.Operator" title="avocado.core.base.Operator"><code class="xref py py-class docutils literal notranslate"><span class="pre">Operator</span></code></a></p>
+<p>The class of the loss function to compute the state fidelity.</p>
+<p>This interface can make you using the state fidelity as the loss function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>target_state</strong> (<a class="reference internal" href="avocado.core.state.html#avocado.core.state.State" title="avocado.core.state.State"><em>State</em></a>) – The target state to be used to compute the state fidelity.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="avocado.loss.distance.StateFidelity.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.loss.distance.StateFidelity.forward" title="Permalink to this definition"></a></dt>
+<dd><p>Compute the state fidelity between the input state and the target state.</p>
+<p>The value computed by this function can be used as a loss function to optimize.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>state</strong> (<a class="reference internal" href="avocado.core.state.html#avocado.core.state.State" title="avocado.core.state.State"><em>State</em></a>) – The input state which will be used to compute the state fidelity with the target state.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>NotImplementedError</strong> – The backend is wrong or not supported.</p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The state fidelity between the input state and the target state.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>Tensor</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="avocado.loss.distance.StateFidelity.training">
+<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#avocado.loss.distance.StateFidelity.training" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="avocado.loss.html" class="btn btn-neutral float-left" title="avocado.loss" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="avocado.loss.measure.html" class="btn btn-neutral float-right" title="avocado.loss.measure" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, QUAIR.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

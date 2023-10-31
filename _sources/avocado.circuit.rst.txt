@@ -1,0 +1,8 @@
+avocado.circuit
+===============
+
+.. automodule:: avocado.circuit
+   :members:
+   :undoc-members:
+   :show-inheritance:
+

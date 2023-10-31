@@ -1,0 +1,1491 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>avocado.circuit &mdash; QUAIR-PLATFORM 0.0.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css\rtd_sphinx_search.min.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+        <script src="_static/js\rtd_search_config.js"></script>
+        <script src="_static/js\rtd_sphinx_search.min.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="avocado.core" href="avocado.core.html" />
+    <link rel="prev" title="avocado.ansatz.layer" href="avocado.ansatz.layer.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            QUAIR-PLATFORM
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="avocado.ansatz.html">avocado.ansatz</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">avocado.circuit</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#avocado.circuit.Circuit"><code class="docutils literal notranslate"><span class="pre">Circuit</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.circuit.Circuit.isdynamic"><code class="docutils literal notranslate"><span class="pre">Circuit.isdynamic</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.circuit.Circuit.num_qubits"><code class="docutils literal notranslate"><span class="pre">Circuit.num_qubits</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.circuit.Circuit.param"><code class="docutils literal notranslate"><span class="pre">Circuit.param</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.circuit.Circuit.grad"><code class="docutils literal notranslate"><span class="pre">Circuit.grad</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.circuit.Circuit.update_param"><code class="docutils literal notranslate"><span class="pre">Circuit.update_param()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.circuit.Circuit.transfer_static"><code class="docutils literal notranslate"><span class="pre">Circuit.transfer_static()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.circuit.Circuit.randomize_param"><code class="docutils literal notranslate"><span class="pre">Circuit.randomize_param()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.circuit.Circuit.h"><code class="docutils literal notranslate"><span class="pre">Circuit.h()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.circuit.Circuit.s"><code class="docutils literal notranslate"><span class="pre">Circuit.s()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.circuit.Circuit.sdg"><code class="docutils literal notranslate"><span class="pre">Circuit.sdg()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.circuit.Circuit.t"><code class="docutils literal notranslate"><span class="pre">Circuit.t()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.circuit.Circuit.tdg"><code class="docutils literal notranslate"><span class="pre">Circuit.tdg()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.circuit.Circuit.x"><code class="docutils literal notranslate"><span class="pre">Circuit.x()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.circuit.Circuit.y"><code class="docutils literal notranslate"><span class="pre">Circuit.y()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.circuit.Circuit.z"><code class="docutils literal notranslate"><span class="pre">Circuit.z()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.circuit.Circuit.p"><code class="docutils literal notranslate"><span class="pre">Circuit.p()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.circuit.Circuit.rx"><code class="docutils literal notranslate"><span class="pre">Circuit.rx()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.circuit.Circuit.ry"><code class="docutils literal notranslate"><span class="pre">Circuit.ry()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.circuit.Circuit.rz"><code class="docutils literal notranslate"><span class="pre">Circuit.rz()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.circuit.Circuit.u3"><code class="docutils literal notranslate"><span class="pre">Circuit.u3()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.circuit.Circuit.cnot"><code class="docutils literal notranslate"><span class="pre">Circuit.cnot()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.circuit.Circuit.cy"><code class="docutils literal notranslate"><span class="pre">Circuit.cy()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.circuit.Circuit.cz"><code class="docutils literal notranslate"><span class="pre">Circuit.cz()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.circuit.Circuit.swap"><code class="docutils literal notranslate"><span class="pre">Circuit.swap()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.circuit.Circuit.cp"><code class="docutils literal notranslate"><span class="pre">Circuit.cp()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.circuit.Circuit.crx"><code class="docutils literal notranslate"><span class="pre">Circuit.crx()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.circuit.Circuit.cry"><code class="docutils literal notranslate"><span class="pre">Circuit.cry()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.circuit.Circuit.crz"><code class="docutils literal notranslate"><span class="pre">Circuit.crz()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.circuit.Circuit.cu"><code class="docutils literal notranslate"><span class="pre">Circuit.cu()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.circuit.Circuit.rxx"><code class="docutils literal notranslate"><span class="pre">Circuit.rxx()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.circuit.Circuit.ryy"><code class="docutils literal notranslate"><span class="pre">Circuit.ryy()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.circuit.Circuit.rzz"><code class="docutils literal notranslate"><span class="pre">Circuit.rzz()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.circuit.Circuit.ms"><code class="docutils literal notranslate"><span class="pre">Circuit.ms()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.circuit.Circuit.cswap"><code class="docutils literal notranslate"><span class="pre">Circuit.cswap()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.circuit.Circuit.ccx"><code class="docutils literal notranslate"><span class="pre">Circuit.ccx()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.circuit.Circuit.universal_two_qubits"><code class="docutils literal notranslate"><span class="pre">Circuit.universal_two_qubits()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.circuit.Circuit.universal_three_qubits"><code class="docutils literal notranslate"><span class="pre">Circuit.universal_three_qubits()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.circuit.Circuit.oracle"><code class="docutils literal notranslate"><span class="pre">Circuit.oracle()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.circuit.Circuit.control_oracle"><code class="docutils literal notranslate"><span class="pre">Circuit.control_oracle()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.circuit.Circuit.collapse"><code class="docutils literal notranslate"><span class="pre">Circuit.collapse()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.circuit.Circuit.superposition_layer"><code class="docutils literal notranslate"><span class="pre">Circuit.superposition_layer()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.circuit.Circuit.weak_superposition_layer"><code class="docutils literal notranslate"><span class="pre">Circuit.weak_superposition_layer()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.circuit.Circuit.linear_entangled_layer"><code class="docutils literal notranslate"><span class="pre">Circuit.linear_entangled_layer()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.circuit.Circuit.real_entangled_layer"><code class="docutils literal notranslate"><span class="pre">Circuit.real_entangled_layer()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.circuit.Circuit.complex_entangled_layer"><code class="docutils literal notranslate"><span class="pre">Circuit.complex_entangled_layer()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.circuit.Circuit.real_block_layer"><code class="docutils literal notranslate"><span class="pre">Circuit.real_block_layer()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.circuit.Circuit.complex_block_layer"><code class="docutils literal notranslate"><span class="pre">Circuit.complex_block_layer()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.circuit.Circuit.qaoa_layer"><code class="docutils literal notranslate"><span class="pre">Circuit.qaoa_layer()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.circuit.Circuit.bit_flip"><code class="docutils literal notranslate"><span class="pre">Circuit.bit_flip()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.circuit.Circuit.phase_flip"><code class="docutils literal notranslate"><span class="pre">Circuit.phase_flip()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.circuit.Circuit.bit_phase_flip"><code class="docutils literal notranslate"><span class="pre">Circuit.bit_phase_flip()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.circuit.Circuit.amplitude_damping"><code class="docutils literal notranslate"><span class="pre">Circuit.amplitude_damping()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.circuit.Circuit.generalized_amplitude_damping"><code class="docutils literal notranslate"><span class="pre">Circuit.generalized_amplitude_damping()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.circuit.Circuit.phase_damping"><code class="docutils literal notranslate"><span class="pre">Circuit.phase_damping()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.circuit.Circuit.depolarizing"><code class="docutils literal notranslate"><span class="pre">Circuit.depolarizing()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.circuit.Circuit.generalized_depolarizing"><code class="docutils literal notranslate"><span class="pre">Circuit.generalized_depolarizing()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.circuit.Circuit.pauli_channel"><code class="docutils literal notranslate"><span class="pre">Circuit.pauli_channel()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.circuit.Circuit.reset_channel"><code class="docutils literal notranslate"><span class="pre">Circuit.reset_channel()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.circuit.Circuit.thermal_relaxation"><code class="docutils literal notranslate"><span class="pre">Circuit.thermal_relaxation()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.circuit.Circuit.mixed_unitary_channel"><code class="docutils literal notranslate"><span class="pre">Circuit.mixed_unitary_channel()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.circuit.Circuit.choi_channel"><code class="docutils literal notranslate"><span class="pre">Circuit.choi_channel()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.circuit.Circuit.kraus_channel"><code class="docutils literal notranslate"><span class="pre">Circuit.kraus_channel()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.circuit.Circuit.stinespring_channel"><code class="docutils literal notranslate"><span class="pre">Circuit.stinespring_channel()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.circuit.Circuit.unitary_matrix"><code class="docutils literal notranslate"><span class="pre">Circuit.unitary_matrix()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.circuit.Circuit.gate_history"><code class="docutils literal notranslate"><span class="pre">Circuit.gate_history</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.circuit.Circuit.depth"><code class="docutils literal notranslate"><span class="pre">Circuit.depth</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.circuit.Circuit.qubit_history"><code class="docutils literal notranslate"><span class="pre">Circuit.qubit_history</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.circuit.Circuit.plot"><code class="docutils literal notranslate"><span class="pre">Circuit.plot()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.circuit.Circuit.extend"><code class="docutils literal notranslate"><span class="pre">Circuit.extend()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.circuit.Circuit.forward"><code class="docutils literal notranslate"><span class="pre">Circuit.forward()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avocado.circuit.Circuit.training"><code class="docutils literal notranslate"><span class="pre">Circuit.training</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="avocado.core.html">avocado.core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="avocado.database.html">avocado.database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="avocado.loss.html">avocado.loss</a></li>
+<li class="toctree-l1"><a class="reference internal" href="avocado.operator.html">avocado.operator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="avocado.qinfo.html">avocado.qinfo</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">QUAIR-PLATFORM</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">&lt;no title&gt;</a></li>
+      <li class="breadcrumb-item active">avocado.circuit</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/avocado.circuit.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-avocado.circuit">
+<span id="avocado-circuit"></span><h1>avocado.circuit<a class="headerlink" href="#module-avocado.circuit" title="Permalink to this heading"></a></h1>
+<p>The source file of the Circuit class.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="avocado.circuit.Circuit">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">avocado.circuit.</span></span><span class="sig-name descname"><span class="pre">Circuit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_qubits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.circuit.Circuit" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="avocado.ansatz.container.html#avocado.ansatz.container.Sequential" title="avocado.ansatz.container.Sequential"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequential</span></code></a></p>
+<p>Quantum circuit.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>num_qubits</strong> (<em>int</em><em> | </em><em>None</em>) – Number of qubits. Defaults to None.</p>
+</dd>
+</dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="avocado.circuit.Circuit.isdynamic">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">isdynamic</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#avocado.circuit.Circuit.isdynamic" title="Permalink to this definition"></a></dt>
+<dd><p>Whether the circuit is dynamic</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="avocado.circuit.Circuit.num_qubits">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">num_qubits</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#avocado.circuit.Circuit.num_qubits" title="Permalink to this definition"></a></dt>
+<dd><p>Number of qubits.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="avocado.circuit.Circuit.param">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">param</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Tensor</span></em><a class="headerlink" href="#avocado.circuit.Circuit.param" title="Permalink to this definition"></a></dt>
+<dd><p>Flattened parameters in the circuit.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="avocado.circuit.Circuit.grad">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">grad</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ndarray</span></em><a class="headerlink" href="#avocado.circuit.Circuit.grad" title="Permalink to this definition"></a></dt>
+<dd><p>Gradients with respect to the flattened parameters.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="avocado.circuit.Circuit.update_param">
+<span class="sig-name descname"><span class="pre">update_param</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">theta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">idx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.circuit.Circuit.update_param" title="Permalink to this definition"></a></dt>
+<dd><p>Replace parameters of all/one layer(s) by <code class="docutils literal notranslate"><span class="pre">theta</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>theta</strong> (<em>Tensor</em><em> | </em><em>ndarray</em><em> | </em><em>float</em>) – New parameters</p></li>
+<li><p><strong>idx</strong> (<em>int</em><em> | </em><em>None</em>) – Index of replacement. Defaults to None, referring to all layers.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="avocado.circuit.Circuit.transfer_static">
+<span class="sig-name descname"><span class="pre">transfer_static</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#avocado.circuit.Circuit.transfer_static" title="Permalink to this definition"></a></dt>
+<dd><p>set <code class="docutils literal notranslate"><span class="pre">stop_gradient</span></code> of all parameters of the circuit as <code class="docutils literal notranslate"><span class="pre">True</span></code></p>
+<dl class="field-list simple">
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="avocado.circuit.Circuit.randomize_param">
+<span class="sig-name descname"><span class="pre">randomize_param</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arg0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">6.283185307179586</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initializer_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Uniform'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.circuit.Circuit.randomize_param" title="Permalink to this definition"></a></dt>
+<dd><p>Randomize parameters of the circuit based on the initializer.  Current we only support Uniform and Normal initializer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>arg0</strong> (<em>float</em>) – first argument of the initializer. Defaults to 0.</p></li>
+<li><p><strong>arg1</strong> (<em>float</em>) – first argument of the initializer. Defaults to 2 * pi.</p></li>
+<li><p><strong>initializer_type</strong> (<em>str</em>) – The type of the initializer. Defaults to ‘Uniform’.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="avocado.circuit.Circuit.h">
+<span class="sig-name descname"><span class="pre">h</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubits_idx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'full'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.circuit.Circuit.h" title="Permalink to this definition"></a></dt>
+<dd><p>Add single-qubit Hadamard gates.</p>
+<p>The matrix form of such a gate is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}H = \frac{1}{\sqrt{2}}
+    \begin{bmatrix}
+        1&amp;1\\
+        1&amp;-1
+    \end{bmatrix}\end{split}\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qubits_idx</strong> (<em>Iterable</em><em>[</em><em>int</em><em>] </em><em>| </em><em>int</em><em> | </em><em>str</em>) – Indices of the qubits on which the gates are applied. Defaults to ‘full’.</p></li>
+<li><p><strong>depth</strong> (<em>int</em>) – Number of layers. Defaults to 1.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="avocado.circuit.Circuit.s">
+<span class="sig-name descname"><span class="pre">s</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubits_idx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'full'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.circuit.Circuit.s" title="Permalink to this definition"></a></dt>
+<dd><p>Add single-qubit S gates.</p>
+<p>The matrix form of such a gate is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}S =
+    \begin{bmatrix}
+        1&amp;0\\
+        0&amp;i
+    \end{bmatrix}\end{split}\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qubits_idx</strong> (<em>Iterable</em><em>[</em><em>int</em><em>] </em><em>| </em><em>int</em><em> | </em><em>str</em>) – Indices of the qubits on which the gates are applied. Defaults to ‘full’.</p></li>
+<li><p><strong>depth</strong> (<em>int</em>) – Number of layers. Defaults to 1.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="avocado.circuit.Circuit.sdg">
+<span class="sig-name descname"><span class="pre">sdg</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubits_idx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'full'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.circuit.Circuit.sdg" title="Permalink to this definition"></a></dt>
+<dd><p>Add single-qubit S dagger (S inverse) gates.</p>
+<p>The matrix form of such a gate is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}S^\dagger =
+    \begin{bmatrix}
+        1&amp;0\\
+        0&amp;-i
+    \end{bmatrix}\end{split}\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qubits_idx</strong> (<em>Iterable</em><em>[</em><em>int</em><em>] </em><em>| </em><em>int</em><em> | </em><em>str</em>) – Indices of the qubits on which the gates are applied. Defaults to <code class="docutils literal notranslate"><span class="pre">'full'</span></code>.</p></li>
+<li><p><strong>depth</strong> (<em>int</em>) – Number of layers. Defaults to <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="avocado.circuit.Circuit.t">
+<span class="sig-name descname"><span class="pre">t</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubits_idx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'full'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.circuit.Circuit.t" title="Permalink to this definition"></a></dt>
+<dd><p>Add single-qubit T gates.</p>
+<p>The matrix form of such a gate is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}T = \begin{bmatrix}
+        1&amp;0\\
+        0&amp;e^\frac{i\pi}{4}
+    \end{bmatrix}\end{split}\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qubits_idx</strong> (<em>Iterable</em><em>[</em><em>int</em><em>] </em><em>| </em><em>int</em><em> | </em><em>str</em>) – Indices of the qubits on which the gates are applied. Defaults to ‘full’.</p></li>
+<li><p><strong>depth</strong> (<em>int</em>) – Number of layers. Defaults to 1.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="avocado.circuit.Circuit.tdg">
+<span class="sig-name descname"><span class="pre">tdg</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubits_idx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'full'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.circuit.Circuit.tdg" title="Permalink to this definition"></a></dt>
+<dd><p>Add single-qubit T dagger (T inverse) gates.</p>
+<p>The matrix form of such a gate is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}T^\dagger =
+    \begin{bmatrix}
+        1&amp;0\\
+        0&amp;e^{-\frac{i\pi}{4}}
+    \end{bmatrix}\end{split}\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qubits_idx</strong> (<em>Iterable</em><em>[</em><em>int</em><em>] </em><em>| </em><em>int</em><em> | </em><em>str</em>) – Indices of the qubits on which the gates are applied. Defaults to <code class="docutils literal notranslate"><span class="pre">'full'</span></code>.</p></li>
+<li><p><strong>depth</strong> (<em>int</em>) – Number of layers. Defaults to 1.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="avocado.circuit.Circuit.x">
+<span class="sig-name descname"><span class="pre">x</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubits_idx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'full'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.circuit.Circuit.x" title="Permalink to this definition"></a></dt>
+<dd><p>Add single-qubit X gates.</p>
+<p>The matrix form of such a gate is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}X = \begin{bmatrix}
+     0 &amp; 1 \\
+     1 &amp; 0
+ \end{bmatrix}\end{split}\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qubits_idx</strong> (<em>Iterable</em><em>[</em><em>int</em><em>] </em><em>| </em><em>int</em><em> | </em><em>str</em>) – Indices of the qubits on which the gates are applied. Defaults to ‘full’.</p></li>
+<li><p><strong>depth</strong> (<em>int</em>) – Number of layers. Defaults to 1.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="avocado.circuit.Circuit.y">
+<span class="sig-name descname"><span class="pre">y</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubits_idx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'full'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.circuit.Circuit.y" title="Permalink to this definition"></a></dt>
+<dd><p>Add single-qubit Y gates.</p>
+<p>The matrix form of such a gate is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}Y = \begin{bmatrix}
+    0 &amp; -i \\
+    i &amp; 0
+\end{bmatrix}\end{split}\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qubits_idx</strong> (<em>Iterable</em><em>[</em><em>int</em><em>] </em><em>| </em><em>int</em><em> | </em><em>str</em>) – Indices of the qubits on which the gates are applied. Defaults to ‘full’.</p></li>
+<li><p><strong>depth</strong> (<em>int</em>) – Number of layers. Defaults to 1.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="avocado.circuit.Circuit.z">
+<span class="sig-name descname"><span class="pre">z</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubits_idx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'full'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.circuit.Circuit.z" title="Permalink to this definition"></a></dt>
+<dd><p>Add single-qubit Z gates.</p>
+<p>The matrix form of such a gate is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}Z = \begin{bmatrix}
+    1 &amp; 0 \\
+    0 &amp; -1
+\end{bmatrix}\end{split}\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qubits_idx</strong> (<em>Iterable</em><em>[</em><em>int</em><em>] </em><em>| </em><em>int</em><em> | </em><em>str</em>) – Indices of the qubits on which the gates are applied. Defaults to ‘full’.</p></li>
+<li><p><strong>depth</strong> (<em>int</em>) – Number of layers. Defaults to 1.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="avocado.circuit.Circuit.p">
+<span class="sig-name descname"><span class="pre">p</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubits_idx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'full'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">param</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">param_sharing</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.circuit.Circuit.p" title="Permalink to this definition"></a></dt>
+<dd><p>Add single-qubit P gates.</p>
+<p>The matrix form of such a gate is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}P(\theta) = \begin{bmatrix}
+    1 &amp; 0 \\
+    0 &amp; e^{i\theta}
+\end{bmatrix}\end{split}\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qubits_idx</strong> (<em>Iterable</em><em>[</em><em>int</em><em>] </em><em>| </em><em>int</em><em> | </em><em>str</em>) – Indices of the qubits on which the gates are applied. Defaults to ‘full’.</p></li>
+<li><p><strong>depth</strong> (<em>int</em>) – Number of layers. Defaults to 1.</p></li>
+<li><p><strong>param</strong> (<em>Tensor</em><em> | </em><em>float</em><em> | </em><em>None</em>) – Parameters of the gates. Defaults to None.</p></li>
+<li><p><strong>param_sharing</strong> (<em>bool</em>) – Whether gates in the same layer share a parameter. Defaults to False.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="avocado.circuit.Circuit.rx">
+<span class="sig-name descname"><span class="pre">rx</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubits_idx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'full'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">param</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">param_sharing</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.circuit.Circuit.rx" title="Permalink to this definition"></a></dt>
+<dd><p>Add single-qubit rotation gates about the x-axis.</p>
+<p>The matrix form of such a gate is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}R_X(\theta) = \begin{bmatrix}
+    \cos\frac{\theta}{2} &amp; -i\sin\frac{\theta}{2} \\
+    -i\sin\frac{\theta}{2} &amp; \cos\frac{\theta}{2}
+\end{bmatrix}\end{split}\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qubits_idx</strong> (<em>Iterable</em><em>[</em><em>int</em><em>] </em><em>| </em><em>int</em><em> | </em><em>str</em>) – Indices of the qubits on which the gates are applied. Defaults to ‘full’.</p></li>
+<li><p><strong>depth</strong> (<em>int</em>) – Number of layers. Defaults to 1.</p></li>
+<li><p><strong>param</strong> (<em>Tensor</em><em> | </em><em>float</em><em> | </em><em>None</em>) – Parameters of the gates. Defaults to None.</p></li>
+<li><p><strong>param_sharing</strong> (<em>bool</em>) – Whether gates in the same layer share a parameter. Defaults to False.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="avocado.circuit.Circuit.ry">
+<span class="sig-name descname"><span class="pre">ry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubits_idx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'full'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">param</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">param_sharing</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.circuit.Circuit.ry" title="Permalink to this definition"></a></dt>
+<dd><p>Add single-qubit rotation gates about the y-axis.</p>
+<p>The matrix form of such a gate is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}R_Y(\theta) = \begin{bmatrix}
+    \cos\frac{\theta}{2} &amp; -\sin\frac{\theta}{2} \\
+    \sin\frac{\theta}{2} &amp; \cos\frac{\theta}{2}
+\end{bmatrix}\end{split}\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qubits_idx</strong> (<em>Iterable</em><em>[</em><em>int</em><em>] </em><em>| </em><em>int</em><em> | </em><em>str</em>) – Indices of the qubits on which the gates are applied. Defaults to ‘full’.</p></li>
+<li><p><strong>depth</strong> (<em>int</em>) – Number of layers. Defaults to 1.</p></li>
+<li><p><strong>param</strong> (<em>Tensor</em><em> | </em><em>float</em><em> | </em><em>None</em>) – Parameters of the gates. Defaults to None.</p></li>
+<li><p><strong>param_sharing</strong> (<em>bool</em>) – Whether gates in the same layer share a parameter. Defaults to False.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="avocado.circuit.Circuit.rz">
+<span class="sig-name descname"><span class="pre">rz</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubits_idx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'full'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">param</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">param_sharing</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.circuit.Circuit.rz" title="Permalink to this definition"></a></dt>
+<dd><p>Add single-qubit rotation gates about the z-axis.</p>
+<p>The matrix form of such a gate is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}R_Z(\theta) = \begin{bmatrix}
+    e^{-i\frac{\theta}{2}} &amp; 0 \\
+    0 &amp; e^{i\frac{\theta}{2}}
+\end{bmatrix}\end{split}\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qubits_idx</strong> (<em>Iterable</em><em>[</em><em>int</em><em>] </em><em>| </em><em>int</em><em> | </em><em>str</em>) – Indices of the qubits on which the gates are applied. Defaults to ‘full’.</p></li>
+<li><p><strong>depth</strong> (<em>int</em>) – Number of layers. Defaults to 1.</p></li>
+<li><p><strong>param</strong> (<em>Tensor</em><em> | </em><em>float</em><em> | </em><em>None</em>) – Parameters of the gates. Defaults to None.</p></li>
+<li><p><strong>param_sharing</strong> (<em>bool</em>) – Whether gates in the same layer share a parameter. Defaults to False.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="avocado.circuit.Circuit.u3">
+<span class="sig-name descname"><span class="pre">u3</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubits_idx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'full'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">param</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">param_sharing</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.circuit.Circuit.u3" title="Permalink to this definition"></a></dt>
+<dd><p>Add single-qubit rotation gates.</p>
+<p>The matrix form of such a gate is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+    U_3(\theta, \phi, \lambda) =
+        \begin{bmatrix}
+            \cos\frac\theta2&amp;-e^{i\lambda}\sin\frac\theta2\\
+            e^{i\phi}\sin\frac\theta2&amp;e^{i(\phi+\lambda)}\cos\frac\theta2
+        \end{bmatrix}
+\end{align}\end{split}\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qubits_idx</strong> (<em>Iterable</em><em>[</em><em>int</em><em>] </em><em>| </em><em>int</em><em> | </em><em>str</em>) – Indices of the qubits on which the gates are applied. Defaults to ‘full’.</p></li>
+<li><p><strong>depth</strong> (<em>int</em>) – Number of layers. Defaults to 1.</p></li>
+<li><p><strong>param</strong> (<em>Tensor</em><em> | </em><em>Iterable</em><em>[</em><em>float</em><em>] </em><em>| </em><em>None</em>) – Parameters of the gates. Defaults to None.</p></li>
+<li><p><strong>param_sharing</strong> (<em>bool</em>) – Whether gates in the same layer share a parameter. Defaults to False.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="avocado.circuit.Circuit.cnot">
+<span class="sig-name descname"><span class="pre">cnot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubits_idx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cycle'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.circuit.Circuit.cnot" title="Permalink to this definition"></a></dt>
+<dd><p>Add CNOT gates.</p>
+<p>For a 2-qubit quantum circuit, when <cite>qubits_idx</cite> is <cite>[0, 1]</cite>, the matrix form of such a gate is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+    \mathit{CNOT} &amp;=|0\rangle \langle 0|\otimes I + |1 \rangle \langle 1|\otimes X\\
+    &amp;=
+    \begin{bmatrix}
+        1 &amp; 0 &amp; 0 &amp; 0 \\
+        0 &amp; 1 &amp; 0 &amp; 0 \\
+        0 &amp; 0 &amp; 0 &amp; 1 \\
+        0 &amp; 0 &amp; 1 &amp; 0
+    \end{bmatrix}
+\end{align}\end{split}\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qubits_idx</strong> (<em>Iterable</em><em>[</em><em>int</em><em>] </em><em>| </em><em>str</em>) – Indices of the qubits on which the gates are applied. Defaults to ‘cycle’.</p></li>
+<li><p><strong>depth</strong> (<em>int</em>) – Number of layers. Defaults to 1.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="avocado.circuit.Circuit.cy">
+<span class="sig-name descname"><span class="pre">cy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubits_idx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cycle'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.circuit.Circuit.cy" title="Permalink to this definition"></a></dt>
+<dd><p>Add controlled Y gates.</p>
+<p>For a 2-qubit quantum circuit, when <cite>qubits_idx</cite> is <cite>[0, 1]</cite>, the matrix form of such a gate is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+    \mathit{CY} &amp;=|0\rangle \langle 0|\otimes I + |1 \rangle \langle 1|\otimes Y\\
+    &amp;=
+    \begin{bmatrix}
+        1 &amp; 0 &amp; 0 &amp; 0 \\
+        0 &amp; 1 &amp; 0 &amp; 0 \\
+        0 &amp; 0 &amp; 0 &amp; -1j \\
+        0 &amp; 0 &amp; 1j &amp; 0
+    \end{bmatrix}
+\end{align}\end{split}\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qubits_idx</strong> (<em>Iterable</em><em>[</em><em>int</em><em>] </em><em>| </em><em>str</em>) – Indices of the qubits on which the gates are applied. Defaults to ‘cycle’.</p></li>
+<li><p><strong>depth</strong> (<em>int</em>) – Number of layers. Defaults to 1.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="avocado.circuit.Circuit.cz">
+<span class="sig-name descname"><span class="pre">cz</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubits_idx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'linear'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.circuit.Circuit.cz" title="Permalink to this definition"></a></dt>
+<dd><p>Add controlled Z gates.</p>
+<p>For a 2-qubit quantum circuit, when <cite>qubits_idx</cite> is <cite>[0, 1]</cite>, the matrix form of such a gate is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+    \mathit{CZ} &amp;=|0\rangle \langle 0|\otimes I + |1 \rangle \langle 1|\otimes Z\\
+    &amp;=
+    \begin{bmatrix}
+        1 &amp; 0 &amp; 0 &amp; 0 \\
+        0 &amp; 1 &amp; 0 &amp; 0 \\
+        0 &amp; 0 &amp; 1 &amp; 0 \\
+        0 &amp; 0 &amp; 0 &amp; -1
+    \end{bmatrix}
+\end{align}\end{split}\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qubits_idx</strong> (<em>Iterable</em><em>[</em><em>int</em><em>] </em><em>| </em><em>str</em>) – Indices of the qubits on which the gates are applied. Defaults to ‘linear’.</p></li>
+<li><p><strong>depth</strong> (<em>int</em>) – Number of layers. Defaults to 1.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="avocado.circuit.Circuit.swap">
+<span class="sig-name descname"><span class="pre">swap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubits_idx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'linear'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.circuit.Circuit.swap" title="Permalink to this definition"></a></dt>
+<dd><p>Add SWAP gates.</p>
+<p>The matrix form of such a gate is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+    \mathit{SWAP} =
+    \begin{bmatrix}
+        1 &amp; 0 &amp; 0 &amp; 0 \\
+        0 &amp; 0 &amp; 1 &amp; 0 \\
+        0 &amp; 1 &amp; 0 &amp; 0 \\
+        0 &amp; 0 &amp; 0 &amp; 1
+    \end{bmatrix}
+\end{align}\end{split}\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qubits_idx</strong> (<em>Iterable</em><em>[</em><em>int</em><em>] </em><em>| </em><em>str</em>) – Indices of the qubits on which the gates are applied. Defaults to ‘linear’.</p></li>
+<li><p><strong>depth</strong> (<em>int</em>) – Number of layers. Defaults to 1.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="avocado.circuit.Circuit.cp">
+<span class="sig-name descname"><span class="pre">cp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubits_idx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cycle'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">param</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">param_sharing</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.circuit.Circuit.cp" title="Permalink to this definition"></a></dt>
+<dd><p>Add controlled P gates.</p>
+<p>For a 2-qubit quantum circuit, when <cite>qubits_idx</cite> is <cite>[0, 1]</cite>, the matrix form of such a gate is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+    \mathit{CP}(\theta) =
+    \begin{bmatrix}
+        1 &amp; 0 &amp; 0 &amp; 0 \\
+        0 &amp; 1 &amp; 0 &amp; 0 \\
+        0 &amp; 0 &amp; 1 &amp; 0 \\
+        0 &amp; 0 &amp; 0 &amp; e^{i\theta}
+    \end{bmatrix}
+\end{align}\end{split}\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qubits_idx</strong> (<em>Iterable</em><em>[</em><em>int</em><em>] </em><em>| </em><em>str</em>) – Indices of the qubits on which the gates are applied. Defaults to ‘cycle’.</p></li>
+<li><p><strong>depth</strong> (<em>int</em>) – Number of layers. Defaults to 1.</p></li>
+<li><p><strong>param</strong> (<em>Tensor</em><em> | </em><em>float</em><em> | </em><em>None</em>) – Parameters of the gates. Defaults to None.</p></li>
+<li><p><strong>param_sharing</strong> (<em>bool</em>) – Whether gates in the same layer share a parameter. Defaults to False.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="avocado.circuit.Circuit.crx">
+<span class="sig-name descname"><span class="pre">crx</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubits_idx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cycle'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">param</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">param_sharing</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.circuit.Circuit.crx" title="Permalink to this definition"></a></dt>
+<dd><p>Add controlled rotation gates about the x-axis.</p>
+<p>For a 2-qubit quantum circuit, when <cite>qubits_idx</cite> is <cite>[0, 1]</cite>, the matrix form of such a gate is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+    \mathit{CR_X} &amp;=|0\rangle \langle 0|\otimes I + |1 \rangle \langle 1|\otimes R_X\\
+    &amp;=
+    \begin{bmatrix}
+        1 &amp; 0 &amp; 0 &amp; 0 \\
+        0 &amp; 1 &amp; 0 &amp; 0 \\
+        0 &amp; 0 &amp; \cos\frac{\theta}{2} &amp; -i\sin\frac{\theta}{2} \\
+        0 &amp; 0 &amp; -i\sin\frac{\theta}{2} &amp; \cos\frac{\theta}{2}
+    \end{bmatrix}
+\end{align}\end{split}\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qubits_idx</strong> (<em>Iterable</em><em>[</em><em>int</em><em>] </em><em>| </em><em>str</em>) – Indices of the qubits on which the gates are applied. Defaults to ‘cycle’.</p></li>
+<li><p><strong>depth</strong> (<em>int</em>) – Number of layers. Defaults to 1.</p></li>
+<li><p><strong>param</strong> (<em>Tensor</em><em> | </em><em>float</em><em> | </em><em>None</em>) – Parameters of the gates. Defaults to None.</p></li>
+<li><p><strong>param_sharing</strong> (<em>bool</em>) – Whether gates in the same layer share a parameter. Defaults to False.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="avocado.circuit.Circuit.cry">
+<span class="sig-name descname"><span class="pre">cry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubits_idx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cycle'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">param</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">param_sharing</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.circuit.Circuit.cry" title="Permalink to this definition"></a></dt>
+<dd><p>Add controlled rotation gates about the y-axis.</p>
+<p>For a 2-qubit quantum circuit, when <cite>qubits_idx</cite> is <cite>[0, 1]</cite>, the matrix form of such a gate is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+    \mathit{CR_Y} &amp;=|0\rangle \langle 0|\otimes I + |1 \rangle \langle 1|\otimes R_Y\\
+    &amp;=
+    \begin{bmatrix}
+        1 &amp; 0 &amp; 0 &amp; 0 \\
+        0 &amp; 1 &amp; 0 &amp; 0 \\
+        0 &amp; 0 &amp; \cos\frac{\theta}{2} &amp; -\sin\frac{\theta}{2} \\
+        0 &amp; 0 &amp; \sin\frac{\theta}{2} &amp; \cos\frac{\theta}{2}
+    \end{bmatrix}
+\end{align}\end{split}\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qubits_idx</strong> (<em>Iterable</em><em>[</em><em>int</em><em>] </em><em>| </em><em>str</em>) – Indices of the qubits on which the gates are applied. Defaults to ‘cycle’.</p></li>
+<li><p><strong>depth</strong> (<em>int</em>) – Number of layers. Defaults to 1.</p></li>
+<li><p><strong>param</strong> (<em>Tensor</em><em> | </em><em>float</em><em> | </em><em>None</em>) – Parameters of the gates. Defaults to None.</p></li>
+<li><p><strong>param_sharing</strong> (<em>bool</em>) – Whether gates in the same layer share a parameter. Defaults to False.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="avocado.circuit.Circuit.crz">
+<span class="sig-name descname"><span class="pre">crz</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubits_idx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cycle'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">param</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">param_sharing</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.circuit.Circuit.crz" title="Permalink to this definition"></a></dt>
+<dd><p>Add controlled rotation gates about the z-axis.</p>
+<p>For a 2-qubit quantum circuit, when <cite>qubits_idx</cite> is <cite>[0, 1]</cite>, the matrix form of such a gate is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+    \mathit{CR_Z} &amp;= |0\rangle \langle 0|\otimes I + |1 \rangle \langle 1|\otimes R_Z\\
+    &amp;=
+    \begin{bmatrix}
+        1 &amp; 0 &amp; 0 &amp; 0 \\
+        0 &amp; 1 &amp; 0 &amp; 0 \\
+        0 &amp; 0 &amp; e^{-i\frac{\theta}{2}} &amp; 0 \\
+        0 &amp; 0 &amp; 0 &amp; e^{i\frac{\theta}{2}}
+    \end{bmatrix}
+\end{align}\end{split}\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qubits_idx</strong> (<em>Iterable</em><em>[</em><em>int</em><em>] </em><em>| </em><em>str</em>) – Indices of the qubits on which the gates are applied. Defaults to ‘cycle’.</p></li>
+<li><p><strong>depth</strong> (<em>int</em>) – Number of layers. Defaults to 1.</p></li>
+<li><p><strong>param</strong> (<em>Tensor</em><em> | </em><em>float</em><em> | </em><em>None</em>) – Parameters of the gates. Defaults to None.</p></li>
+<li><p><strong>param_sharing</strong> (<em>bool</em>) – Whether gates in the same layer share a parameter. Defaults to False.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="avocado.circuit.Circuit.cu">
+<span class="sig-name descname"><span class="pre">cu</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubits_idx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cycle'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">param</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">param_sharing</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.circuit.Circuit.cu" title="Permalink to this definition"></a></dt>
+<dd><p>Add controlled single-qubit rotation gates.</p>
+<p>For a 2-qubit quantum circuit, when <cite>qubits_idx</cite> is <cite>[0, 1]</cite>, the matrix form of such a gate is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+    \mathit{CU}
+    &amp;=
+    \begin{bmatrix}
+        1 &amp; 0 &amp; 0 &amp; 0 \\
+        0 &amp; 1 &amp; 0 &amp; 0 \\
+        0 &amp; 0 &amp; \cos\frac\theta2 &amp;-e^{i\lambda}\sin\frac\theta2 \\
+        0 &amp; 0 &amp; e^{i\phi}\sin\frac\theta2&amp;e^{i(\phi+\lambda)}\cos\frac\theta2
+    \end{bmatrix}
+\end{align}\end{split}\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qubits_idx</strong> (<em>Iterable</em><em>[</em><em>int</em><em>] </em><em>| </em><em>str</em>) – Indices of the qubits on which the gates are applied. Defaults to ‘cycle’.</p></li>
+<li><p><strong>depth</strong> (<em>int</em>) – Number of layers. Defaults to 1.</p></li>
+<li><p><strong>param</strong> (<em>Tensor</em><em> | </em><em>float</em><em> | </em><em>None</em>) – Parameters of the gates. Defaults to None.</p></li>
+<li><p><strong>param_sharing</strong> (<em>bool</em>) – Whether gates in the same layer share a parameter. Defaults to False.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="avocado.circuit.Circuit.rxx">
+<span class="sig-name descname"><span class="pre">rxx</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubits_idx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'linear'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">param</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">param_sharing</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.circuit.Circuit.rxx" title="Permalink to this definition"></a></dt>
+<dd><p>Add RXX gates.</p>
+<p>The matrix form of such a gate is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+    \mathit{R_{XX}}(\theta) =
+        \begin{bmatrix}
+            \cos\frac{\theta}{2} &amp; 0 &amp; 0 &amp; -i\sin\frac{\theta}{2} \\
+            0 &amp; \cos\frac{\theta}{2} &amp; -i\sin\frac{\theta}{2} &amp; 0 \\
+            0 &amp; -i\sin\frac{\theta}{2} &amp; \cos\frac{\theta}{2} &amp; 0 \\
+            -i\sin\frac{\theta}{2} &amp; 0 &amp; 0 &amp; \cos\frac{\theta}{2}
+        \end{bmatrix}
+\end{align}\end{split}\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qubits_idx</strong> (<em>Iterable</em><em>[</em><em>int</em><em>] </em><em>| </em><em>str</em>) – Indices of the qubits on which the gates are applied. Defaults to ‘linear’.</p></li>
+<li><p><strong>depth</strong> (<em>int</em>) – Number of layers. Defaults to 1.</p></li>
+<li><p><strong>param</strong> (<em>Tensor</em><em> | </em><em>float</em><em> | </em><em>None</em>) – Parameters of the gates. Defaults to None.</p></li>
+<li><p><strong>param_sharing</strong> (<em>bool</em>) – Whether gates in the same layer share a parameter. Defaults to False.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="avocado.circuit.Circuit.ryy">
+<span class="sig-name descname"><span class="pre">ryy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubits_idx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'linear'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">param</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">param_sharing</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.circuit.Circuit.ryy" title="Permalink to this definition"></a></dt>
+<dd><p>Add RYY gates.</p>
+<p>The matrix form of such a gate is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+    \mathit{R_{YY}}(\theta) =
+        \begin{bmatrix}
+            \cos\frac{\theta}{2} &amp; 0 &amp; 0 &amp; i\sin\frac{\theta}{2} \\
+            0 &amp; \cos\frac{\theta}{2} &amp; -i\sin\frac{\theta}{2} &amp; 0 \\
+            0 &amp; -i\sin\frac{\theta}{2} &amp; \cos\frac{\theta}{2} &amp; 0 \\
+            i\sin\frac{\theta}{2} &amp; 0 &amp; 0 &amp; cos\frac{\theta}{2}
+        \end{bmatrix}
+\end{align}\end{split}\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qubits_idx</strong> (<em>Iterable</em><em>[</em><em>int</em><em>] </em><em>| </em><em>str</em>) – Indices of the qubits on which the gates are applied. Defaults to ‘linear’.</p></li>
+<li><p><strong>depth</strong> (<em>int</em>) – Number of layers. Defaults to 1.</p></li>
+<li><p><strong>param</strong> (<em>Tensor</em><em> | </em><em>float</em><em> | </em><em>None</em>) – Parameters of the gates. Defaults to None.</p></li>
+<li><p><strong>param_sharing</strong> (<em>bool</em>) – Whether gates in the same layer share a parameter. Defaults to False.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="avocado.circuit.Circuit.rzz">
+<span class="sig-name descname"><span class="pre">rzz</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubits_idx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'linear'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">param</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">param_sharing</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.circuit.Circuit.rzz" title="Permalink to this definition"></a></dt>
+<dd><p>Add RZZ gates.</p>
+<p>The matrix form of such a gate is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+    \mathit{R_{ZZ}}(\theta) =
+        \begin{bmatrix}
+            e^{-i\frac{\theta}{2}} &amp; 0 &amp; 0 &amp; 0 \\
+            0 &amp; e^{i\frac{\theta}{2}} &amp; 0 &amp; 0 \\
+            0 &amp; 0 &amp; e^{i\frac{\theta}{2}} &amp; 0 \\
+            0 &amp; 0 &amp; 0 &amp; e^{-i\frac{\theta}{2}}
+        \end{bmatrix}
+\end{align}\end{split}\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qubits_idx</strong> (<em>Iterable</em><em>[</em><em>int</em><em>] </em><em>| </em><em>str</em>) – Indices of the qubits on which the gates are applied. Defaults to ‘linear’.</p></li>
+<li><p><strong>depth</strong> (<em>int</em>) – Number of layers. Defaults to 1.</p></li>
+<li><p><strong>param</strong> (<em>Tensor</em><em> | </em><em>float</em><em> | </em><em>None</em>) – Parameters of the gates. Defaults to None.</p></li>
+<li><p><strong>param_sharing</strong> (<em>bool</em>) – Whether gates in the same layer share a parameter. Defaults to False.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="avocado.circuit.Circuit.ms">
+<span class="sig-name descname"><span class="pre">ms</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubits_idx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cycle'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.circuit.Circuit.ms" title="Permalink to this definition"></a></dt>
+<dd><p>Add Mølmer-Sørensen (MS) gates.</p>
+<p>The matrix form of such a gate is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+    \mathit{MS} = \mathit{R_{XX}}(-\frac{\pi}{2}) = \frac{1}{\sqrt{2}}
+        \begin{bmatrix}
+            1 &amp; 0 &amp; 0 &amp; i \\
+            0 &amp; 1 &amp; i &amp; 0 \\
+            0 &amp; i &amp; 1 &amp; 0 \\
+            i &amp; 0 &amp; 0 &amp; 1
+        \end{bmatrix}
+\end{align}\end{split}\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qubits_idx</strong> (<em>Iterable</em><em>[</em><em>int</em><em>] </em><em>| </em><em>str</em>) – Indices of the qubits on which the gates are applied. Defaults to ‘cycle’.</p></li>
+<li><p><strong>depth</strong> (<em>int</em>) – Number of layers. Defaults to 1.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="avocado.circuit.Circuit.cswap">
+<span class="sig-name descname"><span class="pre">cswap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubits_idx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cycle'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.circuit.Circuit.cswap" title="Permalink to this definition"></a></dt>
+<dd><p>Add CSWAP (Fredkin) gates.</p>
+<p>The matrix form of such a gate is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+    \mathit{CSWAP} =
+    \begin{bmatrix}
+        1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+        0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+        0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+        0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+        0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 \\
+        0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 \\
+        0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 \\
+        0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1
+    \end{bmatrix}
+\end{align}\end{split}\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qubits_idx</strong> (<em>Iterable</em><em>[</em><em>int</em><em>] </em><em>| </em><em>str</em>) – Indices of the qubits on which the gates are applied. Defaults to ‘cycle’.</p></li>
+<li><p><strong>depth</strong> (<em>int</em>) – Number of layers. Defaults to 1.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="avocado.circuit.Circuit.ccx">
+<span class="sig-name descname"><span class="pre">ccx</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubits_idx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cycle'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.circuit.Circuit.ccx" title="Permalink to this definition"></a></dt>
+<dd><p>Add CCX (Toffoli) gates.</p>
+<p>The matrix form of such a gate is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+        \mathit{CCX} = \begin{bmatrix}
+            1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+            0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+            0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+            0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+            0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 \\
+            0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 \\
+            0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 \\
+            0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0
+        \end{bmatrix}
+    \end{align}\end{split}\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qubits_idx</strong> (<em>Iterable</em><em>[</em><em>int</em><em>] </em><em>| </em><em>str</em>) – Indices of the qubits on which the gates are applied. Defaults to ‘cycle’.</p></li>
+<li><p><strong>depth</strong> (<em>int</em>) – Number of layers. Defaults to 1.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="avocado.circuit.Circuit.universal_two_qubits">
+<span class="sig-name descname"><span class="pre">universal_two_qubits</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubits_idx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cycle'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">param</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">param_sharing</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.circuit.Circuit.universal_two_qubits" title="Permalink to this definition"></a></dt>
+<dd><p>Add universal two-qubit gates. One of such a gate requires 15 parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qubits_idx</strong> (<em>Iterable</em><em>[</em><em>int</em><em>] </em><em>| </em><em>str</em>) – Indices of the qubits on which the gates are applied. Defaults to ‘cycle’.</p></li>
+<li><p><strong>depth</strong> (<em>int</em>) – Number of layers. Defaults to 1.</p></li>
+<li><p><strong>param</strong> (<em>Tensor</em><em> | </em><em>float</em><em> | </em><em>None</em>) – Parameters of the gates. Defaults to None.</p></li>
+<li><p><strong>param_sharing</strong> (<em>bool</em>) – Whether gates in the same layer share a parameter. Defaults to False.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="avocado.circuit.Circuit.universal_three_qubits">
+<span class="sig-name descname"><span class="pre">universal_three_qubits</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubits_idx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cycle'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">param</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">param_sharing</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.circuit.Circuit.universal_three_qubits" title="Permalink to this definition"></a></dt>
+<dd><p>Add universal three-qubit gates. One of such a gate requires 81 parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qubits_idx</strong> (<em>Iterable</em><em>[</em><em>int</em><em>] </em><em>| </em><em>str</em>) – Indices of the qubits on which the gates are applied. Defaults to ‘cycle’.</p></li>
+<li><p><strong>depth</strong> (<em>int</em>) – Number of layers. Defaults to 1.</p></li>
+<li><p><strong>param</strong> (<em>Tensor</em><em> | </em><em>float</em><em> | </em><em>None</em>) – Parameters of the gates. Defaults to None.</p></li>
+<li><p><strong>param_sharing</strong> (<em>bool</em>) – Whether gates in the same layer share a parameter. Defaults to False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – The <code class="docutils literal notranslate"><span class="pre">param</span></code> must be torch.Tensor or float.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="avocado.circuit.Circuit.oracle">
+<span class="sig-name descname"><span class="pre">oracle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">oracle</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qubits_idx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gate_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'O'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">latex_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.circuit.Circuit.oracle" title="Permalink to this definition"></a></dt>
+<dd><p>Add an oracle gate.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>oracle</strong> (<em>tensor</em>) – Unitary oracle to be implemented.</p></li>
+<li><p><strong>qubits_idx</strong> (<em>Iterable</em><em>[</em><em>Iterable</em><em>[</em><em>int</em><em>]</em><em>] </em><em>| </em><em>Iterable</em><em>[</em><em>int</em><em>] </em><em>| </em><em>int</em>) – Indices of the qubits on which the gates are applied.</p></li>
+<li><p><strong>depth</strong> (<em>int</em>) – Number of layers. Defaults to 1.</p></li>
+<li><p><strong>gate_name</strong> (<em>str</em><em> | </em><em>None</em>) – name of this oracle.</p></li>
+<li><p><strong>latex_name</strong> (<em>str</em><em> | </em><em>None</em>) – latex name of this oracle, default to be the gate name.</p></li>
+<li><p><strong>plot_width</strong> (<em>float</em><em> | </em><em>None</em>) – width of this gate in circuit plot, default to be proportional with the gate name.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="avocado.circuit.Circuit.control_oracle">
+<span class="sig-name descname"><span class="pre">control_oracle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">oracle</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qubits_idx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gate_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'O'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">latex_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.circuit.Circuit.control_oracle" title="Permalink to this definition"></a></dt>
+<dd><p>Add a controlled oracle gate.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>oracle</strong> (<em>Tensor</em>) – Unitary oracle to be implemented.</p></li>
+<li><p><strong>qubits_idx</strong> (<em>Iterable</em><em>[</em><em>Iterable</em><em>[</em><em>int</em><em>]</em><em>] </em><em>| </em><em>Iterable</em><em>[</em><em>int</em><em>]</em>) – Indices of the qubits on which the gates are applied.</p></li>
+<li><p><strong>depth</strong> (<em>int</em>) – Number of layers. Defaults to 1.</p></li>
+<li><p><strong>gate_name</strong> (<em>str</em><em> | </em><em>None</em>) – name of this oracle.</p></li>
+<li><p><strong>latex_name</strong> (<em>str</em><em> | </em><em>None</em>) – latex name of this oracle, default to be the gate name.</p></li>
+<li><p><strong>plot_width</strong> (<em>float</em><em> | </em><em>None</em>) – width of this gate in circuit plot, default to be proportional with the gate name.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="avocado.circuit.Circuit.collapse">
+<span class="sig-name descname"><span class="pre">collapse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubits_idx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'full'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">desired_result</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">if_print</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">measure_basis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'z'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.circuit.Circuit.collapse" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qubits_idx</strong> (<em>Iterable</em><em>[</em><em>int</em><em>] </em><em>| </em><em>int</em><em> | </em><em>str</em>) – list of qubits to be collapsed. Defaults to <code class="docutils literal notranslate"><span class="pre">'full'</span></code>.</p></li>
+<li><p><strong>desired_result</strong> (<em>int</em><em> | </em><em>str</em><em> | </em><em>None</em>) – The desired result you want to collapse. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code> meaning randomly choose one.</p></li>
+<li><p><strong>if_print</strong> (<em>bool</em>) – whether print the information about the collapsed state. Defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
+<li><p><strong>measure_basis</strong> (<em>Iterable</em><em>[</em><em>Tensor</em><em>] </em><em>| </em><em>str</em>) – The basis of the measurement. The quantum state will collapse to the corresponding eigenstate.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>NotImplementedError</strong> – If the basis of measurement is not z. Other bases will be implemented in future.</p></li>
+<li><p><strong>TypeError</strong> – cannot get probability of state when the backend is unitary_matrix.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When desired_result is <cite>None</cite>, Collapse does not support gradient calculation</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="avocado.circuit.Circuit.superposition_layer">
+<span class="sig-name descname"><span class="pre">superposition_layer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubits_idx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.circuit.Circuit.superposition_layer" title="Permalink to this definition"></a></dt>
+<dd><p>Add layers of Hadamard gates.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qubits_idx</strong> (<em>Iterable</em><em>[</em><em>int</em><em>] </em><em>| </em><em>None</em>) – Indices of the qubits on which the gates are applied. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
+<li><p><strong>depth</strong> (<em>int</em>) – Number of layers. Defaults to 1.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="avocado.circuit.Circuit.weak_superposition_layer">
+<span class="sig-name descname"><span class="pre">weak_superposition_layer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubits_idx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.circuit.Circuit.weak_superposition_layer" title="Permalink to this definition"></a></dt>
+<dd><p>Add layers of Ry gates with a rotation angle <span class="math notranslate nohighlight">\(\pi/4\)</span>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qubits_idx</strong> (<em>Iterable</em><em>[</em><em>int</em><em>] </em><em>| </em><em>None</em>) – Indices of the qubits on which the gates are applied. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
+<li><p><strong>depth</strong> (<em>int</em>) – Number of layers. Defaults to 1.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="avocado.circuit.Circuit.linear_entangled_layer">
+<span class="sig-name descname"><span class="pre">linear_entangled_layer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubits_idx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.circuit.Circuit.linear_entangled_layer" title="Permalink to this definition"></a></dt>
+<dd><p>Add linear entangled layers consisting of Ry gates, Rz gates, and CNOT gates.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qubits_idx</strong> (<em>Iterable</em><em>[</em><em>int</em><em>] </em><em>| </em><em>None</em>) – Indices of the qubits on which the gates are applied. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
+<li><p><strong>depth</strong> (<em>int</em>) – Number of layers. Defaults to 1.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="avocado.circuit.Circuit.real_entangled_layer">
+<span class="sig-name descname"><span class="pre">real_entangled_layer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubits_idx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.circuit.Circuit.real_entangled_layer" title="Permalink to this definition"></a></dt>
+<dd><p>Add strongly entangled layers consisting of Ry gates and CNOT gates.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qubits_idx</strong> (<em>Iterable</em><em>[</em><em>int</em><em>] </em><em>| </em><em>None</em>) – Indices of the qubits on which the gates are applied. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
+<li><p><strong>depth</strong> (<em>int</em>) – Number of layers. Defaults to 1.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="avocado.circuit.Circuit.complex_entangled_layer">
+<span class="sig-name descname"><span class="pre">complex_entangled_layer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubits_idx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.circuit.Circuit.complex_entangled_layer" title="Permalink to this definition"></a></dt>
+<dd><p>Add strongly entangled layers consisting of single-qubit rotation gates and CNOT gates.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qubits_idx</strong> (<em>Iterable</em><em>[</em><em>int</em><em>] </em><em>| </em><em>None</em>) – Indices of the qubits on which the gates are applied. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
+<li><p><strong>depth</strong> (<em>int</em>) – Number of layers. Defaults to 1.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="avocado.circuit.Circuit.real_block_layer">
+<span class="sig-name descname"><span class="pre">real_block_layer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubits_idx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.circuit.Circuit.real_block_layer" title="Permalink to this definition"></a></dt>
+<dd><p>Add weakly entangled layers consisting of Ry gates and CNOT gates.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qubits_idx</strong> (<em>Iterable</em><em>[</em><em>int</em><em>] </em><em>| </em><em>None</em>) – Indices of the qubits on which the gates are applied. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
+<li><p><strong>depth</strong> (<em>int</em>) – Number of layers. Defaults to 1.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="avocado.circuit.Circuit.complex_block_layer">
+<span class="sig-name descname"><span class="pre">complex_block_layer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubits_idx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.circuit.Circuit.complex_block_layer" title="Permalink to this definition"></a></dt>
+<dd><p>Add weakly entangled layers consisting of single-qubit rotation gates and CNOT gates.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qubits_idx</strong> (<em>Iterable</em><em>[</em><em>int</em><em>] </em><em>| </em><em>None</em>) – Indices of the qubits on which the gates are applied. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
+<li><p><strong>depth</strong> (<em>int</em>) – Number of layers. Defaults to 1.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="avocado.circuit.Circuit.qaoa_layer">
+<span class="sig-name descname"><span class="pre">qaoa_layer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">edges</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.circuit.Circuit.qaoa_layer" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="avocado.circuit.Circuit.bit_flip">
+<span class="sig-name descname"><span class="pre">bit_flip</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prob</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qubits_idx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'full'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.circuit.Circuit.bit_flip" title="Permalink to this definition"></a></dt>
+<dd><p>Add bit flip channels.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>prob</strong> (<em>Tensor</em><em> | </em><em>float</em>) – Probability of a bit flip.</p></li>
+<li><p><strong>qubits_idx</strong> (<em>Iterable</em><em>[</em><em>int</em><em>] </em><em>| </em><em>int</em><em> | </em><em>str</em>) – Indices of the qubits on which the channels are applied. Defaults to ‘full’.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="avocado.circuit.Circuit.phase_flip">
+<span class="sig-name descname"><span class="pre">phase_flip</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prob</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qubits_idx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'full'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.circuit.Circuit.phase_flip" title="Permalink to this definition"></a></dt>
+<dd><p>Add phase flip channels.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>prob</strong> (<em>Tensor</em><em> | </em><em>float</em>) – Probability of a phase flip.</p></li>
+<li><p><strong>qubits_idx</strong> (<em>Iterable</em><em>[</em><em>int</em><em>] </em><em>| </em><em>int</em><em> | </em><em>str</em>) – Indices of the qubits on which the channels are applied. Defaults to ‘full’.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="avocado.circuit.Circuit.bit_phase_flip">
+<span class="sig-name descname"><span class="pre">bit_phase_flip</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prob</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qubits_idx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'full'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.circuit.Circuit.bit_phase_flip" title="Permalink to this definition"></a></dt>
+<dd><p>Add bit phase flip channels.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>prob</strong> (<em>Tensor</em><em> | </em><em>float</em>) – Probability of a bit phase flip.</p></li>
+<li><p><strong>qubits_idx</strong> (<em>Iterable</em><em>[</em><em>int</em><em>] </em><em>| </em><em>int</em><em> | </em><em>str</em>) – Indices of the qubits on which the channels are applied. Defaults to ‘full’.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="avocado.circuit.Circuit.amplitude_damping">
+<span class="sig-name descname"><span class="pre">amplitude_damping</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gamma</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qubits_idx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'full'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.circuit.Circuit.amplitude_damping" title="Permalink to this definition"></a></dt>
+<dd><p>Add amplitude damping channels.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>gamma</strong> (<em>Tensor</em><em> | </em><em>float</em>) – Damping probability.</p></li>
+<li><p><strong>qubits_idx</strong> (<em>Iterable</em><em>[</em><em>int</em><em>] </em><em>| </em><em>int</em><em> | </em><em>str</em>) – Indices of the qubits on which the channels are applied. Defaults to ‘full’.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="avocado.circuit.Circuit.generalized_amplitude_damping">
+<span class="sig-name descname"><span class="pre">generalized_amplitude_damping</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gamma</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prob</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qubits_idx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'full'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.circuit.Circuit.generalized_amplitude_damping" title="Permalink to this definition"></a></dt>
+<dd><p>Add generalized amplitude damping channels.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>gamma</strong> (<em>Tensor</em><em> | </em><em>float</em>) – Damping probability. Its value should be in the range <span class="math notranslate nohighlight">\([0, 1]\)</span>.</p></li>
+<li><p><strong>prob</strong> (<em>Tensor</em><em> | </em><em>float</em>) – Excitation probability. Its value should be in the range <span class="math notranslate nohighlight">\([0, 1]\)</span>.</p></li>
+<li><p><strong>qubits_idx</strong> (<em>Iterable</em><em>[</em><em>int</em><em>] </em><em>| </em><em>int</em><em> | </em><em>str</em>) – Indices of the qubits on which the channels are applied. Defaults to ‘full’.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="avocado.circuit.Circuit.phase_damping">
+<span class="sig-name descname"><span class="pre">phase_damping</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gamma</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qubits_idx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'full'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.circuit.Circuit.phase_damping" title="Permalink to this definition"></a></dt>
+<dd><p>Add phase damping channels.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>gamma</strong> (<em>Tensor</em><em> | </em><em>float</em>) – Parameter of the phase damping channel.</p></li>
+<li><p><strong>qubits_idx</strong> (<em>Iterable</em><em>[</em><em>int</em><em>] </em><em>| </em><em>int</em><em> | </em><em>str</em>) – Indices of the qubits on which the channels are applied. Defaults to ‘full’.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="avocado.circuit.Circuit.depolarizing">
+<span class="sig-name descname"><span class="pre">depolarizing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prob</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qubits_idx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'full'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.circuit.Circuit.depolarizing" title="Permalink to this definition"></a></dt>
+<dd><p>Add depolarizing channels.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>prob</strong> (<em>Tensor</em><em> | </em><em>float</em>) – Parameter of the depolarizing channel.</p></li>
+<li><p><strong>qubits_idx</strong> (<em>Iterable</em><em>[</em><em>int</em><em>] </em><em>| </em><em>int</em><em> | </em><em>str</em>) – Indices of the qubits on which the channels are applied. Defaults to ‘full’.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="avocado.circuit.Circuit.generalized_depolarizing">
+<span class="sig-name descname"><span class="pre">generalized_depolarizing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prob</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qubits_idx</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.circuit.Circuit.generalized_depolarizing" title="Permalink to this definition"></a></dt>
+<dd><p>Add a general depolarizing channel.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>prob</strong> (<em>Tensor</em><em> | </em><em>float</em>) – Probabilities corresponding to the Pauli basis.</p></li>
+<li><p><strong>qubits_idx</strong> (<em>Iterable</em><em>[</em><em>int</em><em>] </em><em>| </em><em>int</em><em> | </em><em>str</em>) – Indices of the qubits on which the channel is applied.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="avocado.circuit.Circuit.pauli_channel">
+<span class="sig-name descname"><span class="pre">pauli_channel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prob</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qubits_idx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'full'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.circuit.Circuit.pauli_channel" title="Permalink to this definition"></a></dt>
+<dd><p>Add Pauli channels.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>prob</strong> (<em>Tensor</em><em> | </em><em>float</em>) – Probabilities corresponding to the Pauli X, Y, and Z operators.</p></li>
+<li><p><strong>qubits_idx</strong> (<em>Iterable</em><em>[</em><em>int</em><em>] </em><em>| </em><em>int</em><em> | </em><em>str</em>) – Indices of the qubits on which the channels are applied. Defaults to ‘full’.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="avocado.circuit.Circuit.reset_channel">
+<span class="sig-name descname"><span class="pre">reset_channel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prob</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qubits_idx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'full'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.circuit.Circuit.reset_channel" title="Permalink to this definition"></a></dt>
+<dd><p>Add reset channels.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>prob</strong> (<em>Tensor</em><em> | </em><em>float</em>) – Probabilities of resetting to <span class="math notranslate nohighlight">\(|0\rangle\)</span> and to <span class="math notranslate nohighlight">\(|1\rangle\)</span>.</p></li>
+<li><p><strong>qubits_idx</strong> (<em>Iterable</em><em>[</em><em>int</em><em>] </em><em>| </em><em>int</em><em> | </em><em>str</em>) – Indices of the qubits on which the channels are applied. Defaults to ‘full’.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="avocado.circuit.Circuit.thermal_relaxation">
+<span class="sig-name descname"><span class="pre">thermal_relaxation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">const_t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exec_time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qubits_idx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'full'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.circuit.Circuit.thermal_relaxation" title="Permalink to this definition"></a></dt>
+<dd><p>Add thermal relaxation channels.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>const_t</strong> (<em>Tensor</em><em> | </em><em>Iterable</em><em>[</em><em>float</em><em>]</em>) – <span class="math notranslate nohighlight">\(T_1\)</span> and <span class="math notranslate nohighlight">\(T_2\)</span> relaxation time in microseconds.</p></li>
+<li><p><strong>exec_time</strong> (<em>Tensor</em><em> | </em><em>float</em>) – Quantum gate execution time in the process of relaxation in nanoseconds.</p></li>
+<li><p><strong>qubits_idx</strong> (<em>Iterable</em><em>[</em><em>int</em><em>] </em><em>| </em><em>int</em><em> | </em><em>str</em>) – Indices of the qubits on which the channels are applied. Defaults to ‘full’.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="avocado.circuit.Circuit.mixed_unitary_channel">
+<span class="sig-name descname"><span class="pre">mixed_unitary_channel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_unitary</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qubits_idx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'full'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.circuit.Circuit.mixed_unitary_channel" title="Permalink to this definition"></a></dt>
+<dd><p>Add mixed random unitary channels</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>num_unitary</strong> (<em>Tensor</em><em> | </em><em>int</em>) – The amount of random unitaries to be generated.</p></li>
+<li><p><strong>qubits_idx</strong> (<em>Iterable</em><em>[</em><em>int</em><em>] </em><em>| </em><em>int</em><em> | </em><em>str</em>) – Indices of the qubits on which the channels act. Defaults to <code class="docutils literal notranslate"><span class="pre">'full'</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="avocado.circuit.Circuit.choi_channel">
+<span class="sig-name descname"><span class="pre">choi_channel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">choi_repr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qubits_idx</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.circuit.Circuit.choi_channel" title="Permalink to this definition"></a></dt>
+<dd><p>Add custom channels in the Choi representation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>choi_repr</strong> (<em>Iterable</em><em>[</em><em>Tensor</em><em>]</em>) – Choi representation of this channel.</p></li>
+<li><p><strong>qubits_idx</strong> (<em>Iterable</em><em>[</em><em>Iterable</em><em>[</em><em>int</em><em>]</em><em>] </em><em>| </em><em>Iterable</em><em>[</em><em>int</em><em>] </em><em>| </em><em>int</em>) – Indices of the qubits on which the channels are applied.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="avocado.circuit.Circuit.kraus_channel">
+<span class="sig-name descname"><span class="pre">kraus_channel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kraus_oper</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qubits_idx</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.circuit.Circuit.kraus_channel" title="Permalink to this definition"></a></dt>
+<dd><p>Add custom channels in the Kraus representation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>kraus_oper</strong> (<em>Iterable</em><em>[</em><em>Tensor</em><em>]</em>) – Kraus representation of this channel.</p></li>
+<li><p><strong>qubits_idx</strong> (<em>Iterable</em><em>[</em><em>Iterable</em><em>[</em><em>int</em><em>]</em><em>] </em><em>| </em><em>Iterable</em><em>[</em><em>int</em><em>] </em><em>| </em><em>int</em>) – Indices of the qubits on which the channels are applied.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="avocado.circuit.Circuit.stinespring_channel">
+<span class="sig-name descname"><span class="pre">stinespring_channel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stinespring_repr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qubits_idx</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.circuit.Circuit.stinespring_channel" title="Permalink to this definition"></a></dt>
+<dd><p>Add custom channels in the Stinespring representation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>stinespring_repr</strong> (<em>Iterable</em><em>[</em><em>Tensor</em><em>]</em>) – Stinespring representation of this channel.</p></li>
+<li><p><strong>qubits_idx</strong> (<em>Iterable</em><em>[</em><em>Iterable</em><em>[</em><em>int</em><em>]</em><em>] </em><em>| </em><em>Iterable</em><em>[</em><em>int</em><em>] </em><em>| </em><em>int</em>) – Indices of the qubits on which the channels are applied.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="avocado.circuit.Circuit.unitary_matrix">
+<span class="sig-name descname"><span class="pre">unitary_matrix</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#avocado.circuit.Circuit.unitary_matrix" title="Permalink to this definition"></a></dt>
+<dd><p>Get the unitary matrix form of the circuit.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Unitary matrix form of the circuit.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>Tensor</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="avocado.circuit.Circuit.gate_history">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">gate_history</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Tensor</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#avocado.circuit.Circuit.gate_history" title="Permalink to this definition"></a></dt>
+<dd><p>List of gates information of circuit</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>history of quantum gates of circuit</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="avocado.circuit.Circuit.depth">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">depth</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#avocado.circuit.Circuit.depth" title="Permalink to this definition"></a></dt>
+<dd><p>Depth of gate sequences.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>depth of this circuit</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The measurement is omitted, and all gates are assumed to have depth 1.
+See Niel’s answer in the [StackExchange](<a class="reference external" href="https://quantumcomputing.stackexchange.com/a/5772">https://quantumcomputing.stackexchange.com/a/5772</a>).</p>
+</div>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="avocado.circuit.Circuit.qubit_history">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">qubit_history</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Tensor</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#avocado.circuit.Circuit.qubit_history" title="Permalink to this definition"></a></dt>
+<dd><p>gate information on each qubit</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list of gate history on each qubit</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The entry <code class="docutils literal notranslate"><span class="pre">qubit_history[i][j][0/1]</span></code> returns the gate information / gate index of the j-th gate
+applied on the i-th qubit.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="avocado.circuit.Circuit.plot">
+<span class="sig-name descname"><span class="pre">plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">save_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dpi</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tex</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.circuit.Circuit.plot" title="Permalink to this definition"></a></dt>
+<dd><p>display the circuit using matplotlib</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>save_path</strong> (<em>str</em><em> | </em><em>None</em>) – the save path of image</p></li>
+<li><p><strong>dpi</strong> (<em>int</em><em> | </em><em>None</em>) – dots per inches, here is resolution ratio</p></li>
+<li><p><strong>show</strong> (<em>bool</em><em> | </em><em>None</em>) – whether execute <code class="docutils literal notranslate"><span class="pre">plt.show()</span></code></p></li>
+<li><p><strong>output</strong> (<em>bool</em><em> | </em><em>None</em>) – whether return the <code class="docutils literal notranslate"><span class="pre">matplotlib.figure.Figure</span></code> instance</p></li>
+<li><p><strong>scale</strong> (<em>float</em><em> | </em><em>None</em>) – scale coefficient of figure, default to 1.0</p></li>
+<li><p><strong>tex</strong> (<em>bool</em><em> | </em><em>None</em>) – a bool flag which controls latex fonts of gate display, default to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>a <code class="docutils literal notranslate"><span class="pre">matplotlib.figure.Figure</span></code> instance or <code class="docutils literal notranslate"><span class="pre">None</span></code> depends on <code class="docutils literal notranslate"><span class="pre">output</span></code></p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None | <em>Figure</em></p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Using <code class="docutils literal notranslate"><span class="pre">plt.show()</span></code> may cause a distortion, but it will not happen in the figure saved.
+If the depth is too long, there will be some patches unable to display.
+Setting <code class="docutils literal notranslate"><span class="pre">tex</span> <span class="pre">=</span> <span class="pre">True</span></code> requires that you have TeX and the other dependencies properly
+installed on your system. See
+<a class="reference external" href="https://matplotlib.org/stable/gallery/text_labels_and_annotations/tex_demo.html">https://matplotlib.org/stable/gallery/text_labels_and_annotations/tex_demo.html</a>
+for more details.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="avocado.circuit.Circuit.extend">
+<span class="sig-name descname"><span class="pre">extend</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cir</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.circuit.Circuit.extend" title="Permalink to this definition"></a></dt>
+<dd><p>extend for quantum circuit</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>cir</strong> – a Circuit or a Sequential</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>concatenation of two quantum circuits</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="avocado.circuit.Circuit.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.circuit.Circuit.forward" title="Permalink to this definition"></a></dt>
+<dd><p>forward the input</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>state</strong> (<a class="reference internal" href="avocado.core.state.html#avocado.core.state.State" title="avocado.core.state.State"><em>State</em></a><em> | </em><em>None</em>) – initial state</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>output quantum state</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="avocado.core.state.html#avocado.core.state.State" title="avocado.core.state.State"><em>State</em></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="avocado.circuit.Circuit.training">
+<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#avocado.circuit.Circuit.training" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="avocado.ansatz.layer.html" class="btn btn-neutral float-left" title="avocado.ansatz.layer" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="avocado.core.html" class="btn btn-neutral float-right" title="avocado.core" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, QUAIR.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

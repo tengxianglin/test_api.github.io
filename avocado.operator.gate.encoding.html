@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>avocado.operator.gate.encoding &mdash; QUAIR-PLATFORM 0.0.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css\rtd_sphinx_search.min.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+        <script src="_static/js\rtd_search_config.js"></script>
+        <script src="_static/js\rtd_sphinx_search.min.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="avocado.operator.gate.functional" href="avocado.operator.gate.functional.html" />
+    <link rel="prev" title="avocado.operator.gate.custom" href="avocado.operator.gate.custom.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            QUAIR-PLATFORM
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="avocado.ansatz.html">avocado.ansatz</a></li>
+<li class="toctree-l1"><a class="reference internal" href="avocado.circuit.html">avocado.circuit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="avocado.core.html">avocado.core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="avocado.database.html">avocado.database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="avocado.loss.html">avocado.loss</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="avocado.operator.html">avocado.operator</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="avocado.operator.channel.html">avocado.operator.channel</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="avocado.operator.gate.html">avocado.operator.gate</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="avocado.operator.gate.base.html">avocado.operator.gate.base</a></li>
+<li class="toctree-l3"><a class="reference internal" href="avocado.operator.gate.custom.html">avocado.operator.gate.custom</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">avocado.operator.gate.encoding</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#avocado.operator.gate.encoding.BasisEncoding"><code class="docutils literal notranslate"><span class="pre">BasisEncoding</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#avocado.operator.gate.encoding.AmplitudeEncoding"><code class="docutils literal notranslate"><span class="pre">AmplitudeEncoding</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#avocado.operator.gate.encoding.AngleEncoding"><code class="docutils literal notranslate"><span class="pre">AngleEncoding</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#avocado.operator.gate.encoding.IQPEncoding"><code class="docutils literal notranslate"><span class="pre">IQPEncoding</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="avocado.operator.gate.functional.html">avocado.operator.gate.functional</a></li>
+<li class="toctree-l3"><a class="reference internal" href="avocado.operator.gate.multi_qubit_gate.html">avocado.operator.gate.multi_qubit_gate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="avocado.operator.gate.single_qubit_gate.html">avocado.operator.gate.single_qubit_gate</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="avocado.operator.special.html">avocado.operator.special</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="avocado.qinfo.html">avocado.qinfo</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">QUAIR-PLATFORM</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">&lt;no title&gt;</a></li>
+          <li class="breadcrumb-item"><a href="avocado.operator.html">avocado.operator</a></li>
+          <li class="breadcrumb-item"><a href="avocado.operator.gate.html">avocado.operator.gate</a></li>
+      <li class="breadcrumb-item active">avocado.operator.gate.encoding</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/avocado.operator.gate.encoding.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-avocado.operator.gate.encoding">
+<span id="avocado-operator-gate-encoding"></span><h1>avocado.operator.gate.encoding<a class="headerlink" href="#module-avocado.operator.gate.encoding" title="Permalink to this heading"></a></h1>
+<p>The source file of the classes for quantum encoding.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="avocado.operator.gate.encoding.BasisEncoding">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">avocado.operator.gate.encoding.</span></span><span class="sig-name descname"><span class="pre">BasisEncoding</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubits_idx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'full'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_qubits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.operator.gate.encoding.BasisEncoding" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="avocado.core.base.html#avocado.core.base.Operator" title="avocado.core.base.Operator"><code class="xref py py-class docutils literal notranslate"><span class="pre">Operator</span></code></a></p>
+<p>Basis encoding gate for encoding input classical data into quantum states.</p>
+<p>In basis encoding, the input classical data can only consist of 0’s and 1’s. If the input data are 1101,
+then the quantum state after encoding is <span class="math notranslate nohighlight">\(|1101\rangle\)</span>. Note that the quantum state before encoding is
+assumed to be <span class="math notranslate nohighlight">\(|00\ldots 0\rangle\)</span>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qubits_idx</strong> (<em>Iterable</em><em>[</em><em>int</em><em>] </em><em>| </em><em>int</em><em> | </em><em>str</em>) – Indices of the qubits on which the gates are applied. Defaults to <code class="docutils literal notranslate"><span class="pre">'full'</span></code>.</p></li>
+<li><p><strong>num_qubits</strong> (<em>int</em>) – Total number of qubits. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="avocado.operator.gate.encoding.BasisEncoding.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feature</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.operator.gate.encoding.BasisEncoding.forward" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="avocado.operator.gate.encoding.BasisEncoding.gate_history_generation">
+<span class="sig-name descname"><span class="pre">gate_history_generation</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#avocado.operator.gate.encoding.BasisEncoding.gate_history_generation" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="avocado.operator.gate.encoding.BasisEncoding.training">
+<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#avocado.operator.gate.encoding.BasisEncoding.training" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="avocado.operator.gate.encoding.AmplitudeEncoding">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">avocado.operator.gate.encoding.</span></span><span class="sig-name descname"><span class="pre">AmplitudeEncoding</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubits_idx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'full'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_qubits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.operator.gate.encoding.AmplitudeEncoding" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="avocado.core.base.html#avocado.core.base.Operator" title="avocado.core.base.Operator"><code class="xref py py-class docutils literal notranslate"><span class="pre">Operator</span></code></a></p>
+<p>Amplitude encoding gate for encoding input classical data into quantum states.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qubits_idx</strong> (<em>Iterable</em><em>[</em><em>int</em><em>] </em><em>| </em><em>int</em><em> | </em><em>str</em><em> | </em><em>None</em>) – Indices of the qubits on which the gates are applied. Defaults to <code class="docutils literal notranslate"><span class="pre">'full'</span></code>.</p></li>
+<li><p><strong>num_qubits</strong> (<em>int</em><em> | </em><em>None</em>) – Total number of qubits. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="avocado.operator.gate.encoding.AmplitudeEncoding.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feature</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.operator.gate.encoding.AmplitudeEncoding.forward" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="avocado.operator.gate.encoding.AmplitudeEncoding.gate_history_generation">
+<span class="sig-name descname"><span class="pre">gate_history_generation</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#avocado.operator.gate.encoding.AmplitudeEncoding.gate_history_generation" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="avocado.operator.gate.encoding.AmplitudeEncoding.training">
+<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#avocado.operator.gate.encoding.AmplitudeEncoding.training" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="avocado.operator.gate.encoding.AngleEncoding">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">avocado.operator.gate.encoding.</span></span><span class="sig-name descname"><span class="pre">AngleEncoding</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feature</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qubits_idx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'full'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_qubits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding_gate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.operator.gate.encoding.AngleEncoding" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="avocado.core.base.html#avocado.core.base.Operator" title="avocado.core.base.Operator"><code class="xref py py-class docutils literal notranslate"><span class="pre">Operator</span></code></a></p>
+<p>Angle encoding gate for encoding input classical data into quantum states.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>feature</strong> (<em>Tensor</em>) – Vector to be encoded.</p></li>
+<li><p><strong>qubits_idx</strong> (<em>Iterable</em><em>[</em><em>int</em><em>] </em><em>| </em><em>int</em><em> | </em><em>str</em><em> | </em><em>None</em>) – Indices of the qubits on which the gates are applied. Defaults to <code class="docutils literal notranslate"><span class="pre">'full'</span></code>.</p></li>
+<li><p><strong>num_qubits</strong> (<em>int</em><em> | </em><em>None</em>) – Total number of qubits. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
+<li><p><strong>encoding_gate</strong> (<em>str</em><em> | </em><em>None</em>) – The type of quantum gates used for encoding, which should be one of <code class="docutils literal notranslate"><span class="pre">&quot;rx&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;ry&quot;</span></code>,
+and <code class="docutils literal notranslate"><span class="pre">&quot;rz&quot;</span></code>. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="avocado.operator.gate.encoding.AngleEncoding.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">invert</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.operator.gate.encoding.AngleEncoding.forward" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="avocado.operator.gate.encoding.AngleEncoding.gate_history_generation">
+<span class="sig-name descname"><span class="pre">gate_history_generation</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#avocado.operator.gate.encoding.AngleEncoding.gate_history_generation" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="avocado.operator.gate.encoding.AngleEncoding.training">
+<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#avocado.operator.gate.encoding.AngleEncoding.training" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="avocado.operator.gate.encoding.IQPEncoding">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">avocado.operator.gate.encoding.</span></span><span class="sig-name descname"><span class="pre">IQPEncoding</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feature</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qubits_idx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_qubits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_repeat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.operator.gate.encoding.IQPEncoding" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="avocado.core.base.html#avocado.core.base.Operator" title="avocado.core.base.Operator"><code class="xref py py-class docutils literal notranslate"><span class="pre">Operator</span></code></a></p>
+<p>IQP style encoding gate for encoding input classical data into quantum states.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>feature</strong> (<em>Tensor</em>) – Vector to be encoded.</p></li>
+<li><p><strong>qubits_idx</strong> (<em>Iterable</em><em>[</em><em>Iterable</em><em>[</em><em>int</em><em>]</em><em>] </em><em>| </em><em>None</em>) – Indices of the qubits on which the gates are applied. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
+<li><p><strong>num_qubits</strong> (<em>int</em><em> | </em><em>None</em>) – Total number of qubits. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
+<li><p><strong>num_repeat</strong> (<em>int</em><em> | </em><em>None</em>) – Number of encoding layers. Defaults to <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="avocado.operator.gate.encoding.IQPEncoding.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">invert</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#avocado.operator.gate.encoding.IQPEncoding.forward" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="avocado.operator.gate.encoding.IQPEncoding.training">
+<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#avocado.operator.gate.encoding.IQPEncoding.training" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="avocado.operator.gate.encoding.IQPEncoding.gate_history_generation">
+<span class="sig-name descname"><span class="pre">gate_history_generation</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#avocado.operator.gate.encoding.IQPEncoding.gate_history_generation" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="avocado.operator.gate.custom.html" class="btn btn-neutral float-left" title="avocado.operator.gate.custom" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="avocado.operator.gate.functional.html" class="btn btn-neutral float-right" title="avocado.operator.gate.functional" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, QUAIR.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

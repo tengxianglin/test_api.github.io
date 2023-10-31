@@ -1,0 +1,19 @@
+avocado.core
+============
+
+.. automodule:: avocado.core
+   :members:
+   :show-inheritance:
+
+.. rubric:: Submodules
+
+.. toctree::
+   :maxdepth: 1
+
+   avocado.core.backend
+   avocado.core.base
+   avocado.core.hamiltonian
+   avocado.core.intrinsic
+   avocado.core.state
+   avocado.core.utils
+   avocado.core.visual

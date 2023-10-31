@@ -1,0 +1,8 @@
+avocado.core.utils.check
+========================
+
+.. automodule:: avocado.core.utils.check
+   :members:
+   :undoc-members:
+   :show-inheritance:
+

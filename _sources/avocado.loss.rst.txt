@@ -1,0 +1,14 @@
+avocado.loss
+============
+
+.. automodule:: avocado.loss
+   :members:
+   :show-inheritance:
+
+.. rubric:: Submodules
+
+.. toctree::
+   :maxdepth: 1
+
+   avocado.loss.distance
+   avocado.loss.measure

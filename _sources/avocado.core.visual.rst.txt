@@ -1,0 +1,8 @@
+avocado.core.visual
+===================
+
+.. automodule:: avocado.core.visual
+   :members:
+   :undoc-members:
+   :show-inheritance:
+

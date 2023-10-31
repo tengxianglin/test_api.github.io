@@ -1,0 +1,8 @@
+avocado.loss.distance
+=====================
+
+.. automodule:: avocado.loss.distance
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
